@@ -1,0 +1,23 @@
+@use '/src/styles/variables' as vars;
+
+mat-form-field {
+  &.mat-form-field_search-box {
+    margin-top: 20px;
+
+    .mat-form-field-infix {
+      border-top-width: 6px;
+      padding: 12px 0;
+    }
+
+    // hover outline color
+    &.mat-form-field-appearance-outline:not(.mat-focused) {
+      .mat-form-field-outline-thick {
+        color: vars.$dark_accent_300;
+
+        body.light-theme & {
+          color: vars.$light_accent_300;
+         }
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+
+<mat-toolbar
+  class="toolbar mat-elevation-z4"
+  color="primary"
+>
+  <mat-toolbar-row class="main-toolbar-row">
+    <button
+      aria-label="Side navigation menu icon"
+      class="mob-menu-icon"
+      mat-icon-button
+      [class.hide]="!tabQuery.matches"
+      (click)="sidenav.toggle()"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <a
+      class="logo-link"
+      title="HomePage"
+      [routerLink]="['']"
+    >
+      <img class="logo" src="/assets/images/logo.svg" />
+    </a>
+
+    <anp-top-menu class="top-menu" [class.hide]="tabQuery.matches"></anp-top-menu>
+    <span class="toolbar-spacer"></span>
+    <anp-search-box></anp-search-box>
+    <span class="toolbar-spacer"></span>
+    <anp-theme-toggle></anp-theme-toggle>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container
+  class="sidenav-container"
+  [style.marginTop.px]="mobileQuery.matches ? 56 : 64"
+>
+  <mat-sidenav
+    #sidenav
+    closed
+    [fixedBottomGap]="0"
+    [fixedInViewport]="true"
+    [fixedTopGap]="mobileQuery.matches ? 56 : 64"
+    [mode]="mobileQuery.matches ? 'over' : 'side'"
+  >
+    <anp-sidenav-tree (menuItemChosen)="mobileQuery.matches && sidenav.close()"></anp-sidenav-tree>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,12 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+service: dev-fe
+instance_class: F1
+handlers:
+  - url: /(.*\.[A-Za-z0-9]{1,4})$
+    static_files: dist/luv-coffee-fe/\1
+    upload: dist/luv-coffee-fe/(.*\.[A-Za-z0-9]{1,4})$
+  - url: /(.*)$
+    static_files: dist/luv-coffee-fe/index.html
+    upload: dist/luv-coffee-fe/index.html

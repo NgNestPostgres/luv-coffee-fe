@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+// @use 'styles/custom-themes/dark-theme.scss';
+@use 'styles/mat-form-field';
+@use 'styles/variables' as vars;
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@media (min-width: vars.$tab-width) {
+  ::-webkit-scrollbar {
+    -webkit-appearance: none;
+    height: 16px;
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: rgba(206, 206, 206, 0.6);
+    border-radius: 6px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(160, 160, 160, 1);
+    border-radius: 8px;
+  }
+}
+
+.hide {
+  display: none !important;
+}

@@ -1,0 +1,44 @@
+<div
+  class="ngx-phone-input-container"
+  role="group"
+  [formGroup]="parts"
+  [attr.aria-labelledby]="parentFormField?.getLabelId()"
+  (focusin)="onFocusIn($event)"
+  (focusout)="onFocusOut($event)"
+>
+
+  <input #area
+    aria-label="Area code"
+    class="ngx-phone-input-element"
+    formControlName="area"
+    matInput
+    maxLength="3"
+    size="3"
+    (input)="handleInput(parts.controls['area'], exchange)"
+  >
+
+  <span class="ngx-phone-input-spacer">&ndash;</span>
+
+  <input #exchange
+    aria-label="Exchange code"
+    class="ngx-phone-input-element"
+    formControlName="exchange"
+    matInput
+    maxLength="3"
+    size="3"
+    (input)="handleInput(parts.controls['exchange'], subscriber)"
+    (keyup.backspace)="autoFocusPrev(parts.controls['exchange'], area)"
+  >
+  <span class="ngx-phone-input-spacer">&ndash;</span>
+
+  <input #subscriber
+    aria-label="Subscriber number"
+    class="ngx-phone-input-element"
+    formControlName="subscriber"
+    matInput
+    maxLength="4"
+    size="4"
+    (input)="handleInput(parts.controls['subscriber'])"
+    (keyup.backspace)="autoFocusPrev(parts.controls['subscriber'], exchange)"
+  >
+</div>

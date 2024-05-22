@@ -1,0 +1,35 @@
+<form [formGroup]="form" (ngSubmit)="log()">
+  <mat-form-field appearance="fill">
+    <mat-label>Phone number</mat-label>
+    <ngx-phone-form-field formControlName="tel" required></ngx-phone-form-field>
+    <mat-icon matSuffix>phone</mat-icon>
+    <mat-hint>Include area code</mat-hint>
+  </mat-form-field>
+
+  <br/>
+  <br/>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Phone number 2</mat-label>
+    <ngx-phone-form-field formControlName="tel1" required></ngx-phone-form-field>
+  </mat-form-field>
+
+  <br/>
+  <br/>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Simple Input</mat-label>
+    <input matInput formControlName="simpleInput" />
+  </mat-form-field>
+
+  <br/>
+  <br/>
+
+  <button
+    type="submit"
+    mat-stroked-button
+    [disabled]="form.invalid"
+  >
+    console.log
+  </button>
+</form>
