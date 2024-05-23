@@ -1,4 +1,5 @@
 # Documentation
+- https://angular.dev
 - https://medium.com/@avinashanshu.iitb/create-a-multiple-nest-package-and-publish-it-privately-and-publically-8003dde4497e
 
 # Setup
@@ -39,6 +40,8 @@ Default theme - dark
 2. Add module styles:
   - to `src/styles/custom-themes/dark-theme.scss`,
   - and to `src/styles/custom-themes/light-theme.scss`
+
+# Lint
 
 # Library
 ## Library development
