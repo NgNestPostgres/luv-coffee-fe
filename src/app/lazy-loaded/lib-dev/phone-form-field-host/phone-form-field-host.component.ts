@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, FormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { PhoneParts } from 'projects/ngx-shared/src/public-api';
 
 @Component({
@@ -8,9 +8,9 @@ import { PhoneParts } from 'projects/ngx-shared/src/public-api';
   styleUrls: ['./phone-form-field-host.component.scss']
 })
 export class PhoneFormFieldHostComponent implements OnInit{
-  public form!: FormGroup;
+  public form!: UntypedFormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: UntypedFormBuilder) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({

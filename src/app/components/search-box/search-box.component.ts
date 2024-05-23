@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { debounceTime, distinctUntilChanged, Observable, of, Subject, switchMap } from 'rxjs';
 
@@ -20,13 +20,13 @@ const OPTIONS: SearchOption[]  = [
   styleUrls: ['./search-box.component.scss']
 })
 export class SearchBoxComponent implements OnInit {
-  public form!: FormGroup;
+  public form!: UntypedFormGroup;
   public searchOptions$!: Observable<SearchOption[]>;
 
   private _searchSubj$ = new Subject<string>();
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private router: Router,
   ) {}
 

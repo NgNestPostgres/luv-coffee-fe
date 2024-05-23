@@ -13,8 +13,8 @@ import {
 import {
   AbstractControl,
   ControlValueAccessor,
-  FormBuilder,
-  FormGroup,
+  UntypedFormBuilder,
+  UntypedFormGroup,
   NgControl,
   Validators,
 } from '@angular/forms';
@@ -103,7 +103,7 @@ export class PhoneFormFieldComponent implements  ControlValueAccessor, MatFormFi
 
   public focused = false; // implements MatFormFieldControl
   public controlType = 'ngx-phone-input'; // implements MatFormFieldControl
-  public parts: FormGroup;
+  public parts: UntypedFormGroup;
   public stateChanges = new Subject<void>(); // implements MatFormFieldControl
 
   private _disabled = false;
@@ -127,7 +127,7 @@ export class PhoneFormFieldComponent implements  ControlValueAccessor, MatFormFi
 
   constructor(
     private _elementRef: ElementRef<HTMLElement>,
-    private _fb: FormBuilder,
+    private _fb: UntypedFormBuilder,
     private _focusMonitor: FocusMonitor,
     @Optional() public parentFormField: MatFormField,
     @Optional() @Self() public ngControl: NgControl,
