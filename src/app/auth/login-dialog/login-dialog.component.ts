@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AuthService } from '@auth/services/auth.service';
-import { UserLogin } from '@ng-nest-postgre/luv-coffee-be/dist/libs/fe-shared/src';
-// import { UserRole } from '@ng-nest-postgre/luv-coffee-be/dist/libs/fe-shared/src';
+import { UserLogin } from '@angularnestpostgre/packages/fe-shared';
+// import { UserRole } from '@angularnestpostgre/packages/fe-shared';
 
 @Component({
   selector: 'anp-login-dialog',

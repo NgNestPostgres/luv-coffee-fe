@@ -7,13 +7,13 @@
     "serve:local": "ng serve --hmr",
     "serve:dev": "ng serve -c dev-serve",
     "serve:prod": "ng serve -c production-serve",
-    "build:local": "yarn build:lib:shared && ng build",
-    "build:dev": "yarn build:lib:shared && ng build -c dev",
-    "build:prod": "yarn build:lib:shared && ng build -c production",
+    "build:local": "npm run build:lib:shared && ng build",
+    "build:dev": "npm run build:lib:shared && ng build -c dev",
+    "build:prod": "npm run build:lib:shared && ng build -c production",
     "build:lib:shared": "ng build ngx-shared",
     "build:lib:shared:watch": "ng build ngx-shared --watch",
-    "build:analyze": "yarn build:lib:shared && ng build --named-chunks --stats-json && webpack-bundle-analyzer dist/luv-coffee-fe/stats.json",
-    "build:start": "yarn build:local && cd dist/luv-coffee-fe && spa-server-gzip -p 4200",
+    "build:analyze": "npm run build:lib:shared && ng build --named-chunks --stats-json && webpack-bundle-analyzer dist/luv-coffee-fe/stats.json",
+    "build:start": "npm run build:local && cd dist/luv-coffee-fe && spa-server-gzip -p 4200",
     "lint": "ng lint",
     "lint:app": "ng lint luv-coffee-fe",
     "lint:lib:shared": "ng lint ngx-shared",
@@ -22,9 +22,9 @@
     "test:app:watch": "ng test luv-coffee-fe",
     "test:lib:shared": "ng test ngx-shared --watch=false",
     "test:lib:shared:watch": "ng test ngx-shared",
-    "deploy:dev": "yarn build:dev && gcloud app deploy app.dev.yaml --project luv-coffee",
-    "precommit": "yarn lint",
-    "prepush": "yarn test"
+    "deploy:dev": "npm run build:dev && gcloud app deploy app.dev.yaml --project luv-coffee",
+    "precommit": "npm run lint",
+    "prepush": "npm run test"
   },
   "dependencies": {
     "@angular/animations": "~13.0.0",
@@ -38,6 +38,7 @@
     "@angular/platform-browser": "~13.0.0",
     "@angular/platform-browser-dynamic": "~13.0.0",
     "@angular/router": "~13.0.0",
+    "@angularnestpostgre/packages": "^0.0.3",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
@@ -64,10 +65,5 @@
     "karma-jasmine-html-reporter": "~1.7.0",
     "ng-packagr": "^13.0.0",
     "typescript": "~4.4.3"
-  },
-  "config": {
-    "commitizen": {
-      "path": "cz-conventional-changelog"
-    }
   }
 }

@@ -23,9 +23,6 @@
       "dom"
     ],
     "paths": {
-      "@angular/*": [
-        "./node_modules/@angular/*"
-      ],
       "@auth/*": [
         "src/app/auth/*"
       ],
