@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { catchError, map, Observable, tap } from 'rxjs';
 import { TokenService } from './token.service';
 
-import { UserLogin, AccessTokenWrapped } from '@ng-nest-postgre/luv-coffee-be/dist/libs/fe-shared/src';
+import { UserLogin, AccessTokenWrapped } from '@angularnestpostgre/packages/fe-shared';
 import { environment } from 'src/environments/environment';
 
 @Injectable({

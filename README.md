@@ -1,27 +1,32 @@
 # Documentation
+- https://medium.com/@avinashanshu.iitb/create-a-multiple-nest-package-and-publish-it-privately-and-publically-8003dde4497e
 
-# Dependencies
+# Setup
+- Instlall nvm (https://github.com/nvm-sh/nvm).
+- Install Cloud SDK (https://cloud.google.com/sdk/docs/install).
+
+- Run `nvm install 1.x.x`
+- Run `nvm use 18.xx.x`
+- Run `npm i -g @angular/cli`
+- Run `npx husky init`
+
+## Dependencies CLI
 - `gcloud` (Google Cloud SDK)
-- `node` version xx.xx.x
-- `yarn`, version xx.xx.x
+- `node` version 18.xx.x
 - `ng`
 
-
-# Local Development
-Install project according to `README.md` in the root.
-
-## Run local FE development
-1. In luv-coffee-be:
-  - run `yarn serve:docker` to start up local server,
-  - or run `yarn build:fe-shared` to just build a shared library.
-2. Build ngx-shared lib:
-  - run `yarn build:lib:shared`to build a lib,
-  - or run `yarn build:lib:shared:watch` for ngx-shared library development.
-2. Run `yarn start` to start FE develoments.
+# Development
+## Local development
+1. Update shared packages: `npm i @angularnestpostgre/packages@latest` 
+2. Run local server.
+3. Build ngx-shared lib:
+  - run `npm run build:lib:shared` to build a lib,
+  - or run `npm run build:lib:shared:watch` for ngx-shared library development.
+4. Run `npm run serve:local` to start FE develoments.
 
 ## Run build locally
-Run `yarn add -D spa-server-gzip` (`npm install -g spa-server-gzip`)
-Run `yarn build:start`
+Run `npm i -g spa-server-gzip`
+Run `npm run build:start`
 
 # Styling
 Do not use direct colors. Use only palette colors defined in _variables.scss.
@@ -35,11 +40,10 @@ Default theme - dark
   - to `src/styles/custom-themes/dark-theme.scss`,
   - and to `src/styles/custom-themes/light-theme.scss`
 
-
 # Library
 ## Library development
-1. Run `yarn build:lib:shared:watch` in the first terminal.
-2. Run `yarn start` im the second terminal.
+1. Run `npm run build:lib:shared:watch` in the first terminal.
+2. Run `npm run serve:local` im the second terminal.
 
 ## Library Development Convention
 ````
@@ -55,37 +59,6 @@ And also:
   ('NgxSharedModule' is not nessessary if its components are connected only via Router.)
 ````
 
-## Library Import
-If Angular app is importing library from another Angular app, then it should preserve symlink:
-````
-  angular.json:
-  -------------------------------------------------------------------------------------
-    "luv-coffee-fe": {
-      ...
-      "architect": {
-        "build": {
-          ...
-            "preserveSymlinks": true
-  -------------------------------------------------------------------------------------
-
-  tsconfig.json:
-  -------------------------------------------------------------------------------------
-  {
-    ...
-    "compilerOptions": {
-      ...
-      "paths": {
-        "@angular/*": [
-          "./node_modules/@angular/*"
-        ],
-  -------------------------------------------------------------------------------------
-
-  // NOT VALID. REMOVE!!!!!
-  shared.module.ts
-  -------------------------------------------------------------------------------------
-  import { NgxSharedComponenet } from '@ng-nest-postgre/luv-coffee-fe/dist/ngx-shared';
-  -------------------------------------------------------------------------------------
-````
 
 ## Library Assets
 ````

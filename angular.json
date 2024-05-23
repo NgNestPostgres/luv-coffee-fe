@@ -45,8 +45,7 @@
                 "inject": false
               }
             ],
-            "scripts": [],
-            "preserveSymlinks": true
+            "scripts": []
           },
           "configurations": {
             "production": {
