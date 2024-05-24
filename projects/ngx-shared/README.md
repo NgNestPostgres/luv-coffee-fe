@@ -1,24 +1,42 @@
-# NgxShared
+# Library
+## Library development
+1. Run `npm run build:lib:shared:watch` in the first terminal.
+2. Run `npm run serve:local` im the second terminal.
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.0.
+## Library Development Convention
+````
+Angular library rules (https://angular.io/guide/creating-libraries#refactoring-parts-of-an-application-into-a-library):
+- Declarations such as components and pipes should be designed as stateless.
+- Any observables that the components subscribe to internally should be cleaned up and disposed of during the lifecycle of those  components.
+- Components should expose their interactions through inputs for providing context, and outputs for communicating events to other components.
+- ...
 
-## Code scaffolding
+And also:
+- By convention Angular libraries should be prefixed by 'ngx-'.
+- 'NgxSharedModule' should be imported in 'SharedModule'.
+  ('NgxSharedModule' is not nessessary if its components are connected only via Router.)
+````
 
-Run `ng generate component component-name --project ngx-shared` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngx-shared`.
-> Note: Don't forget to add `--project ngx-shared` or else it will be added to the default project in your `angular.json` file. 
 
-## Build
+## Library Assets
+````
+1. Add '_mixins.scss' file to 'projects/ngx-shared/styles' folder.
+2. Add to 'ng-package.json':
 
-Run `ng build ngx-shared` to build the project. The build artifacts will be stored in the `dist/` directory.
+  ng-package.json:
+  -------------------------------------------------------------------------------------
+  {
+    ...
+    "assets": ["./styles/**/*.scss"],
+    ...
+  }
+  -------------------------------------------------------------------------------------
 
-## Publishing
+3. Use from any Angular app in the workspace:
 
-After building your library with `ng build ngx-shared`, go to the dist folder `cd dist/ngx-shared` and run `npm publish`.
+  styles.scss
+  -------------------------------------------------------------------------------------
+  @use '@ng-nest-postgre/luv-coffee-fe/dist/ngx-shared/styles/mixins';
+  -------------------------------------------------------------------------------------
 
-## Running unit tests
-
-Run `ng test ngx-shared` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+````
