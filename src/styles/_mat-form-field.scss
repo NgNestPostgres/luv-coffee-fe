@@ -1,9 +1,9 @@
 @use '/src/styles/variables' as vars;
 
 mat-form-field {
-  &.mat-form-field_search-box {
+  &.mat-mdc-form-field_search-box {
     margin-top: 20px;
-
+    /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version.*/
     .mat-form-field-infix {
       border-top-width: 6px;
       padding: 12px 0;
@@ -11,6 +11,7 @@ mat-form-field {
 
     // hover outline color
     &.mat-form-field-appearance-outline:not(.mat-focused) {
+      /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version.*/
       .mat-form-field-outline-thick {
         color: vars.$dark_accent_300;
 

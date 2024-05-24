@@ -1,10 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
-import { MatLegacyButtonHarness as MatButtonHarness } from '@angular/material/legacy-button/testing';
-import { MatLegacyMenuHarness as MatMenuHarness } from '@angular/material/legacy-menu/testing';
+import { MatButtonHarness } from '@angular/material/button/testing';
+import { MatMenuHarness } from '@angular/material/menu/testing';
 import { HarnessLoader } from '@angular/cdk/testing';
-import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
-import { MatLegacyMenuModule as MatMenuModule } from '@angular/material/legacy-menu';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { TopMenuComponent } from './top-menu.component';

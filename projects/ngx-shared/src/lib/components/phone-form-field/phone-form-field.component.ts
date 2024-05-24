@@ -18,7 +18,7 @@ import {
   NgControl,
   Validators,
 } from '@angular/forms';
-import { MatLegacyFormField as MatFormField, MatLegacyFormFieldControl as MatFormFieldControl } from '@angular/material/legacy-form-field';
+import { MatFormField, MatFormFieldControl } from '@angular/material/form-field';
 import { Subject } from 'rxjs';
 
 /** Data structure for holding telephone number. */
