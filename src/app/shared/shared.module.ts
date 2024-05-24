@@ -4,33 +4,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { NgxSharedModule } from '@ngx-shared';
 
-// import { GoogleMapsModule } from '@angular/google-maps';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatButtonModule } from '@angular/material/button';
-// import { MatCardModule } from '@angular/material/card';
-// import { MatCheckboxModule } from '@angular/material/checkbox';
-// import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatDialogModule } from '@angular/material/dialog';
-// import { MatDividerModule } from '@angular/material/divider';
-// import { MatExpansionModule } from '@angular/material/expansion';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatLegacyAutocompleteModule as MatAutocompleteModule } from '@angular/material/legacy-autocomplete';
+import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
+import { MatLegacyDialogModule as MatDialogModule } from '@angular/material/legacy-dialog';
+import { MatLegacyFormFieldModule as MatFormFieldModule } from '@angular/material/legacy-form-field';
 import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-// import { MatListModule } from '@angular/material/list';
-import { MatMenuModule } from '@angular/material/menu';
-// import { MatNativeDateModule } from '@angular/material/core';
-// import { MatPaginatorModule } from '@angular/material/paginator';
-// import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-// import { MatRadioModule } from '@angular/material/radio';
-// import { MatSelectModule } from '@angular/material/select';
+import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
+import { MatLegacyMenuModule as MatMenuModule } from '@angular/material/legacy-menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
-// import { MatSliderModule } from '@angular/material/slider';
-// import { MatSnackBarModule } from '@angular/material/snack-bar';
-// import { MatSortModule } from '@angular/material/sort';
-// import { MatTableModule } from '@angular/material/table';
-// import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
-// import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 
 import { TestComponent } from './components/test/test.component';
@@ -39,7 +21,6 @@ import { TestDirective } from './directives/test.directive';
 
 import { TestPipe } from './pipes/test.pipe';
 
-
 const SHARED_MODULES = [
   CommonModule,
   ReactiveFormsModule,
@@ -47,33 +28,15 @@ const SHARED_MODULES = [
 ];
 
 const ANGULAR_MATERIAL_MODULES = [
-  // GoogleMapsModule,
   MatAutocompleteModule,
   MatButtonModule,
-  // MatCardModule,
-  // MatCheckboxModule,
-  // MatDatepickerModule,
   MatDialogModule,
-  // MatDividerModule,
-  // MatExpansionModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
-  // MatListModule,
   MatMenuModule,
-  // MatNativeDateModule,
-  // MatPaginatorModule,
-  // MatProgressSpinnerModule,
-  // MatRadioModule,
-  // MatSelectModule,
   MatSidenavModule,
-  // MatSliderModule,
-  // MatSnackBarModule,
-  // MatSortModule,
-  // MatTableModule,
-  // MatTabsModule,
   MatToolbarModule,
-  // MatTooltipModule,
   MatTreeModule,
 ];
 
