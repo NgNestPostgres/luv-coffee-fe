@@ -135,19 +135,19 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "luv-coffee-fe:build:production"
+              "buildTarget": "luv-coffee-fe:build:production"
             },
             "production-serve": {
-              "browserTarget": "luv-coffee-fe:build:production-serve"
+              "buildTarget": "luv-coffee-fe:build:production-serve"
             },
             "dev": {
-              "browserTarget": "luv-coffee-fe:build:dev"
+              "buildTarget": "luv-coffee-fe:build:dev"
             },
             "dev-serve": {
-              "browserTarget": "luv-coffee-fe:build:dev-serve"
+              "buildTarget": "luv-coffee-fe:build:dev-serve"
             },
             "local": {
-              "browserTarget": "luv-coffee-fe:build:local"
+              "buildTarget": "luv-coffee-fe:build:local"
             }
           },
           "defaultConfiguration": "local"
@@ -155,7 +155,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "luv-coffee-fe:build"
+            "buildTarget": "luv-coffee-fe:build"
           }
         },
         "test": {

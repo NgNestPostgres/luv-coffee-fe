@@ -23,7 +23,7 @@
 3. Build ngx-shared lib:
   - run `npm run build:lib:shared` to build a lib,
   - or run `npm run build:lib:shared:watch` for ngx-shared library development.
-4. Run `npm run serve:local` to start FE develoments.
+4. Run `npm run serve:local` to start FE develoment.
 
 ## Run build locally
 Run `npm i -g spa-server-gzip`
@@ -34,7 +34,7 @@ Do not use direct colors. Use only palette colors defined in _variables.scss.
 Use standard mat typography classes whenever possible: https://material.angular.io/guide/typography#typography-configs-and-theming
 
 # Angular Material
-Default theme - dark
+Default theme - dark ???
 ## Add Angular Material Module
 1. Add module to `app/shared/shared.module.ts`.
 2. Add module styles:
@@ -76,14 +76,6 @@ And also:
     ...
   }
   -------------------------------------------------------------------------------------
-
-3. Use from any Angular app in the workspace:
-
-  styles.scss
-  -------------------------------------------------------------------------------------
-  @use '@ng-nest-postgre/luv-coffee-fe/dist/ngx-shared/styles/mixins';
-  -------------------------------------------------------------------------------------
-
 ````
 
 ### PhoneFormFieldComponent
