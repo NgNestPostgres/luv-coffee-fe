@@ -1,7 +1,3 @@
-// '/dist/ngx-shared/styles/mixins' prefix added to make VS Code SCSS intellisence working
-// '@ng-nest-postgre/luv-coffee-fe/dist/ngx-shared/styles/mixins' works, just VS Code SCSS intellisence is not working
-// TODO: check if '@ng-nest-postgre/luv-coffee-fe/dist/ngx-shared/styles/mixins' works for VS Code
-// @use '@ng-nest-postgre/luv-coffee-fe/dist/ngx-shared/styles/mixins';
 @use '/dist/ngx-shared/styles/mixins';
 
 .form {
