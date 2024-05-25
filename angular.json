@@ -24,12 +24,15 @@
       "prefix": "anp",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/luv-coffee-fe",
+            "outputPath": {
+              "base": "dist/luv-coffee-fe"
+            },
             "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": [
+              "src/polyfills.ts"
+            ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -39,15 +42,23 @@
             "styles": [
               "src/styles.scss",
               {
-                "input": "src/styles/custom-themes/dark-theme.scss",
+                "bundleName": "dark-theme",
+                "input": "src/styles/themes/dark-theme.scss",
                 "inject": false
               },
               {
-                "input": "src/styles/custom-themes/light-theme.scss",
+                "bundleName": "light-theme",
+                "input": "src/styles/themes/light-theme.scss",
                 "inject": false
               }
             ],
-            "scripts": []
+            "scripts": [],
+            "browser": "src/main.ts",
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "."
+              ]
+            }
           },
           "configurations": {
             "production": {
@@ -78,9 +89,7 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
@@ -113,17 +122,13 @@
                   "with": "src/environments/environment.dev.ts"
                 }
               ],
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
             },
             "local": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true

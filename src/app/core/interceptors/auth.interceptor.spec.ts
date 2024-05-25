@@ -1,5 +1,5 @@
-import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClient, HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { TokenService } from '@auth/services/token.service';
 
@@ -14,18 +14,18 @@ describe('AuthInterceptor', () => {
     const spyTokenService = jasmine.createSpyObj('TokenService', ['getAccessToken']);
 
     TestBed.configureTestingModule({
-      imports: [
-        HttpClientTestingModule,
-      ],
-      providers: [
+    imports: [],
+    providers: [
         { provide: TokenService, useValue: spyTokenService },
         {
-          provide: HTTP_INTERCEPTORS,
-          multi: true,
-          useClass: AuthInterceptor
-        }
-      ]
-    });
+            provide: HTTP_INTERCEPTORS,
+            multi: true,
+            useClass: AuthInterceptor
+        },
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting()
+    ]
+});
 
     client = TestBed.inject(HttpClient);
     httpMock = TestBed.inject(HttpTestingController);
