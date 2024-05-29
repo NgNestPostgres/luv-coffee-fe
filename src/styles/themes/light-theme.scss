@@ -1,14 +1,12 @@
-// '/node_modules/' prefix added to make VS Code SCSS intellisence working
-// TODO: check if the bug is fixed and remove '/node_modules/' prefix
 @use '/node_modules/@angular/material' as mat;
-@use '../variables' as vars;
+@use 'palettes' as palette;
 
 @include mat.core();
 
-$light-theme: mat.define-light-theme((
+$light-theme: mat.m2-define-light-theme((
  color: (
-   primary: vars.$light-primary-palette,
-   accent: vars.$light-accent-palette
+   primary: palette.$light-primary-palette,
+   accent: palette.$light-accent-palette
  )
 ));
 

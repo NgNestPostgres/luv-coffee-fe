@@ -2,6 +2,7 @@
 - https://angular.dev
 - https://medium.com/@avinashanshu.iitb/create-a-multiple-nest-package-and-publish-it-privately-and-publically-8003dde4497e
 
+
 # Setup
 - Instlall nvm (https://github.com/nvm-sh/nvm).
 - Install Cloud SDK (https://cloud.google.com/sdk/docs/install).
@@ -16,6 +17,7 @@
 - `node` version 18.xx.x
 - `ng`
 
+
 # Development
 ## Local development
 1. Update shared packages: `npm i @angularnestpostgre/packages@latest` 
@@ -29,17 +31,22 @@
 Run `npm i -g spa-server-gzip`
 Run `npm run build:start`
 
+
 # Styling
 Do not use direct colors. Use only palette colors defined in _variables.scss.
 Use standard mat typography classes whenever possible: https://material.angular.io/guide/typography#typography-configs-and-theming
 
-# Angular Material
+## Angular Material
+### Custom Theming
+https://angular-material.dev/courses/m2-ng-components/m2-ng-components/create-custom-theme
 Default theme - dark ???
-## Add Angular Material Module
+
+### Add Angular Material Module
 1. Add module to `app/shared/shared.module.ts`.
 2. Add module styles:
-  - to `src/styles/custom-themes/dark-theme.scss`,
-  - and to `src/styles/custom-themes/light-theme.scss`
+  - to `src/styles/themes/dark-theme.scss`,
+  - and to `src/styles/themes/light-theme.scss`
+
 
 # Lint
 

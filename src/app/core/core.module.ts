@@ -1,5 +1,5 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { STORAGE_PROVIDERS } from './services/storage.service';
@@ -8,18 +8,12 @@ import { WindowToken, windowProvider } from './tokens/window';
 import { interceptors } from './interceptors';
 
 
-@NgModule({
-  declarations: [],
-  imports: [
-    BrowserAnimationsModule,
-    HttpClientModule,
-  ],
-  providers: [
-    interceptors,
-    STORAGE_PROVIDERS,
-    { provide: WindowToken, useFactory: windowProvider },
-  ]
-})
+@NgModule({ declarations: [], imports: [BrowserAnimationsModule], providers: [
+        interceptors,
+        STORAGE_PROVIDERS,
+        { provide: WindowToken, useFactory: windowProvider },
+        provideHttpClient(withInterceptorsFromDi()),
+    ] })
 export class CoreModule {
   constructor(
     @Optional()
