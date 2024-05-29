@@ -43,13 +43,8 @@
               "src/styles.scss",
               {
                 "bundleName": "dark-theme",
-                "input": "src/styles/themes/dark-theme.scss",
-                "inject": false
-              },
-              {
-                "bundleName": "light-theme",
-                "input": "src/styles/themes/light-theme.scss",
-                "inject": false
+                "inject": false,
+                "input": "src/styles/themes/dark.scss"
               }
             ],
             "scripts": [],

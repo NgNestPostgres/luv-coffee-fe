@@ -38,14 +38,16 @@ Use standard mat typography classes whenever possible: https://material.angular.
 
 ## Angular Material
 ### Custom Theming
-https://angular-material.dev/courses/m2-ng-components/m2-ng-components/create-custom-theme
-Default theme - dark ???
+- https://angular-material.dev/courses/m2-ng-components/m2-ng-components/create-custom-theme
+- Default theme - default System theme
+- Dark theme is lazy loading setup is in angular.json
 
 ### Add Angular Material Module
 1. Add module to `app/shared/shared.module.ts`.
 2. Add module styles:
-  - to `src/styles/themes/dark-theme.scss`,
-  - and to `src/styles/themes/light-theme.scss`
+  - to light theme: `src/styles.scss`,
+  - to dark theme: `src/styles/themes/light-theme.scss`.
+3. For local theme testing run: `npm run build:start`
 
 
 # Lint
