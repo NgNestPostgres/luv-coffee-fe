@@ -8,13 +8,13 @@
 - Install Cloud SDK (https://cloud.google.com/sdk/docs/install).
 
 - Run `nvm install 1.x.x`
-- Run `nvm use 18.xx.x`
+- Run `nvm use xx.xx.x`
 - Run `npm i -g @angular/cli`
 - Run `npx husky init`
 
 ## Dependencies CLI
 - `gcloud` (Google Cloud SDK)
-- `node` version 18.xx.x
+- `node` version xx.xx.x
 - `ng`
 
 
@@ -134,6 +134,10 @@ Run `yarn build:analyze`.
 
   total main = 598.2 kB
 ````
+
+# Angular Update
+1. Update manually:
+npm i @angular-eslint/builder@latest @angular-eslint/eslint-plugin@latest @angular-eslint/eslint-plugin-template@latest @angular-eslint/schematics@latest @angular-eslint/template-parser@latest @typescript-eslint/eslint-plugin@latest @typescript-eslint/parser@latest
 
 # REFACTOR TO NEW STARTUP
 ## Change prefix

@@ -1,12 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { ThemeManagerService } from '@core/services/theme-manager.service';
 
-enum ThemeNames {
-  Auto = 'auto',
-  Dark = 'dark',
-  Light = 'light',
-}
-
 @Component({
   selector: 'anp-theme-manager',
   templateUrl: './theme-manager.component.html',
