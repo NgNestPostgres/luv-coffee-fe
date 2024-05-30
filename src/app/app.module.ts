@@ -12,7 +12,7 @@ import { HomeComponent } from './components/home/home.component';
 import { TopMenuComponent } from './components/top-menu/top-menu.component';
 import { SidenavTreeComponent } from './components/sidenav-tree/sidenav-tree.component';
 import { SearchBoxComponent } from './components/search-box/search-box.component';
-import { ThemeToggleComponent } from './components/theme-toggle/theme-toggle.component';
+import { ThemeManagerComponent } from './components/theme-manager/theme-manager.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import { ThemeToggleComponent } from './components/theme-toggle/theme-toggle.com
     TopMenuComponent,
     SidenavTreeComponent,
     SearchBoxComponent,
-    ThemeToggleComponent,
+    ThemeManagerComponent,
   ],
   imports: [
     BrowserModule,

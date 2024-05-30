@@ -8,12 +8,16 @@ import { WindowToken, windowProvider } from './tokens/window';
 import { interceptors } from './interceptors';
 
 
-@NgModule({ declarations: [], imports: [BrowserAnimationsModule], providers: [
-        interceptors,
-        STORAGE_PROVIDERS,
-        { provide: WindowToken, useFactory: windowProvider },
-        provideHttpClient(withInterceptorsFromDi()),
-    ] })
+@NgModule({ 
+  declarations: [], 
+  imports: [BrowserAnimationsModule], 
+  providers: [
+    interceptors,
+    STORAGE_PROVIDERS,
+    { provide: WindowToken, useFactory: windowProvider },
+    provideHttpClient(withInterceptorsFromDi()),
+  ] 
+})
 export class CoreModule {
   constructor(
     @Optional()

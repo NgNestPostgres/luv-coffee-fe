@@ -1,0 +1,19 @@
+@use "sass:map";
+@use '/node_modules/@angular/material' as mat;
+@use 'palettes' as palette;
+
+$light-theme: mat.m2-define-light-theme((
+ color: (
+   primary: palette.$light-primary-palette,
+   accent: palette.$light-accent-palette
+ )
+));
+
+$dark-theme: mat.m2-define-dark-theme((
+ color: (
+   primary: palette.$dark-primary-palette,
+   accent: palette.$dark-accent-palette,
+   // The "warn" palette is optional and defaults to red if not specified.
+   warn: palette.$dark-warn-palette,
+ )
+));
