@@ -18,7 +18,7 @@
     "lint:fix": "ng lint --fix",
     "lint:app": "ng lint luv-coffee-fe",
     "lint:lib:shared": "ng lint ngx-shared",
-    "test": "ng test --watch=false",
+    "test": "ng test --watch=false --browsers=ChromeHeadless",
     "test:app": "ng test luv-coffee-fe --watch=false",
     "test:app:watch": "ng test luv-coffee-fe",
     "test:lib:shared": "ng test ngx-shared --watch=false",
