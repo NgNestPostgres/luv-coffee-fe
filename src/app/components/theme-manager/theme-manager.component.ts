@@ -8,11 +8,11 @@ enum ThemeNames {
 }
 
 @Component({
-  selector: 'anp-theme-toggle',
-  templateUrl: './theme-toggle.component.html',
-  styleUrls: ['./theme-toggle.component.scss']
+  selector: 'anp-theme-manager',
+  templateUrl: './theme-manager.component.html',
+  styleUrls: ['./theme-manager.component.scss']
 })
-export class ThemeToggleComponent {
+export class ThemeManagerComponent {
   private themeManager = inject(ThemeManagerService);
   public isDark$ = this.themeManager.isDark$;
 

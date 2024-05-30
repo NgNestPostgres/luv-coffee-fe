@@ -47,7 +47,6 @@ Use standard mat typography classes whenever possible: https://material.angular.
 2. Add module styles:
   - to light theme: `src/styles.scss`,
   - to dark theme: `src/styles/themes/light-theme.scss`.
-3. For local theme testing run: `npm run build:start`
 
 
 # Lint
