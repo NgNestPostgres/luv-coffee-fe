@@ -116,7 +116,7 @@ export class ThemeManagerService {
     return `style-manager-${key}`;
   }
 
-  public changeTheme(theme: string) {
+  public changeTheme(theme: string): void {
     this.setStoredTheme(theme);
     this.setTheme(theme);
   }
