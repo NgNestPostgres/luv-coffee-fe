@@ -17,7 +17,8 @@ export class ThemeManagerService {
   constructor() {
     this.setTheme(this.getPreferredTheme());
 
-    if (this._window !== null && this._window.matchMedia) {
+    if (this._window?.matchMedia) {
+      //This event is triggered when system mode is changed
       this._window
         .matchMedia('(prefers-color-scheme: dark)')
         .addEventListener('change', () => {
@@ -30,24 +31,23 @@ export class ThemeManagerService {
     }
   }
 
-  private getStoredTheme = () =>
-    JSON.parse(this.localStorage.getItem(LOCAL_STORAGE_KEY) ?? '{}').theme;
+  private getStoredTheme = (key: string = LOCAL_STORAGE_KEY) =>
+    JSON.parse(this.localStorage.getItem(key) ?? '{}').theme;
 
-  private setStoredTheme = (theme: string) => {
-    const meta = JSON.parse(this.localStorage.getItem(LOCAL_STORAGE_KEY) ?? '{}');
-    if (meta === true ) {this.localStorage.setItem(LOCAL_STORAGE_KEY, '{}');}
+  private setStoredTheme = (theme: string, key: string = LOCAL_STORAGE_KEY) => {
+    const meta = JSON.parse(this.localStorage.getItem(key) ?? '{}');
     meta.theme = theme;
-    this.localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(meta));
+    this.localStorage.setItem(key, JSON.stringify(meta));
   };
 
-  private getPreferredTheme = (): 'dark' | 'light' => {
-    const storedTheme = this.getStoredTheme();
+  private getPreferredTheme = (key: string = LOCAL_STORAGE_KEY): 'dark' | 'light' => {
+    const storedTheme = this.getStoredTheme(key);
 
     if (storedTheme) {
       return storedTheme;
     }
 
-    if (this._window !== null && this._window.matchMedia) {
+    if (this._window?.matchMedia) {
       return this._window.matchMedia('(prefers-color-scheme: dark)').matches
         ? 'dark'
         : 'light';
@@ -57,7 +57,7 @@ export class ThemeManagerService {
   };
 
   private setTheme = (theme: string) => {
-    if (this._window !== null && this._window.matchMedia) {
+    if (this._window?.matchMedia) {
       if (
         theme === 'auto' &&
         this._window.matchMedia('(prefers-color-scheme: dark)').matches
@@ -68,6 +68,7 @@ export class ThemeManagerService {
         this.document.documentElement.setAttribute('data-bs-theme', theme);
         this._isDarkSub.next(theme === 'dark');
       }
+
       this.setMaterialTheme();
     }
   };
@@ -76,7 +77,7 @@ export class ThemeManagerService {
     this.isDark$.pipe(take(1)).subscribe((isDark) => {
       if (isDark) {
         const href = 'dark-theme.css';
-        getLinkElementForKey('dark-theme').setAttribute('href', href);
+        this.getLinkElementForKey('dark-theme').setAttribute('href', href);
         this.document.documentElement.classList.add('dark-theme');
       } else {
         this.removeStyle('dark-theme');
@@ -85,37 +86,38 @@ export class ThemeManagerService {
     });
   }
 
-  private removeStyle(key: string) {
-    const existingLinkElement = getExistingLinkElementByKey(key);
+  private removeStyle(key: string): void {
+    const existingLinkElement = this.getExistingLinkElementByKey(key);
+
     if (existingLinkElement) {
       this.document.head.removeChild(existingLinkElement);
     }
   }
 
-  public changeTheme(theme: string) {
+  private getLinkElementForKey(key: string): HTMLLinkElement {
+    return this.getExistingLinkElementByKey(key) || this.createLinkElementWithKey(key);
+  }
+  
+  private getExistingLinkElementByKey(key: string): HTMLLinkElement | null {
+    return this.document.head.querySelector(
+      `link[rel="stylesheet"].${this.getClassNameForKey(key)}`
+    );
+  }
+  
+  private createLinkElementWithKey(key: string): HTMLLinkElement {
+    const linkEl = this.document.createElement('link');
+    linkEl.setAttribute('rel', 'stylesheet');
+    linkEl.classList.add(this.getClassNameForKey(key));
+    this.document.head.appendChild(linkEl);
+    return linkEl;
+  }
+  
+  private getClassNameForKey(key: string):string {
+    return `style-manager-${key}`;
+  }
+
+  public changeTheme(theme: string): void {
     this.setStoredTheme(theme);
     this.setTheme(theme);
   }
-}
-
-function getLinkElementForKey(key: string) {
-  return getExistingLinkElementByKey(key) || createLinkElementWithKey(key);
-}
-
-function getExistingLinkElementByKey(key: string) {
-  return document.head.querySelector(
-    `link[rel="stylesheet"].${getClassNameForKey(key)}`
-  );
-}
-
-function createLinkElementWithKey(key: string) {
-  const linkEl = document.createElement('link');
-  linkEl.setAttribute('rel', 'stylesheet');
-  linkEl.classList.add(getClassNameForKey(key));
-  document.head.appendChild(linkEl);
-  return linkEl;
-}
-
-function getClassNameForKey(key: string) {
-  return `style-manager-${key}`;
 }

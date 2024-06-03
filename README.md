@@ -51,6 +51,9 @@ Use standard mat typography classes whenever possible: https://material.angular.
 
 # Lint
 
+# Test
+- Testing one file: `ng test --include='src/app/core/services/theme-manager.service.spec.ts'`.
+
 # Library
 ## Library development
 1. Run `npm run build:lib:shared:watch` in the first terminal.
@@ -100,7 +103,7 @@ Run `gcloud auth login`
 
 
 # Optimization
-## Webpack analyser
+## Webpack analyser ???
 Run `yarn add -D webpack-bundle-analyzer` (`npm i -g webpack-bundle-analyzer`).
 Run `yarn build:analyze`.
 
