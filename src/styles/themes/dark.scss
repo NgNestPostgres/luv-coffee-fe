@@ -1,0 +1,16 @@
+@use "/node_modules/@angular/material" as mat;
+@use "./all" as themes;
+
+.dark-theme {
+    @include mat.core-color(themes.$dark-theme);
+
+    @include mat.autocomplete-theme(themes.$dark-theme);
+    @include mat.button-theme(themes.$dark-theme);
+    @include mat.form-field-theme(themes.$dark-theme);
+    @include mat.icon-theme(themes.$dark-theme);
+    @include mat.input-theme(themes.$dark-theme);
+    @include mat.menu-theme(themes.$dark-theme);
+    @include mat.sidenav-theme(themes.$dark-theme);
+    @include mat.toolbar-theme(themes.$dark-theme);
+    @include mat.tree-theme(themes.$dark-theme);
+}
