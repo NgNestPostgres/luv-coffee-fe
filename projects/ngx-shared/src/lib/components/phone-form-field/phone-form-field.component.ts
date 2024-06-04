@@ -36,7 +36,7 @@ export class PhoneParts {
   styleUrls: ['phone-form-field.component.scss'],
   providers: [{ provide: MatFormFieldControl, useExisting: PhoneFormFieldComponent }],
 })
-export class PhoneFormFieldComponent implements  ControlValueAccessor, MatFormFieldControl<PhoneParts>, OnDestroy {
+export class PhoneFormFieldComponent implements ControlValueAccessor, MatFormFieldControl<PhoneParts>, OnDestroy {
   static nextId = 0;
 
   // implements MatFormFieldControl

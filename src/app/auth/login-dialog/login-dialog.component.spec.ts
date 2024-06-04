@@ -33,6 +33,7 @@ describe('LoginDialogComponent', () => {
   });
 
   it('should create', () => {
+    expect(authServiceSpy.login).not.toHaveBeenCalled();
     expect(component).toBeTruthy();
   });
 });

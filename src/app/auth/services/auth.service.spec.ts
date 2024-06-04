@@ -7,6 +7,7 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 
 describe('AuthService', () => {
   let service: AuthService;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   let httpMock: HttpTestingController;
   let tokenServiceSpy: jasmine.SpyObj<TokenService>;
 
@@ -27,6 +28,7 @@ describe('AuthService', () => {
   });
 
   it('should be created', () => {
+    expect(tokenServiceSpy.getAccessToken).not.toHaveBeenCalled();
     expect(service).toBeTruthy();
   });
 });

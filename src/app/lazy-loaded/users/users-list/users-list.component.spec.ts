@@ -28,6 +28,7 @@ describe('UsersListComponent', () => {
   });
 
   it('should create', () => {
+    expect(dialogsServiceSpy.login).not.toHaveBeenCalled();
     expect(component).toBeTruthy();
   });
 });
