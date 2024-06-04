@@ -14,7 +14,7 @@ describe('TopMenuComponent', () => {
   let component: TopMenuComponent;
   let fixture: ComponentFixture<TopMenuComponent>;
   let loader: HarnessLoader;
-  let buttonHarness = MatButtonHarness;
+  const buttonHarness = MatButtonHarness;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -57,7 +57,7 @@ describe('TopMenuComponent', () => {
     it('should get disabled state', async () => {
       const [enabledMenu, disabledMenu] = await loader.getAllHarnesses(MatMenuHarness);
       expect(await enabledMenu.isDisabled()).toBe(false);
-      // expect(disabledMenu).toBeUndefined();
+      expect(await disabledMenu.isDisabled()).toBe(false);
     });
 
     it('should get menu text', async () => {

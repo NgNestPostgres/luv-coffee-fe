@@ -37,15 +37,19 @@ describe('AuthInterceptor', () => {
   });
 
   it('#getAccessToken should return stubbed value from a spy', () => {
+    interface User {
+      login: string
+    };
+
     const dummyToken = 'TokenString';
-    const dummyUsers = [
+    const dummyUsers: User[] = [
       { login: 'John' },
       { login: 'Doe' }
     ];
 
     tokenServiceSpy.getAccessToken.and.returnValue(dummyToken);
 
-    client.get('/test').subscribe((users: any) => {
+    client.get<User[]>('/test').subscribe((users: User[]) => {
       expect(users.length).toBe(2);
       expect(users).toEqual(dummyUsers);
 

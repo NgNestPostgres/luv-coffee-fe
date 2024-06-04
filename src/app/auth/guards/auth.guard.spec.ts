@@ -23,6 +23,7 @@ describe('AuthGuard', () => {
   });
 
   it('should be created', () => {
+    expect(tokenServiceSpy.getAccessToken).not.toHaveBeenCalled();
     expect(guard).toBeTruthy();
   });
 });

@@ -11,7 +11,7 @@ import { ThemeManagerService } from '@core/services/theme-manager.service';
 
 
 class MockThemeManagerService {
-  changeTheme= (theme: string) => {};
+  changeTheme= () => {};
 }
 
 describe('ThemeToggleComponent', () => {

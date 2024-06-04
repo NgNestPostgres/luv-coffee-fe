@@ -18,7 +18,7 @@ export class DialogsService {
 
   constructor(private dialog: MatDialog) { }
 
-  public login(inputData?: any): Observable<any> {
+  public login(inputData?: unknown): Observable<string> {
     return this.dialog.open(LoginDialogComponent, {
       data: inputData,
       ...this.defaultDialogConfig,

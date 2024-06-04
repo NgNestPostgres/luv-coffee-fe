@@ -14,7 +14,7 @@ export class LoginDialogComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private dialogRef: MatDialogRef<LoginDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) private data: any,
+    @Inject(MAT_DIALOG_DATA) private data: unknown,
   ) {}
 
   ngOnInit(): void {
@@ -27,7 +27,7 @@ export class LoginDialogComponent implements OnInit {
     });
   }
 
-  private closeDialog(outputData?: any): void {
+  private closeDialog(outputData?: unknown): void {
     this.dialogRef.close(outputData);
   }
 }

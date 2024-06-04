@@ -13,7 +13,8 @@ export class CoffeeService {
     private http: HttpClient,
   ) { }
 
-  public getCoffees(filter: CoffeesSearchParams): Observable<any> {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  public getCoffees(filter: CoffeesSearchParams): Observable<unknown> {
     return of(null)
   }
 }
