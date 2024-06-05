@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "ng": "ng",
-    "serve:local": "ng serve --hmr",
+    "serve:local": "ng serve",
     "serve:dev": "ng serve -c dev-serve",
     "serve:prod": "ng serve -c production-serve",
     "build:local": "npm run build:lib:shared && ng build",

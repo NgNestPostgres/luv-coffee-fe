@@ -1,11 +1,12 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import {
+  animate, state, style, transition, trigger
+} from '@angular/animations';
 import { FlatTreeControl } from '@angular/cdk/tree';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 
-import { MenuItemFlatNode, MenuItemNode } from './sidenav-tree.enum';
 import { TREE_DATA } from './sidenav-datasource';
-import { animate, state, style, transition, trigger } from '@angular/animations';
-
+import { MenuItemFlatNode, MenuItemNode } from './sidenav-tree.enum';
 
 @Component({
   selector: 'anp-sidenav-tree',
@@ -32,28 +33,25 @@ export class SidenavTreeComponent {
   @Output() menuItemChosen = new EventEmitter<void>();
 
   public treeControl = new FlatTreeControl<MenuItemFlatNode>(
-    node => node.level,
-    node => node.expandable,
+    (node) => node.level,
+    (node) => node.expandable,
   );
 
   public dataSource: MatTreeFlatDataSource<MenuItemNode, MenuItemFlatNode>;
 
-  private _transformer = (node: MenuItemNode, level: number) => {
-    return {
-      expandable: !!node.children && node.children.length > 0,
-      name: node.name,
-      path: node.path || null,
-      level: level,
-    };
-  };
+  private _transformer = (node: MenuItemNode, level: number) => ({
+    expandable: !!node.children && node.children.length > 0,
+    name: node.name,
+    path: node.path || null,
+    level,
+  });
 
   private treeFlattener = new MatTreeFlattener(
     this._transformer,
-    node => node.level,
-    node => node.expandable,
-    node => node.children,
+    (node) => node.level,
+    (node) => node.expandable,
+    (node) => node.children,
   );
-
 
   constructor() {
     this.dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);

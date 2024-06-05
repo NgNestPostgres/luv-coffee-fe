@@ -1,7 +1,8 @@
 import { MediaMatcher } from '@angular/cdk/layout';
-import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+  ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild
+} from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-
 
 @Component({
   selector: 'anp-root',
@@ -36,7 +37,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   private _mobileQueryMatched(): void {
     this.changeDetectorRef.detectChanges();
-  };
+  }
 
   private _tabQueryMatched(): void {
     if (!this.tabQuery.matches) {
@@ -44,5 +45,5 @@ export class AppComponent implements OnInit, OnDestroy {
     }
 
     this.changeDetectorRef.detectChanges();
-  };
+  }
 }

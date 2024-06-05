@@ -12,12 +12,12 @@ describe('UsersListComponent', () => {
     const spyDialogsService = jasmine.createSpyObj('DialogsService', ['login']);
 
     await TestBed.configureTestingModule({
-      declarations: [ UsersListComponent ],
+      declarations: [UsersListComponent],
       providers: [
         { provide: DialogsService, useValue: spyDialogsService },
       ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

@@ -1,17 +1,16 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HarnessLoader } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatMenuHarness } from '@angular/material/menu/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-
-import { ThemeManagerComponent } from './theme-manager.component';
 import { ThemeManagerService } from '@core/services/theme-manager.service';
 
+import { ThemeManagerComponent } from './theme-manager.component';
 
 class MockThemeManagerService {
-  changeTheme= () => {};
+  changeTheme = () => {};
 }
 
 describe('ThemeToggleComponent', () => {
@@ -25,13 +24,13 @@ describe('ThemeToggleComponent', () => {
         MatMenuModule,
         NoopAnimationsModule
       ],
-      declarations: [ ThemeManagerComponent ],
+      declarations: [ThemeManagerComponent],
       providers: [
         { provide: ThemeManagerService, useClass: MockThemeManagerService }
       ],
-      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -42,7 +41,7 @@ describe('ThemeToggleComponent', () => {
   });
 
   it('should create component', async () => {
-    await loader.getHarness(MatMenuHarness)
+    await loader.getHarness(MatMenuHarness);
     expect(component).toBeTruthy();
   });
 
@@ -51,12 +50,12 @@ describe('ThemeToggleComponent', () => {
       const menues = await loader.getAllHarnesses(MatMenuHarness);
       expect(menues.length).toBe(1);
     });
-  
+
     it('should get disabled state', async () => {
       const enabledMenu = await loader.getHarness(MatMenuHarness);
       expect(await enabledMenu.isDisabled()).toBe(false);
     });
-    
+
     it('should open and close', async () => {
       const menu = await loader.getHarness(MatMenuHarness);
       expect(await menu.isOpen()).toBe(false);
@@ -73,7 +72,7 @@ describe('ThemeToggleComponent', () => {
     });
 
     it('shoud click all items', async () => {
-      spyOn(component['themeManager'], 'changeTheme');
+      spyOn(component.themeManager, 'changeTheme');
 
       const menu = await loader.getHarness(MatMenuHarness);
       await menu.open();
@@ -82,7 +81,7 @@ describe('ThemeToggleComponent', () => {
       await secondItem.click();
       await thirdItem.click();
 
-      expect(component['themeManager'].changeTheme).toHaveBeenCalledTimes(3);
-    } );
+      expect(component.themeManager.changeTheme).toHaveBeenCalledTimes(3);
+    });
   });
 });

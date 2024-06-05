@@ -1,14 +1,14 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
-import { MatButtonHarness } from '@angular/material/button/testing';
-import { MatMenuHarness } from '@angular/material/menu/testing';
 import { HarnessLoader } from '@angular/cdk/testing';
+import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatButtonModule } from '@angular/material/button';
+import { MatButtonHarness } from '@angular/material/button/testing';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatMenuHarness } from '@angular/material/menu/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { TopMenuComponent } from './top-menu.component';
-import { RouterTestingModule } from '@angular/router/testing';
 
 describe('TopMenuComponent', () => {
   let component: TopMenuComponent;
@@ -18,10 +18,10 @@ describe('TopMenuComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ MatButtonModule, MatMenuModule, NoopAnimationsModule, RouterTestingModule ],
-      declarations: [ TopMenuComponent ],
+      imports: [MatButtonModule, MatMenuModule, NoopAnimationsModule, RouterTestingModule],
+      declarations: [TopMenuComponent],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -42,11 +42,11 @@ describe('TopMenuComponent', () => {
     });
 
     it('should load button with exact text "Coffees"', async () => {
-      const buttons = await loader.getAllHarnesses(buttonHarness.with({text: 'Coffees'}));
+      const buttons = await loader.getAllHarnesses(buttonHarness.with({ text: 'Coffees' }));
       expect(buttons.length).toBe(1);
       expect(await buttons[0].getText()).toBe('Coffees');
     });
-  })
+  });
 
   describe('MatMenus', () => {
     it('should load all menu harnesses', async () => {
@@ -66,7 +66,7 @@ describe('TopMenuComponent', () => {
     });
 
     it('should open and close', async () => {
-      const menu = await loader.getHarness(MatMenuHarness.with({triggerText: 'Menu'}));
+      const menu = await loader.getHarness(MatMenuHarness.with({ triggerText: 'Menu' }));
       expect(await menu.isOpen()).toBe(false);
       await menu.open();
       expect(await menu.isOpen()).toBe(true);
@@ -75,9 +75,9 @@ describe('TopMenuComponent', () => {
     });
 
     it('should get all items', async () => {
-      const menu = await loader.getHarness(MatMenuHarness.with({triggerText: 'Menu'}));
+      const menu = await loader.getHarness(MatMenuHarness.with({ triggerText: 'Menu' }));
       await menu.open();
       expect((await menu.getItems()).length).toBe(2);
     });
-  })
+  });
 });

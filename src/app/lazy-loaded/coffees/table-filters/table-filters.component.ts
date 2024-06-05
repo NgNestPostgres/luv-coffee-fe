@@ -1,4 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component, EventEmitter, Input, OnInit, Output
+} from '@angular/core';
+
 import { CoffeesFilter } from '../interfaces/coffees-filter';
 
 @Component({
@@ -15,5 +18,4 @@ export class TableFiltersComponent implements OnInit {
   ngOnInit(): void {
     console.log('TableFiltersComponent');
   }
-
 }

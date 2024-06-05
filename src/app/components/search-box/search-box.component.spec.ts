@@ -17,10 +17,10 @@ describe('SearchBoxComponent', () => {
         ReactiveFormsModule,
         RouterTestingModule,
       ],
-      declarations: [ SearchBoxComponent ],
-      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+      declarations: [SearchBoxComponent],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
