@@ -72,7 +72,7 @@ describe('ThemeToggleComponent', () => {
     });
 
     it('shoud click all items', async () => {
-      spyOn(component.themeManager, 'changeTheme');
+      spyOn(component['themeManager'], 'changeTheme');
 
       const menu = await loader.getHarness(MatMenuHarness);
       await menu.open();
@@ -81,7 +81,7 @@ describe('ThemeToggleComponent', () => {
       await secondItem.click();
       await thirdItem.click();
 
-      expect(component.themeManager.changeTheme).toHaveBeenCalledTimes(3);
+      expect(component['themeManager'].changeTheme).toHaveBeenCalledTimes(3);
     });
   });
 });

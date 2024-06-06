@@ -14,16 +14,16 @@ export class PhoneFormFieldHostComponent {
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
-      tel: [new PhoneParts('', '', ''), []],
-      tel1: [new PhoneParts('', '', ''), [Validators.required]],
-      simpleInput: ['', [Validators.required]],
+      tel: [{ value: new PhoneParts('', '', ''), disabled: true }, [Validators.required]],
+      tel1: [new PhoneParts('+38', '', ''), [Validators.required]],
+      simpleInput: [{ value: '', disabled: true }, [Validators.required]],
+      simpleInput1: ['', [Validators.required]],
     });
 
     merge(this.form.controls['tel'].statusChanges, this.form.controls['tel'].valueChanges)
       .pipe(takeUntilDestroyed())
       .subscribe((val) => {
-        console.log('val', val);
-        console.log('this.form.controls["tel"].errors', this.form.controls['tel'].errors);
+        console.log(`This is for testing purposes: ${val}`);
       });
   }
 
@@ -32,8 +32,14 @@ export class PhoneFormFieldHostComponent {
       tel: this.form.value.tel,
       tel1: this.form.value.tel1,
       simpleInput: this.form.value.simpleInput,
+      simpleInput1: this.form.value.simpleInput1,
     };
 
     console.log(value);
+  }
+
+  public disableField(fieldName: string): void {
+    const field = this.form.get(fieldName);
+    field?.disabled ? field.enable() : field?.disable();
   }
 }

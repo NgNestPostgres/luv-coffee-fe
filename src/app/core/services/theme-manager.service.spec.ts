@@ -25,7 +25,7 @@ describe('ThemeManagerService', () => {
   describe('getClassNameForKey', () => {
     it('should return class name for the key', () => {
       const key = 'test-key';
-      expect(service.getClassNameForKey(key)).toBe(`style-manager-${key}`);
+      expect(service['getClassNameForKey'](key)).toBe(`style-manager-${key}`);
     });
   });
 
@@ -36,14 +36,14 @@ describe('ThemeManagerService', () => {
 
     it('should not call document.head.removeChild', () => {
       const key = 'test-theme-not-call-removeChild';
-      service.removeStyle(key);
+      service['removeStyle'](key);
       expect(document.head.removeChild).not.toHaveBeenCalled();
     });
 
     it('should call document.head.removeChild', () => {
       const key = 'test-theme-call-removeChild';
-      service.createLinkElementWithKey(key);
-      service.removeStyle(key);
+      service['createLinkElementWithKey'](key);
+      service['removeStyle'](key);
       expect(document.head.removeChild).toHaveBeenCalled();
     });
   });
@@ -51,7 +51,7 @@ describe('ThemeManagerService', () => {
   describe('createLinkElementWithKey', () => {
     it('should create `HTMLLinkElement` with the key', () => {
       const key = 'test-theme-createLinkElementWithKey-create';
-      const link: HTMLLinkElement = service.createLinkElementWithKey(key);
+      const link: HTMLLinkElement = service['createLinkElementWithKey'](key);
       expect(link.className).toBe(`style-manager-${key}`);
       expect(link.rel).toBe('stylesheet');
     });
@@ -60,20 +60,20 @@ describe('ThemeManagerService', () => {
   describe('getExistingLinkElementByKey', () => {
     it('should return `null`', () => {
       const key = 'test-theme-getExistingLinkElementByKey-null';
-      expect(service.getExistingLinkElementByKey(key)).toBe(null);
+      expect(service['getExistingLinkElementByKey'](key)).toBe(null);
     });
 
     it('should return `HTMLLinkElement` by the key', () => {
       const key = 'test-theme-getExistingLinkElementByKey-key';
-      const link: HTMLLinkElement = service.createLinkElementWithKey(key);
-      expect(service.getExistingLinkElementByKey(key)).toBe(link);
+      const link: HTMLLinkElement = service['createLinkElementWithKey'](key);
+      expect(service['getExistingLinkElementByKey'](key)).toBe(link);
     });
   });
 
   describe('getLinkElementForKey', () => {
     it('should return `HTMLLinkElement` for the key', () => {
       const key = 'test-theme-getLinkElementForKey-key';
-      const link: HTMLLinkElement = service.getLinkElementForKey(key);
+      const link: HTMLLinkElement = service['getLinkElementForKey'](key);
       expect(link.className).toBe(`style-manager-${key}`);
     });
   });
@@ -82,17 +82,17 @@ describe('ThemeManagerService', () => {
     const key = 'test-project';
 
     afterEach(() => {
-      service.localStorage.clear();
+      service['localStorage'].clear();
     });
 
     it('should return undefined', () => {
-      expect(service.getStoredTheme(key)).toBe(undefined);
+      expect(service['getStoredTheme'](key)).toBe(undefined);
     });
 
     it('should return set theme', () => {
       const theme = 'dark';
-      service.setStoredTheme(theme, key);
-      expect(service.getStoredTheme(key)).toBe(theme);
+      service['setStoredTheme'](theme, key);
+      expect(service['getStoredTheme'](key)).toBe(theme);
     });
   });
 
@@ -101,12 +101,12 @@ describe('ThemeManagerService', () => {
     const theme = 'dark';
 
     afterEach(() => {
-      service.localStorage.clear();
+      service['localStorage'].clear();
     });
 
     it('should return set theme', () => {
-      service.setStoredTheme(theme, key);
-      expect(service.getStoredTheme(key)).toBe(theme);
+      service['setStoredTheme'](theme, key);
+      expect(service['getStoredTheme'](key)).toBe(theme);
     });
   });
 
@@ -114,24 +114,24 @@ describe('ThemeManagerService', () => {
     const key = 'test-project';
 
     afterEach(() => {
-      service.localStorage.clear();
+      service['localStorage'].clear();
     });
 
     it('should return dark theme', () => {
       const theme = 'dark';
-      service.setStoredTheme(theme, key);
-      expect(service.getPreferredTheme(key)).toBe(theme);
+      service['setStoredTheme'](theme, key);
+      expect(service['getPreferredTheme'](key)).toBe(theme);
     });
 
     it('should return light theme', () => {
-      service._window = null;
-      expect(service.getPreferredTheme(key)).toBe('light');
+      service['_window'] = null;
+      expect(service['getPreferredTheme'](key)).toBe('light');
     });
   });
 
   describe('setTheme', () => {
     it('should set dark theme', (done: DoneFn) => {
-      service.setTheme('dark');
+      service['setTheme']('dark');
 
       service.isDark$.subscribe((isDark) => {
         expect(isDark).toBe(true);
@@ -140,7 +140,7 @@ describe('ThemeManagerService', () => {
     });
 
     it('should set light theme', (done: DoneFn) => {
-      service.setTheme('light');
+      service['setTheme']('light');
 
       service.isDark$.subscribe((isDark) => {
         expect(isDark).toBe(false);

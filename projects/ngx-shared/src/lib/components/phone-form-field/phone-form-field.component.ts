@@ -7,6 +7,7 @@ import {
   HostBinding,
   Input,
   OnDestroy,
+  OnInit,
   Optional,
   Self,
   ViewChild,
@@ -39,11 +40,13 @@ export class PhoneParts {
   styleUrls: ['phone-form-field.component.scss'],
   providers: [{ provide: MatFormFieldControl, useExisting: PhoneFormFieldComponent }],
 })
-export class PhoneFormFieldComponent implements ControlValueAccessor, MatFormFieldControl<PhoneParts>, DoCheck, OnDestroy {
+export class PhoneFormFieldComponent 
+implements ControlValueAccessor, MatFormFieldControl<PhoneParts>, OnInit, DoCheck, OnDestroy 
+{
   static nextId = 0;
 
   // implements MatFormFieldControl
-  @HostBinding() id = `example-tel-input-${PhoneFormFieldComponent.nextId++}`;
+  @HostBinding() id = `custom-phone-input-${PhoneFormFieldComponent.nextId++}`;
   // implements MatFormFieldControl
   @HostBinding('class.ngx-floating')
   get shouldLabelFloat() {
@@ -110,16 +113,11 @@ export class PhoneFormFieldComponent implements ControlValueAccessor, MatFormFie
   public stateChanges = new Subject<void>(); // implements MatFormFieldControl
   public errorState: boolean = false; // implements MatFormFieldControl
 
-  // TODO: recheck
-  // get errorState(): boolean {
-  //   const parent = this.parentForm || this.parentFormGroup;
-  //   return !!this.parts.invalid && (!!this.parts.touched || parent.submitted);
-  // }
-
   private _disabled = false;
   private _placeholder: string = '';
   private _required = false;
   public touched = false;
+  
 
   // implements MatFormFieldControl
   get empty(): boolean {
@@ -135,6 +133,7 @@ export class PhoneFormFieldComponent implements ControlValueAccessor, MatFormFie
     private elementRef: ElementRef<HTMLElement>,
     private fb: FormBuilder,
     private focusMonitor: FocusMonitor,
+    // private defaultErrorStateMatcher: ErrorStateMatcher,
     @Optional() private parentForm: NgForm,
     @Optional() private parentFormGroup: FormGroupDirective,
     @Optional() public parentFormField: MatFormField | null,
@@ -168,6 +167,10 @@ export class PhoneFormFieldComponent implements ControlValueAccessor, MatFormFie
     }
   }
 
+  ngOnInit(): void {
+    this.onChange(this.value);
+  }
+
   ngDoCheck(): void {
     // we should re-evaluate errorState on every change detection cycle
     if (this.ngControl) {
@@ -180,7 +183,13 @@ export class PhoneFormFieldComponent implements ControlValueAccessor, MatFormFie
     this.focusMonitor.stopMonitoring(this.elementRef);
   }
 
-  private updateErrorState() {
+  private autoFocusNext(control: AbstractControl, nextElement?: HTMLInputElement): void {
+    if (!control.errors && !!nextElement) {
+      this.focusMonitor.focusVia(nextElement, 'program');
+    }
+  }
+
+  private updateErrorState(): void {
     const parent = this.parentFormGroup || this.parentForm;
 
     const oldState = this.errorState;
@@ -189,12 +198,6 @@ export class PhoneFormFieldComponent implements ControlValueAccessor, MatFormFie
     if (oldState !== newState) {
       this.errorState = newState;
       this.stateChanges.next();
-    }
-  }
-
-  private autoFocusNext(control: AbstractControl, nextElement?: HTMLInputElement): void {
-    if (!control.errors && !!nextElement) {
-      this.focusMonitor.focusVia(nextElement, 'program');
     }
   }
 

@@ -9,12 +9,20 @@
     <mat-hint>Include area code</mat-hint>
   </mat-form-field>
 
+  <button
+    type="button"
+    mat-button
+    (click)="disableField('tel')"
+  >
+    Disable / Enable
+  </button>
+
   <br/>
   <br/>
 
   <mat-form-field appearance="fill">
     <mat-label>Phone number 2</mat-label>
-    <ngx-phone-form-field formControlName="tel1" required></ngx-phone-form-field>
+    <ngx-phone-form-field formControlName="tel1"></ngx-phone-form-field>
     <mat-error *ngIf="form.controls['tel1'].invalid">Example: +38 (096) 4064713</mat-error>
     <mat-error *ngIf="form.controls['tel1'].hasError('required')">Field is required</mat-error>
     <mat-error *ngIf="form.controls['tel1'].touched">Field is touched</mat-error>
@@ -25,9 +33,27 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Simple Input</mat-label>
-    <input matInput formControlName="simpleInput" />
+    <input matInput formControlName="simpleInput"/>
     <mat-error *ngIf="form.controls['simpleInput'].hasError('required')">Field is required</mat-error>
     <mat-error *ngIf="form.controls['simpleInput'].touched">Field is touched</mat-error>
+  </mat-form-field>
+
+  <button
+    type="button"
+    mat-button
+    (click)="disableField('simpleInput')"
+  >
+    Disable / Enable
+  </button>
+
+  <br/>
+  <br/>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Simple Input1</mat-label>
+    <input matInput formControlName="simpleInput1"/>
+    <mat-error *ngIf="form.controls['simpleInput1'].hasError('required')">Field is required</mat-error>
+    <mat-error *ngIf="form.controls['simpleInput1'].touched">Field is touched</mat-error>
   </mat-form-field>
 
   <br/>
@@ -38,6 +64,6 @@
     mat-stroked-button
     [disabled]="form.invalid"
   >
-    console.log
+    Submit => console.log
   </button>
 </form>
