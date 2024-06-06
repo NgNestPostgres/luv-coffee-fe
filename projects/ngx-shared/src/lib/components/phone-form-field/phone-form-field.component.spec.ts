@@ -9,10 +9,10 @@ describe('PhoneFormFieldComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ ReactiveFormsModule ],
-      declarations: [ PhoneFormFieldComponent ]
+      imports: [ReactiveFormsModule],
+      declarations: [PhoneFormFieldComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

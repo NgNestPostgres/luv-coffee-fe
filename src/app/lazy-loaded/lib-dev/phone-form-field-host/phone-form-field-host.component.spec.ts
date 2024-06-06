@@ -11,11 +11,11 @@ describe('PhoneFormFieldHostComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ ReactiveFormsModule ],
-      declarations: [ PhoneFormFieldHostComponent, PhoneFormFieldComponent ],
-      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+      imports: [ReactiveFormsModule],
+      declarations: [PhoneFormFieldHostComponent, PhoneFormFieldComponent],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

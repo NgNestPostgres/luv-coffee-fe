@@ -7,7 +7,6 @@ import { DialogsService } from '@core/services/dialogs.service';
   styleUrls: ['./users-list.component.scss']
 })
 export class UsersListComponent {
-
   public token: string = 'no token';
 
   constructor(
@@ -15,7 +14,7 @@ export class UsersListComponent {
   ) {}
 
   public showLoginForm(): void {
-    this.dialogs.login().subscribe(token => {
+    this.dialogs.login().subscribe((token) => {
       this.token = token;
       console.log(token);
     });

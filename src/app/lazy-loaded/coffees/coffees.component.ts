@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+
 import { CoffeesFilter } from './interfaces/coffees-filter';
 
 @Component({
   selector: 'anp-coffees',
-  styles: [``],
+  styles: [''],
   template: `
     <anp-table-filters
       [widthPx]="filtersWidthPx"

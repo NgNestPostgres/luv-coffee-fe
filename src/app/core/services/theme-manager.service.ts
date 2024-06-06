@@ -1,8 +1,8 @@
 import { DOCUMENT } from '@angular/common';
-import { Injectable, inject } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
+import { LocalStorage } from '@core/services/storage.service';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { take } from 'rxjs/operators';
-import { LocalStorage } from '@core/services/storage.service';
 
 const LOCAL_STORAGE_KEY = 'anp-theme';
 
@@ -18,12 +18,12 @@ export class ThemeManagerService {
     this.setTheme(this.getPreferredTheme());
 
     if (this._window?.matchMedia) {
-      //This event is triggered when system mode is changed
+      // This event is triggered when system mode is changed
       this._window
         .matchMedia('(prefers-color-scheme: dark)')
         .addEventListener('change', () => {
           const storedTheme = this.getStoredTheme();
-          
+
           if (storedTheme !== 'light' && storedTheme !== 'dark') {
             this.setTheme(this.getPreferredTheme());
           }
@@ -31,8 +31,7 @@ export class ThemeManagerService {
     }
   }
 
-  private getStoredTheme = (key: string = LOCAL_STORAGE_KEY) =>
-    JSON.parse(this.localStorage.getItem(key) ?? '{}').theme;
+  private getStoredTheme = (key: string = LOCAL_STORAGE_KEY) => JSON.parse(this.localStorage.getItem(key) ?? '{}').theme;
 
   private setStoredTheme = (theme: string, key: string = LOCAL_STORAGE_KEY) => {
     const meta = JSON.parse(this.localStorage.getItem(key) ?? '{}');
@@ -59,8 +58,8 @@ export class ThemeManagerService {
   private setTheme = (theme: string) => {
     if (this._window?.matchMedia) {
       if (
-        theme === 'auto' &&
-        this._window.matchMedia('(prefers-color-scheme: dark)').matches
+        theme === 'auto'
+        && this._window.matchMedia('(prefers-color-scheme: dark)').matches
       ) {
         this.document.documentElement.setAttribute('data-bs-theme', 'dark');
         this._isDarkSub.next(true);
@@ -97,13 +96,13 @@ export class ThemeManagerService {
   private getLinkElementForKey(key: string): HTMLLinkElement {
     return this.getExistingLinkElementByKey(key) || this.createLinkElementWithKey(key);
   }
-  
+
   private getExistingLinkElementByKey(key: string): HTMLLinkElement | null {
     return this.document.head.querySelector(
       `link[rel="stylesheet"].${this.getClassNameForKey(key)}`
     );
   }
-  
+
   private createLinkElementWithKey(key: string): HTMLLinkElement {
     const linkEl = this.document.createElement('link');
     linkEl.setAttribute('rel', 'stylesheet');
@@ -111,7 +110,7 @@ export class ThemeManagerService {
     this.document.head.appendChild(linkEl);
     return linkEl;
   }
-  
+
   private getClassNameForKey(key: string):string {
     return `style-manager-${key}`;
   }

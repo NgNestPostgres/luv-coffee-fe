@@ -9,7 +9,6 @@ const REFRESH_TOKEN = 'refresh_token';
   providedIn: 'root'
 })
 export class TokenService {
-
   constructor(
     @Inject(LocalStorage) private localStorage: Storage
   ) { }

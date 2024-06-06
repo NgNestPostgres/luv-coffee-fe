@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./not-found.component.scss']
 })
 export class NotFoundComponent implements OnInit {
-
   public url!: string;
 
   constructor(
@@ -17,5 +16,4 @@ export class NotFoundComponent implements OnInit {
   ngOnInit() {
     this.url = this.router.url;
   }
-
 }
