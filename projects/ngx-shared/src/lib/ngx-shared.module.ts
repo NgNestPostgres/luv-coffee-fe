@@ -19,7 +19,7 @@ const ANGULAR_MATERIAL_MODULES = [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    ANGULAR_MATERIAL_MODULES
+    ANGULAR_MATERIAL_MODULES,
   ],
   exports: [
     PhoneFormFieldComponent,

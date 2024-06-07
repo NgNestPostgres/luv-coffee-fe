@@ -39,7 +39,7 @@ export class SidenavTreeComponent {
 
   public dataSource: MatTreeFlatDataSource<MenuItemNode, MenuItemFlatNode>;
 
-  private _transformer = (node: MenuItemNode, level: number) => ({
+  private transformer = (node: MenuItemNode, level: number) => ({
     expandable: !!node.children && node.children.length > 0,
     name: node.name,
     path: node.path || null,
@@ -47,7 +47,7 @@ export class SidenavTreeComponent {
   });
 
   private treeFlattener = new MatTreeFlattener(
-    this._transformer,
+    this.transformer,
     (node) => node.level,
     (node) => node.expandable,
     (node) => node.children,

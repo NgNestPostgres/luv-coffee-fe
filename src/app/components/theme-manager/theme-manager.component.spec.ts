@@ -10,6 +10,7 @@ import { ThemeManagerService } from '@core/services/theme-manager.service';
 import { ThemeManagerComponent } from './theme-manager.component';
 
 class MockThemeManagerService {
+  // eslint-disable-next-line class-methods-use-this
   changeTheme = () => {};
 }
 

@@ -10,8 +10,6 @@ export class ThemeManagerComponent {
   private themeManager = inject(ThemeManagerService);
   public isDark$ = this.themeManager.isDark$;
 
-  constructor() { }
-
   public changeTheme(theme: string) {
     this.themeManager.changeTheme(theme);
   }
