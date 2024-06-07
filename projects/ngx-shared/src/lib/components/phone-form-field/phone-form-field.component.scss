@@ -9,7 +9,14 @@
   outline: none;
   font: inherit;
   text-align: center;
+  flex-basis: 24%;
+
+  &.subscriber {
+    flex-basis: 52%;
+  }
 }
+
+
 
 .ngx-phone-input-spacer {
   opacity: 0;

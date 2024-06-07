@@ -1,11 +1,15 @@
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable max-classes-per-file */
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
   Component,
+  DoCheck,
   ElementRef,
   HostBinding,
   Input,
   OnDestroy,
+  OnInit,
   Optional,
   Self,
   ViewChild,
@@ -13,9 +17,11 @@ import {
 import {
   AbstractControl,
   ControlValueAccessor,
-  UntypedFormBuilder,
-  UntypedFormGroup,
+  FormBuilder,
+  FormGroup,
+  FormGroupDirective,
   NgControl,
+  NgForm,
   Validators,
 } from '@angular/forms';
 import { MatFormField, MatFormFieldControl } from '@angular/material/form-field';
@@ -36,11 +42,12 @@ export class PhoneParts {
   styleUrls: ['phone-form-field.component.scss'],
   providers: [{ provide: MatFormFieldControl, useExisting: PhoneFormFieldComponent }],
 })
-export class PhoneFormFieldComponent implements  ControlValueAccessor, MatFormFieldControl<PhoneParts>, OnDestroy {
+export class PhoneFormFieldComponent
+implements ControlValueAccessor, MatFormFieldControl<PhoneParts>, OnInit, DoCheck, OnDestroy {
   static nextId = 0;
 
   // implements MatFormFieldControl
-  @HostBinding() id = `example-tel-input-${PhoneFormFieldComponent.nextId++}`;
+  @HostBinding() id = `custom-phone-input-${PhoneFormFieldComponent.nextId++}`;
   // implements MatFormFieldControl
   @HostBinding('class.ngx-floating')
   get shouldLabelFloat() {
@@ -53,7 +60,7 @@ export class PhoneFormFieldComponent implements  ControlValueAccessor, MatFormFi
 
   // implements MatFormFieldControl
   // eslint-disable-next-line @angular-eslint/no-input-rename
-  @Input('aria-describedby') userAriaDescribedBy!: string;
+  @Input('aria-describedby') userAriaDescribedBy?: string;
 
   // implements MatFormFieldControl
   @Input()
@@ -103,13 +110,14 @@ export class PhoneFormFieldComponent implements  ControlValueAccessor, MatFormFi
 
   public focused = false; // implements MatFormFieldControl
   public controlType = 'ngx-phone-input'; // implements MatFormFieldControl
-  public parts: UntypedFormGroup;
+  public parts: FormGroup;
   public stateChanges = new Subject<void>(); // implements MatFormFieldControl
+  public errorState: boolean = false; // implements MatFormFieldControl
 
   private _disabled = false;
-  private _placeholder!: string;
+  private _placeholder: string = '';
   private _required = false;
-  private _touched = false;
+  public touched = false;
 
   // implements MatFormFieldControl
   get empty(): boolean {
@@ -117,25 +125,39 @@ export class PhoneFormFieldComponent implements  ControlValueAccessor, MatFormFi
     return !area && !exchange && !subscriber;
   }
 
-  // implements MatFormFieldControl
-  get errorState(): boolean {
-    return this.parts.invalid && this._touched;
-  }
-
-  onChange = (_: any) => {};
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  onChange = (param: unknown) => {};
   onTouched = () => {};
 
   constructor(
-    private _elementRef: ElementRef<HTMLElement>,
-    private _fb: UntypedFormBuilder,
-    private _focusMonitor: FocusMonitor,
-    @Optional() public parentFormField: MatFormField,
+    private elementRef: ElementRef<HTMLElement>,
+    private fb: FormBuilder,
+    private focusMonitor: FocusMonitor,
+    // private defaultErrorStateMatcher: ErrorStateMatcher,
+    @Optional() private parentForm: NgForm,
+    @Optional() private parentFormGroup: FormGroupDirective,
+    @Optional() public parentFormField: MatFormField | null,
     @Optional() @Self() public ngControl: NgControl,
   ) {
-    this.parts = this._fb.group({
-      area: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(3)]],
-      exchange: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(3)]],
-      subscriber: [null, [Validators.required, Validators.minLength(4), Validators.maxLength(4)]],
+    this.parts = this.fb.group({
+      area: [null, [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(3),
+        Validators.pattern('^\\+[1-9]{2}$')
+      ]],
+      exchange: [null, [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(3),
+        Validators.pattern('^[0-9]*$')
+      ]],
+      subscriber: [null, [
+        Validators.required,
+        Validators.minLength(7),
+        Validators.maxLength(7),
+        Validators.pattern('^[0-9]*$')
+      ]],
     });
 
     if (this.ngControl != null) {
@@ -145,47 +167,70 @@ export class PhoneFormFieldComponent implements  ControlValueAccessor, MatFormFi
     }
   }
 
-  ngOnDestroy(): void {
-    this.stateChanges.complete();
-    this._focusMonitor.stopMonitoring(this._elementRef);
+  ngOnInit(): void {
+    this.onChange(this.value);
   }
 
-  public onFocusIn(event: FocusEvent) {
-    if (!this.focused) {
-      this.focused = true;
-      this.stateChanges.next();
+  ngDoCheck(): void {
+    // we should re-evaluate errorState on every change detection cycle
+    if (this.ngControl) {
+      this.updateErrorState();
     }
   }
 
-  public onFocusOut(event: FocusEvent) {
-    if (!this._elementRef.nativeElement.contains(event.relatedTarget as Element)) {
-      this._touched = true;
-      this.focused = false;
-      this.onTouched();
+  ngOnDestroy(): void {
+    this.stateChanges.complete();
+    this.focusMonitor.stopMonitoring(this.elementRef);
+  }
+
+  private autoFocusNext(control: AbstractControl, nextElement?: HTMLInputElement): void {
+    if (!control.errors && !!nextElement) {
+      this.focusMonitor.focusVia(nextElement, 'program');
+    }
+  }
+
+  private updateErrorState(): void {
+    const parent = this.parentFormGroup || this.parentForm;
+
+    const oldState = this.errorState;
+    const newState = (this.ngControl?.invalid || this.parts.invalid) && (this.touched || parent.submitted);
+
+    if (oldState !== newState) {
+      this.errorState = newState;
       this.stateChanges.next();
     }
   }
 
   public autoFocusPrev(control: AbstractControl, prevElement: HTMLInputElement): void {
     if (control.value.length < 1) {
-      this._focusMonitor.focusVia(prevElement, 'program');
+      this.focusMonitor.focusVia(prevElement, 'program');
     }
   }
 
-  public setDescribedByIds(ids: string[]) {
-    const controlElement = this._elementRef.nativeElement.querySelector('.ngx-phone-input-container')!;
+  public onFocusIn(): void {
+    if (!this.focused) {
+      this.focused = true;
+      this.stateChanges.next();
+    }
+  }
+
+  public onFocusOut(event: FocusEvent): void {
+    if (!this.elementRef.nativeElement.contains(event.relatedTarget as Element)) {
+      this.touched = true;
+      this.focused = false;
+      this.onTouched();
+      this.stateChanges.next();
+    }
+  }
+
+  public setDescribedByIds(ids: string[]): void {
+    const controlElement = this.elementRef.nativeElement.querySelector('.ngx-phone-input-container')!;
     controlElement.setAttribute('aria-describedby', ids.join(' '));
   }
 
-  public onContainerClick(event: MouseEvent) {
-    if (this.parts.controls['subscriber'].valid) {
-      this._focusMonitor.focusVia(this.subscriberInput, 'program');
-    } else if (this.parts.controls['exchange'].valid) {
-      this._focusMonitor.focusVia(this.subscriberInput, 'program');
-    } else if (this.parts.controls['area'].valid) {
-      this._focusMonitor.focusVia(this.exchangeInput, 'program');
-    } else {
-      this._focusMonitor.focusVia(this.areaInput, 'program');
+  public onContainerClick(event: MouseEvent): void {
+    if ((event.target as Element).tagName.toLowerCase() !== 'input') {
+      this.elementRef.nativeElement.querySelector('input')?.focus();
     }
   }
 
@@ -195,12 +240,12 @@ export class PhoneFormFieldComponent implements  ControlValueAccessor, MatFormFi
   }
 
   // implements ControlValueAccessor
-  public registerOnChange(fn: any): void {
+  public registerOnChange(fn: () => void): void {
     this.onChange = fn;
   }
 
   // implements ControlValueAccessor
-  public registerOnTouched(fn: any): void {
+  public registerOnTouched(fn: () => void): void {
     this.onTouched = fn;
   }
 
@@ -210,13 +255,7 @@ export class PhoneFormFieldComponent implements  ControlValueAccessor, MatFormFi
   }
 
   public handleInput(control: AbstractControl, nextElement?: HTMLInputElement): void {
-    this._autoFocusNext(control, nextElement);
+    this.autoFocusNext(control, nextElement);
     this.onChange(this.value);
-  }
-
-  private _autoFocusNext(control: AbstractControl, nextElement?: HTMLInputElement): void {
-    if (!control.errors && nextElement) {
-      this._focusMonitor.focusVia(nextElement, 'program');
-    }
   }
 }

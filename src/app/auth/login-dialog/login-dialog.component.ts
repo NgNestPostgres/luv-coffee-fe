@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { AuthService } from '@auth/services/auth.service';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { UserLogin } from '@angularnestpostgre/packages/fe-shared';
+import { AuthService } from '@auth/services/auth.service';
 // import { UserRole } from '@angularnestpostgre/packages/fe-shared';
 
 @Component({
@@ -10,11 +10,10 @@ import { UserLogin } from '@angularnestpostgre/packages/fe-shared';
   styleUrls: ['./login-dialog.component.scss']
 })
 export class LoginDialogComponent implements OnInit {
-
   constructor(
     private authService: AuthService,
     private dialogRef: MatDialogRef<LoginDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) private data: any,
+    @Inject(MAT_DIALOG_DATA) private data: unknown,
   ) {}
 
   ngOnInit(): void {
@@ -22,12 +21,12 @@ export class LoginDialogComponent implements OnInit {
   }
 
   public login(creds: UserLogin) {
-    this.authService.login(creds).subscribe(token => {
+    this.authService.login(creds).subscribe((token) => {
       this.closeDialog(token);
     });
   }
 
-  private closeDialog(outputData?: any): void {
+  private closeDialog(outputData?: unknown): void {
     this.dialogRef.close(outputData);
   }
 }

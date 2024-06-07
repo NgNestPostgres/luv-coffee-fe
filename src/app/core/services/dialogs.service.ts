@@ -1,14 +1,12 @@
 import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
-
 import { LoginDialogComponent } from '@auth/login-dialog/login-dialog.component';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DialogsService {
-
   private readonly defaultDialogConfig: MatDialogConfig = {
     panelClass: 'ta-dialog',
     disableClose: true,
@@ -18,11 +16,11 @@ export class DialogsService {
 
   constructor(private dialog: MatDialog) { }
 
-  public login(inputData?: any): Observable<any> {
+  public login(inputData?: unknown): Observable<string> {
     return this.dialog.open(LoginDialogComponent, {
       data: inputData,
       ...this.defaultDialogConfig,
     })
-    .afterClosed();
+      .afterClosed();
   }
 }

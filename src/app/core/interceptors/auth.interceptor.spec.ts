@@ -1,4 +1,6 @@
-import { HttpClient, HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import {
+  HTTP_INTERCEPTORS, HttpClient, provideHttpClient, withInterceptorsFromDi
+} from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { TokenService } from '@auth/services/token.service';
@@ -14,18 +16,18 @@ describe('AuthInterceptor', () => {
     const spyTokenService = jasmine.createSpyObj('TokenService', ['getAccessToken']);
 
     TestBed.configureTestingModule({
-    imports: [],
-    providers: [
+      imports: [],
+      providers: [
         { provide: TokenService, useValue: spyTokenService },
         {
-            provide: HTTP_INTERCEPTORS,
-            multi: true,
-            useClass: AuthInterceptor
+          provide: HTTP_INTERCEPTORS,
+          multi: true,
+          useClass: AuthInterceptor
         },
         provideHttpClient(withInterceptorsFromDi()),
         provideHttpClientTesting()
-    ]
-});
+      ]
+    });
 
     client = TestBed.inject(HttpClient);
     httpMock = TestBed.inject(HttpTestingController);
@@ -37,15 +39,19 @@ describe('AuthInterceptor', () => {
   });
 
   it('#getAccessToken should return stubbed value from a spy', () => {
+    interface User {
+      login: string
+    }
+
     const dummyToken = 'TokenString';
-    const dummyUsers = [
+    const dummyUsers: User[] = [
       { login: 'John' },
       { login: 'Doe' }
     ];
 
     tokenServiceSpy.getAccessToken.and.returnValue(dummyToken);
 
-    client.get('/test').subscribe((users: any) => {
+    client.get<User[]>('/test').subscribe((users: User[]) => {
       expect(users.length).toBe(2);
       expect(users).toEqual(dummyUsers);
 
@@ -54,8 +60,8 @@ describe('AuthInterceptor', () => {
         .toBe(dummyToken);
     });
 
-    const req = httpMock.expectOne(`/test`);
-    expect(req.request.method).toBe("GET");
+    const req = httpMock.expectOne('/test');
+    expect(req.request.method).toBe('GET');
     req.flush(dummyUsers);
   });
-})
+});

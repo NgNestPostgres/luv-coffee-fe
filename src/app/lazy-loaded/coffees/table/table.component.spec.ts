@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
-import { CoffeeService } from '../services/coffee.service';
 
+import { CoffeeService } from '../services/coffee.service';
 import { TableComponent } from './table.component';
 
 const testData = {};
@@ -9,7 +9,7 @@ const testData = {};
 describe('TableComponent', () => {
   let component: TableComponent;
   let fixture: ComponentFixture<TableComponent>;
-  let mockCoffeeService: jasmine.SpyObj<CoffeeService> ;
+  let mockCoffeeService: jasmine.SpyObj<CoffeeService>;
 
   beforeEach(async () => {
     mockCoffeeService = jasmine.createSpyObj(['getCoffees']);
@@ -19,7 +19,7 @@ describe('TableComponent', () => {
       declarations: [TableComponent],
       providers: [{ provide: CoffeeService, useValue: mockCoffeeService }],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

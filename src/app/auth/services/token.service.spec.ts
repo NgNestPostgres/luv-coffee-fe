@@ -1,9 +1,8 @@
 import { TestBed } from '@angular/core/testing';
+import { STORAGE_PROVIDERS } from '@core/services/storage.service';
+import { windowProvider, WindowToken } from '@core/tokens/window';
 
 import { TokenService } from './token.service';
-
-import { STORAGE_PROVIDERS } from '@core/services/storage.service';
-import { WindowToken, windowProvider } from '@core/tokens/window';
 
 describe('TokenService', () => {
   let service: TokenService;

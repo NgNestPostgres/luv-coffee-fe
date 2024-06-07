@@ -1,14 +1,14 @@
+import { HarnessLoader } from '@angular/cdk/testing';
+import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTreeModule } from '@angular/material/tree';
+import { MatTreeHarness } from '@angular/material/tree/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
-import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
-import { MatTreeHarness } from '@angular/material/tree/testing';
-import { HarnessLoader } from '@angular/cdk/testing';
-import { MatTreeModule } from '@angular/material/tree';
-import { MatIconModule } from '@angular/material/icon';
 
-import { SidenavTreeComponent } from './sidenav-tree.component';
 import { TREE_DATA } from './sidenav-datasource';
+import { SidenavTreeComponent } from './sidenav-tree.component';
 
 describe('SidenavTreeComponent', () => {
   let component: SidenavTreeComponent;
@@ -23,9 +23,9 @@ describe('SidenavTreeComponent', () => {
         NoopAnimationsModule,
         RouterTestingModule,
       ],
-      declarations: [ SidenavTreeComponent ],
+      declarations: [SidenavTreeComponent],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

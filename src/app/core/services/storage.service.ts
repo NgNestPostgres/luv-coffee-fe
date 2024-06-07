@@ -1,4 +1,5 @@
 import { InjectionToken, StaticProvider } from '@angular/core';
+
 import { WindowToken } from '../tokens/window';
 
 export const LocalStorage = new InjectionToken<Storage>('LocalStorage');

@@ -1,7 +1,7 @@
-import { ClassProvider } from '@angular/core';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthInterceptor } from './auth.interceptor';
+import { ClassProvider } from '@angular/core';
 
+import { AuthInterceptor } from './auth.interceptor';
 
 export const interceptors: ClassProvider[] = [
   {

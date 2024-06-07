@@ -1,9 +1,6 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-
-import { NgxSharedModule } from '@ngx-shared';
-
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -14,11 +11,10 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTreeModule } from '@angular/material/tree';
+import { NgxSharedModule } from '@ngx-shared';
 
 import { TestComponent } from './components/test/test.component';
-
 import { TestDirective } from './directives/test.directive';
-
 import { TestPipe } from './pipes/test.pipe';
 
 const SHARED_MODULES = [
@@ -51,7 +47,6 @@ const SHARED_DIRECTIVES = [
 const SHARED_PIPES = [
   TestPipe
 ];
-
 
 @NgModule({
   imports: [

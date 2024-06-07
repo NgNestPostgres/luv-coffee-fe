@@ -1,9 +1,8 @@
 import { TestBed } from '@angular/core/testing';
-
 import { STORAGE_PROVIDERS } from '@core/services/storage.service';
-import { WindowToken, windowProvider } from '@core/tokens/window';
-import { ThemeManagerService } from './theme-manager.service';
+import { windowProvider, WindowToken } from '@core/tokens/window';
 
+import { ThemeManagerService } from './theme-manager.service';
 
 describe('ThemeManagerService', () => {
   let service: ThemeManagerService;
@@ -51,10 +50,10 @@ describe('ThemeManagerService', () => {
 
   describe('createLinkElementWithKey', () => {
     it('should create `HTMLLinkElement` with the key', () => {
-      const key = 'test-theme-createLinkElementWithKey-create'; 
+      const key = 'test-theme-createLinkElementWithKey-create';
       const link: HTMLLinkElement = service['createLinkElementWithKey'](key);
       expect(link.className).toBe(`style-manager-${key}`);
-      expect(link.rel).toBe(`stylesheet`);
+      expect(link.rel).toBe('stylesheet');
     });
   });
 
@@ -86,7 +85,7 @@ describe('ThemeManagerService', () => {
       service['localStorage'].clear();
     });
 
-    it('should return undefined', () => {   
+    it('should return undefined', () => {
       expect(service['getStoredTheme'](key)).toBe(undefined);
     });
 
@@ -134,19 +133,19 @@ describe('ThemeManagerService', () => {
     it('should set dark theme', (done: DoneFn) => {
       service['setTheme']('dark');
 
-      service.isDark$.subscribe(isDark => {
+      service.isDark$.subscribe((isDark) => {
         expect(isDark).toBe(true);
         done();
-      })
+      });
     });
 
     it('should set light theme', (done: DoneFn) => {
       service['setTheme']('light');
 
-      service.isDark$.subscribe(isDark => {
+      service.isDark$.subscribe((isDark) => {
         expect(isDark).toBe(false);
         done();
-      })
+      });
     });
   });
 });

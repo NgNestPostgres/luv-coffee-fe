@@ -2,10 +2,14 @@
   "name": "ngx-shared",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/common": "^13.0.0",
-    "@angular/core": "^13.0.0",
-    "@angular/cdk": "^13.0.2",
-    "@angular/material": "^13.0.2"
+    "@angular/common": "^18.0.0",
+    "@angular/core": "^18.0.0",
+    "@angular/cdk": "^18.0.0",
+    "@angular/forms": "^18.0.0",
+    "@angular/material": "^18.0.0",
+    "@angular/platform-browser-dynamic": "^18.0.0",
+    "rxjs": "~7.4.0",
+    "zone.js": "~0.14.6"
   },
   "dependencies": {
     "tslib": "^2.3.0"

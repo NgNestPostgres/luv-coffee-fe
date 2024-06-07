@@ -7,10 +7,9 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class HealthCheckService {
-
   constructor(private http: HttpClient) { }
 
-  public healthCheck(): Observable<{data: string}> {
-    return this.http.get<{data: string}>(`${environment.apiHost}/health`);
+  public healthCheck(): Observable<{ data: string }> {
+    return this.http.get<{ data: string }>(`${environment.apiHost}/health`);
   }
 }

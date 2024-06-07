@@ -8,12 +8,12 @@ import { CoffeesSearchParams } from '../interfaces/coffees-filter';
   providedIn: 'root'
 })
 export class CoffeeService {
-
   constructor(
     private http: HttpClient,
   ) { }
 
-  public getCoffees(filter: CoffeesSearchParams): Observable<any> {
-    return of(null)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars, class-methods-use-this
+  public getCoffees(filter: CoffeesSearchParams): Observable<unknown> {
+    return of(null);
   }
 }

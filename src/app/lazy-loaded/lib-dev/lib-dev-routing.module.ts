@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { LibDevComponent } from './lib-dev.component';
 import { PhoneFormFieldHostComponent } from './phone-form-field-host/phone-form-field-host.component';
 
@@ -14,7 +15,7 @@ const routes: Routes = [
       },
     ]
   }
-]
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
