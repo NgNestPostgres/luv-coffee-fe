@@ -24,7 +24,6 @@
       ],
       "rules": {
         /* My eslint rules */
-        "linebreak-style": ["error", "windows"],
         "no-plusplus": "off",
         "class-methods-use-this": "off",
         /* ESLint rules */
