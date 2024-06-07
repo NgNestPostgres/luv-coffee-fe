@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import { DOCUMENT } from '@angular/common';
 import { inject, Injectable } from '@angular/core';
 import { LocalStorage } from '@core/services/storage.service';
@@ -31,7 +32,8 @@ export class ThemeManagerService {
     }
   }
 
-  private getStoredTheme = (key: string = LOCAL_STORAGE_KEY) => JSON.parse(this.localStorage.getItem(key) ?? '{}').theme;
+  private getStoredTheme = (key: string = LOCAL_STORAGE_KEY) => JSON.parse(this.localStorage.getItem(key) ?? '{}')
+    .theme;
 
   private setStoredTheme = (theme: string, key: string = LOCAL_STORAGE_KEY) => {
     const meta = JSON.parse(this.localStorage.getItem(key) ?? '{}');
@@ -111,7 +113,7 @@ export class ThemeManagerService {
     return linkEl;
   }
 
-  private getClassNameForKey(key: string):string {
+  private getClassNameForKey(key: string): string {
     return `style-manager-${key}`;
   }
 

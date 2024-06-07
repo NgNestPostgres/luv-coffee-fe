@@ -16,7 +16,6 @@ export class UsersListComponent {
   public showLoginForm(): void {
     this.dialogs.login().subscribe((token) => {
       this.token = token;
-      console.log(token);
     });
   }
 }

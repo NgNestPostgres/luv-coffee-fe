@@ -1,5 +1,5 @@
 import {
-  Component, EventEmitter, Input, OnInit, Output
+  Component, EventEmitter, Input, Output
 } from '@angular/core';
 
 import { CoffeesFilter } from '../interfaces/coffees-filter';
@@ -9,13 +9,7 @@ import { CoffeesFilter } from '../interfaces/coffees-filter';
   templateUrl: './table-filters.component.html',
   styleUrls: ['./table-filters.component.scss']
 })
-export class TableFiltersComponent implements OnInit {
+export class TableFiltersComponent {
   @Input() widthPx: number | undefined;
   @Output() filtersChanged = new EventEmitter<CoffeesFilter>();
-
-  constructor() { }
-
-  ngOnInit(): void {
-    console.log('TableFiltersComponent');
-  }
 }

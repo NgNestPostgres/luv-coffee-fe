@@ -15,8 +15,8 @@ export class AppComponent implements OnInit, OnDestroy {
   public tabQuery!: MediaQueryList;
   public mobileQuery!: MediaQueryList;
 
-  private _mobileQueryListener = () => this._mobileQueryMatched();
-  private _tabQueryListener = () => this._tabQueryMatched();
+  private mobileQueryListener = () => this.mobileQueryMatched();
+  private tabQueryListener = () => this.tabQueryMatched();
 
   constructor(
     private changeDetectorRef: ChangeDetectorRef,
@@ -26,20 +26,20 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.mobileQuery = this.media.matchMedia('(max-width: 600px)');
     this.tabQuery = this.media.matchMedia('(max-width: 1025px)');
-    this.mobileQuery.addEventListener('change', this._mobileQueryListener);
-    this.tabQuery.addEventListener('change', this._tabQueryListener);
+    this.mobileQuery.addEventListener('change', this.mobileQueryListener);
+    this.tabQuery.addEventListener('change', this.tabQueryListener);
   }
 
   ngOnDestroy(): void {
-    this.mobileQuery.removeEventListener('change', this._mobileQueryListener);
-    this.mobileQuery.removeEventListener('change', this._tabQueryListener);
+    this.mobileQuery.removeEventListener('change', this.mobileQueryListener);
+    this.mobileQuery.removeEventListener('change', this.tabQueryListener);
   }
 
-  private _mobileQueryMatched(): void {
+  private mobileQueryMatched(): void {
     this.changeDetectorRef.detectChanges();
   }
 
-  private _tabQueryMatched(): void {
+  private tabQueryMatched(): void {
     if (!this.tabQuery.matches) {
       this.sidenav.close();
     }

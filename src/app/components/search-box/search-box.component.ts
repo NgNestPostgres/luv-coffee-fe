@@ -25,7 +25,7 @@ export class SearchBoxComponent implements OnInit {
   public form!: FormGroup;
   public searchOptions$!: Observable<SearchOption[]>;
 
-  private _searchSubj$ = new Subject<string>();
+  private searchSubj$ = new Subject<string>();
 
   constructor(
     private fb: FormBuilder,
@@ -33,8 +33,8 @@ export class SearchBoxComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this._createForm();
-    this._searchSetup();
+    this.createForm();
+    this.searchSetup();
   }
 
   public optionSelected(option: SearchOption): void {
@@ -42,23 +42,23 @@ export class SearchBoxComponent implements OnInit {
   }
 
   public search(term: string): void {
-    this._searchSubj$.next(term);
+    this.searchSubj$.next(term);
   }
 
-  private _createForm(): void {
+  private createForm(): void {
     this.form = this.fb.group({
       search: ['', []],
     });
   }
 
-  private _search(value: string): SearchOption[] {
+  private searchOptions(value: string): SearchOption[] {
     const filterValue = value.toLowerCase();
 
     return OPTIONS.filter((option) => option.name.toLowerCase().includes(filterValue));
   }
 
-  private _searchSetup(): void {
-    this.searchOptions$ = this._searchSubj$
+  private searchSetup(): void {
+    this.searchOptions$ = this.searchSubj$
       .pipe(
         debounceTime(100),
         distinctUntilChanged(),
@@ -67,7 +67,7 @@ export class SearchBoxComponent implements OnInit {
             return of<SearchOption[]>([]);
           }
 
-          return of<SearchOption[]>(this._search(value));
+          return of<SearchOption[]>(this.searchOptions(value));
         })
       );
   }

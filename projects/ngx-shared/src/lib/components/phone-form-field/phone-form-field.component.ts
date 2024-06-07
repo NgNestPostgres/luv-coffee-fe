@@ -1,3 +1,5 @@
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable max-classes-per-file */
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
@@ -40,9 +42,8 @@ export class PhoneParts {
   styleUrls: ['phone-form-field.component.scss'],
   providers: [{ provide: MatFormFieldControl, useExisting: PhoneFormFieldComponent }],
 })
-export class PhoneFormFieldComponent 
-implements ControlValueAccessor, MatFormFieldControl<PhoneParts>, OnInit, DoCheck, OnDestroy 
-{
+export class PhoneFormFieldComponent
+implements ControlValueAccessor, MatFormFieldControl<PhoneParts>, OnInit, DoCheck, OnDestroy {
   static nextId = 0;
 
   // implements MatFormFieldControl
@@ -117,7 +118,6 @@ implements ControlValueAccessor, MatFormFieldControl<PhoneParts>, OnInit, DoChec
   private _placeholder: string = '';
   private _required = false;
   public touched = false;
-  
 
   // implements MatFormFieldControl
   get empty(): boolean {
@@ -207,15 +207,14 @@ implements ControlValueAccessor, MatFormFieldControl<PhoneParts>, OnInit, DoChec
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public onFocusIn(event: FocusEvent) {
+  public onFocusIn(): void {
     if (!this.focused) {
       this.focused = true;
       this.stateChanges.next();
     }
   }
 
-  public onFocusOut(event: FocusEvent) {
+  public onFocusOut(event: FocusEvent): void {
     if (!this.elementRef.nativeElement.contains(event.relatedTarget as Element)) {
       this.touched = true;
       this.focused = false;
@@ -224,13 +223,13 @@ implements ControlValueAccessor, MatFormFieldControl<PhoneParts>, OnInit, DoChec
     }
   }
 
-  public setDescribedByIds(ids: string[]) {
+  public setDescribedByIds(ids: string[]): void {
     const controlElement = this.elementRef.nativeElement.querySelector('.ngx-phone-input-container')!;
     controlElement.setAttribute('aria-describedby', ids.join(' '));
   }
 
-  public onContainerClick(event: MouseEvent) {
-    if ((event.target as Element).tagName.toLowerCase() != 'input') {
+  public onContainerClick(event: MouseEvent): void {
+    if ((event.target as Element).tagName.toLowerCase() !== 'input') {
       this.elementRef.nativeElement.querySelector('input')?.focus();
     }
   }
