@@ -19,7 +19,7 @@
 # Development
 ## Local development
 0. In case of private repo and private package add `.npmrc`
-1. Update shared packages: `npm i @angularnestpostgre/packages@latest` 
+1. Update shared packages: `npm i @angularnestpostgre/packages@latest`
 2. Run local server.
 3. Build ngx-shared lib:
   - run `npm run build:lib:shared` to build a lib,
@@ -38,8 +38,8 @@ Use standard mat typography classes whenever possible: https://material.angular.
 ## Angular Material
 ### Custom Theming
 - https://angular-material.dev/courses/m2-ng-components/m2-ng-components/create-custom-theme
-- Default theme - default System theme
-- Dark theme is lazy loading setup is in angular.json
+- Default theme - default System theme.
+- Dark theme is lazy loading setup is in angular.json.
 
 ### Add Angular Material Module
 1. Add module to `app/shared/shared.module.ts`.
