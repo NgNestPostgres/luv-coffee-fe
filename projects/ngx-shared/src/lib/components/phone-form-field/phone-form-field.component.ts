@@ -18,6 +18,7 @@ import {
   AbstractControl,
   ControlValueAccessor,
   FormBuilder,
+  FormControl,
   FormGroup,
   FormGroupDirective,
   NgControl,
@@ -97,8 +98,8 @@ implements ControlValueAccessor, MatFormFieldControl<PhoneParts>, OnInit, DoChec
   @Input()
   get value(): PhoneParts | null {
     if (this.parts.valid) {
-      const { value: { area, exchange, subscriber } } = this.parts;
-      return new PhoneParts(area, exchange, subscriber);
+      const { area, exchange, subscriber } = this.parts.value;
+      return new PhoneParts(area || '', exchange || '', subscriber || '');
     }
     return null;
   }
@@ -110,7 +111,11 @@ implements ControlValueAccessor, MatFormFieldControl<PhoneParts>, OnInit, DoChec
 
   public focused = false; // implements MatFormFieldControl
   public controlType = 'ngx-phone-input'; // implements MatFormFieldControl
-  public parts: FormGroup;
+  public parts: FormGroup<{
+    area: FormControl<string | null>;
+    exchange: FormControl<string | null>;
+    subscriber: FormControl<string | null>;
+  }>;
   public stateChanges = new Subject<void>(); // implements MatFormFieldControl
   public errorState: boolean = false; // implements MatFormFieldControl
 
@@ -140,19 +145,19 @@ implements ControlValueAccessor, MatFormFieldControl<PhoneParts>, OnInit, DoChec
     @Optional() @Self() public ngControl: NgControl,
   ) {
     this.parts = this.fb.group({
-      area: [null, [
+      area: ['', [
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(3),
         Validators.pattern('^\\+[1-9]{2}$')
       ]],
-      exchange: [null, [
+      exchange: ['', [
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(3),
         Validators.pattern('^[0-9]*$')
       ]],
-      subscriber: [null, [
+      subscriber: ['', [
         Validators.required,
         Validators.minLength(7),
         Validators.maxLength(7),
