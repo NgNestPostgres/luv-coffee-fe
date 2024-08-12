@@ -35,6 +35,11 @@
 Run `npm i -g spa-server-gzip`
 Run `npm run build:start`
 
+### Release
+1. Update versions in (versions must be the same):
+  - package.json
+  - projects/package.json
+
 
 # Styling
 Do not use direct colors. Use only palette colors defined in _variables.scss.
