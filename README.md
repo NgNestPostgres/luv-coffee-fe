@@ -18,8 +18,13 @@
 
 # Development
 ## Local development
-0. In case of private repo and private package add `.npmrc`
-1. Update shared packages: `npm i @angularnestpostgre/packages@latest`
+0. Get Presonal Access Token (classic).
+1. Update shared packages:
+  1.1. Authenticate with personal access token (classic):
+    - Run `npm login --scope=@ngnestpostgres --auth-type=legacy --registry=https://npm.pkg.github.com`
+        Username: ngnestpostgres
+        Password: access_token_classic
+  1.2 `npm i @ngnestpostgres/packages@latest`.
 2. Run local server.
 3. Build ngx-shared lib:
   - run `npm run build:lib:shared` to build a lib,
@@ -140,9 +145,9 @@ Run `yarn build:analyze`.
 
 # Angular Update
 1. Update manually:
-npm i eslint@8 --save-dev
+npm i eslint@8 eslint-plugin-unused-imports@3 --save-dev
 
-npm i @angular-eslint/builder@latest @angular-eslint/eslint-plugin@latest @angular-eslint/eslint-plugin-template@latest @angular-eslint/schematics@latest @angular-eslint/template-parser@latest @typescript-eslint/eslint-plugin@latest @typescript-eslint/parser@latest eslint-config-airbnb-base@latest eslint-config-airbnb-typescript@latest eslint-plugin-simple-import-sort@latest eslint-plugin-unused-imports@3 --save-dev
+npm i @angular-eslint/builder@latest @angular-eslint/eslint-plugin@latest @angular-eslint/eslint-plugin-template@latest @angular-eslint/schematics@latest @angular-eslint/template-parser@latest @typescript-eslint/eslint-plugin@latest @typescript-eslint/parser@latest eslint-config-airbnb-base@latest eslint-config-airbnb-typescript@latest eslint-plugin-simple-import-sort@latest --save-dev
 
 # REFACTOR TO NEW STARTUP
 ## Change prefix
