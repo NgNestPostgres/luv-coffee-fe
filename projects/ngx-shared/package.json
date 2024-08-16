@@ -1,5 +1,5 @@
 {
-  "name": "ngx-shared",
+  "name": "@ngnestpostgres/ngx-shared",
   "version": "0.0.4",
   "peerDependencies": {
     "@angular/common": "^18.0.0",

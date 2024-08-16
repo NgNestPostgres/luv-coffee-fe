@@ -1,5 +1,5 @@
 {
-  "name": "@ng-nest-postgre/luv-coffee-fe",
+  "name": "@ngnestpostgres/luv-coffee-fe",
   "version": "0.0.4",
   "private": true,
   "scripts": {
