@@ -26,7 +26,8 @@ jobs:
       - run: npm run build:prod
       - run: npm run lint
       - run: npm test
-
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   # scan-image:
   #   name: Scan Image with Trivy
   #   needs: [build-ci-image]
