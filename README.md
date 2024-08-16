@@ -35,11 +35,8 @@
 Run `npm i -g spa-server-gzip`
 Run `npm run build:start`
 
-### Release
-1. Update versions in (versions must be the same):
-  - package.json
-  - projects/package.json
-
+## PhoneFormFieldComponent
+https://material.angular.io/guide/creating-a-custom-form-field-control
 
 # Styling
 Do not use direct colors. Use only palette colors defined in _variables.scss.
@@ -57,7 +54,6 @@ Use standard mat typography classes whenever possible: https://material.angular.
   - to light theme: `src/styles.scss`,
   - to dark theme: `src/styles/themes/light-theme.scss`.
 
-
 # Lint
 https://dev.to/digitaldino/set-up-eslint-with-angular-and-the-airbnb-style-guide-effortlessly-55a8
 
@@ -65,6 +61,12 @@ https://dev.to/digitaldino/set-up-eslint-with-angular-and-the-airbnb-style-guide
 - Testing one file: `ng test --include='src/app/core/services/theme-manager.service.spec.ts'`.
 
 # Library
+## GitHub Auth
+1. Personal Access Token Classic (within the Organization)
+  1.1 Generate `access_token_classic` for luv-coffee-fe with `read/write` and `repo/repo:status/repo_deployment/public_repo/repo:invite/security:ivents` permissions.
+  1.2 Generate `access_token_classic` for `client` repo with `read` permissions.
+  1.3* In `client` repo add token as a `Actions` secret with the name `XXX_TOKEN`. (https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions)
+
 ## Library development
 1. Run `npm run build:lib:shared:watch` in the first terminal.
 2. Run `npm run serve:local` im the second terminal.
@@ -83,7 +85,6 @@ And also:
   ('NgxSharedModule' is not nessessary if its components are connected only via Router.)
 ````
 
-
 ## Library Assets
 ````
 1. Add '_mixins.scss' file to 'projects/ngx-shared/styles' folder.
@@ -99,9 +100,14 @@ And also:
   -------------------------------------------------------------------------------------
 ````
 
-### PhoneFormFieldComponent
-https://material.angular.io/guide/creating-a-custom-form-field-control
+# CI
+1. Get GitHub personal access token classic with `read` permissions.
+2. In `luv-coffee-fe` repo add token as a `Actions` secret with the name `NPM_FE_SHARED_TOKEN`. (https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions)
 
+# Release
+1. Update versions in (versions must be the same):
+  - package.json
+  - projects/package.json
 
 # Deployment
 https://cloud.google.com/appengine/docs/the-appengine-environments
@@ -110,7 +116,6 @@ Run `gcloud auth login`
 ## Hosting requirements
 1. Server should be adjusted to serve SPA.
 2. Server should do gzip.
-
 
 # Optimization
 ## Webpack analyser ???
