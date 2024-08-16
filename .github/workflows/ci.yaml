@@ -38,7 +38,7 @@ jobs:
         run: npm run lint
 
       - name: Unit Test
-        run: npm test:ci
+        run: npm run test:ci
 
   # scan-image:
   #   name: Scan Image with Trivy
