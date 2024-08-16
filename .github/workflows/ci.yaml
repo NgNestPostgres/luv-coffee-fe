@@ -12,9 +12,9 @@ jobs:
     name: Run CI
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: read
-      packages: read
+    # permissions:
+    #   contents: read
+    #   packages: read
 
     steps:
       - name: Checkout repository
@@ -38,7 +38,7 @@ jobs:
         run: npm run lint
 
       - name: Unit Test
-        run: npm test
+        run: npm test:ci
 
   # scan-image:
   #   name: Scan Image with Trivy
