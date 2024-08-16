@@ -25,12 +25,21 @@ jobs:
           node-version: '22.x'
           registry-url: 'https://npm.pkg.github.com'
           scope: '@ngnestpostgres'
-      - run: npm ci
-      - run: npm run build:prod
-      - run: npm run lint
-      - run: npm test
+
+      - name: Install Packages
+        run: npm ci
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_FE_SHARED_TOKEN }}
+
+      - name: Build
+        run: npm run build:prod
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Unit Test
+        run: npm test
+
   # scan-image:
   #   name: Scan Image with Trivy
   #   needs: [build-ci-image]
