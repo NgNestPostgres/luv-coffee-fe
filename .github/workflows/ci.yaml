@@ -14,7 +14,7 @@ jobs:
 
     permissions:
       actions: read # for github/cod
-    #   contents: read
+      contents: read
     #   packages: read
       security-events: write # for github/codeql-action/upload-sarif to upload SARIF results
 
@@ -63,6 +63,7 @@ jobs:
       # Requires Advanced Security which is avalabale only for public and GitHub Enterprise
       - name: Upload Trivy scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v3
-        if: always()
+        # if: always()
         with:
-          sarif_file: 'trivy-results.sarif'
+          sarif_file: trivy-results.sarif
+          category: my-analysis-tool
