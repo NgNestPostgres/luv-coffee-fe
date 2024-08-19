@@ -1,6 +1,10 @@
 {
-  "name": "ngx-shared",
+  "name": "@ngnestpostgres/ngx-shared",
   "version": "0.0.4",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NgNestPostgres/luv-coffee-fe.git"
+  },
   "peerDependencies": {
     "@angular/common": "^18.0.0",
     "@angular/core": "^18.0.0",
