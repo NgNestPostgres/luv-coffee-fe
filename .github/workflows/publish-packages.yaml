@@ -31,13 +31,13 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_FE_SHARED_TOKEN }}
 
       - name: Build
-        run: npm run build
+        run: npm run build:prod
 
       - name: Lint
         run: npm run lint
 
       - name: Unit Tests
-        run: npm test
+        run: npm run test:ci
 
       - name: Publish
         run: npm run publish:ngx-shared
