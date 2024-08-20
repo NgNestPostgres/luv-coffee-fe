@@ -1,19 +1,18 @@
 # Documentation
 - https://angular.dev
-- https://medium.com/@avinashanshu.iitb/create-a-multiple-nest-package-and-publish-it-privately-and-publically-8003dde4497e
 
 # Setup
 - Instlall nvm (https://github.com/nvm-sh/nvm).
 - Install Cloud SDK (https://cloud.google.com/sdk/docs/install).
 
 - Run `nvm install 1.x.x`
-- Run `nvm use xx.xx.x`
+- Run `nvm use x.x.x`
 - Run `npm i -g @angular/cli`
 - Run `npx husky init`
 
 ## Dependencies CLI
 - `gcloud` (Google Cloud SDK)
-- `node` version xx.xx.x
+- `node` version x.x.x
 - `ng`
 
 # Development
@@ -24,22 +23,19 @@
     - Run `npm login --scope=@ngnestpostgres --auth-type=legacy --registry=https://npm.pkg.github.com`
         Username: ngnestpostgres
         Password: access_token_classic
-  1.2 `npm i @ngnestpostgres/packages@latest`.
+  1.2 `npm i @ngnestpostgres/fe-shared@latest` (or version yopu need).
 2. Run local server.
 3. Build ngx-shared lib:
-  - run `npm run build:lib:shared` to build a lib,
-  - or run `npm run build:lib:shared:watch` for ngx-shared library development.
+  - run `npm run build:lib:ngx-shared` to build a lib,
+  - or run `npm run build:lib:ngx-shared:watch` for ngx-shared library development.
 4. Run `npm run serve:local` to start FE develoment.
 
-## Run build locally
+## Run build locally (???)
 Run `npm i -g spa-server-gzip`
 Run `npm run build:start`
 
-### Release
-1. Update versions in (versions must be the same):
-  - package.json
-  - projects/package.json
-
+## PhoneFormFieldComponent
+https://material.angular.io/guide/creating-a-custom-form-field-control
 
 # Styling
 Do not use direct colors. Use only palette colors defined in _variables.scss.
@@ -52,11 +48,10 @@ Use standard mat typography classes whenever possible: https://material.angular.
 - Dark theme is lazy loading setup is in angular.json.
 
 ### Add Angular Material Module
-1. Add module to `app/shared/shared.module.ts`.
+1. Add module to `app/shared/shared.module.ts`. (???)
 2. Add module styles:
   - to light theme: `src/styles.scss`,
   - to dark theme: `src/styles/themes/light-theme.scss`.
-
 
 # Lint
 https://dev.to/digitaldino/set-up-eslint-with-angular-and-the-airbnb-style-guide-effortlessly-55a8
@@ -65,13 +60,35 @@ https://dev.to/digitaldino/set-up-eslint-with-angular-and-the-airbnb-style-guide
 - Testing one file: `ng test --include='src/app/core/services/theme-manager.service.spec.ts'`.
 
 # Library
+## GitHub Auth
+1. Personal Access Token Classic (within the Organization)
+  1.1 Generate `access_token_classic` for luv-coffee-fe with `read/write` and `repo/repo:status/repo_deployment/public_repo/repo:invite/security:ivents` permissions.
+  1.2 Generate `access_token_classic` for `client` repo with `read` permissions.
+  1.3* In `client` repo add token as a `Actions` secret with the name `XXX_TOKEN`. (https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions)
+
 ## Library development
-1. Run `npm run build:lib:shared:watch` in the first terminal.
+1. Run `npm run build:lib:ngx-shared:watch` in the first terminal.
 2. Run `npm run serve:local` im the second terminal.
+
+## Publish libraries/packages
+1. Update versions in (versions the same???):
+  - package.json
+  - packages/package.json
+2. Publish from local machine:
+  2.1. Authenticate with personal access token (classic) with `write` permissions:
+    - Run `npm login --scope=@ngnestpostgres --auth-type=legacy --registry=https://npm.pkg.github.com`
+        Username: ngnestpostgres
+        Password: access_token_classic
+  2.2 Run `npm run publish:ngx-shared`.
+3. Publish with GitHub Actions (https://docs.github.com/en/packages/managing-github-packages-using-github-actions-workflows/publishing-and-installing-a-package-with-github-actions#upgrading-a-workflow-that-accesses-a-registry-using-a-personal-access-token):
+  3.1 On `dev` branch create release (set as pre-release).
+
+## Library npm packages update
+1. Manually update packages (dependencies, peerDependencies) verions according to repository (main) `package.json`.
 
 ## Library Development Convention
 ````
-Angular library rules (https://angular.io/guide/creating-libraries#refactoring-parts-of-an-application-into-a-library):
+Angular library rules (https://angular.dev/tools/libraries/creating-libraries):
 - Declarations such as components and pipes should be designed as stateless.
 - Any observables that the components subscribe to internally should be cleaned up and disposed of during the lifecycle of those  components.
 - Components should expose their interactions through inputs for providing context, and outputs for communicating events to other components.
@@ -79,10 +96,9 @@ Angular library rules (https://angular.io/guide/creating-libraries#refactoring-p
 
 And also:
 - By convention Angular libraries should be prefixed by 'ngx-'.
-- 'NgxSharedModule' should be imported in 'SharedModule'.
+- 'NgxSharedModule' should be imported in 'SharedModule'. (???)
   ('NgxSharedModule' is not nessessary if its components are connected only via Router.)
 ````
-
 
 ## Library Assets
 ````
@@ -99,18 +115,23 @@ And also:
   -------------------------------------------------------------------------------------
 ````
 
-### PhoneFormFieldComponent
-https://material.angular.io/guide/creating-a-custom-form-field-control
+# CI
+1. Get GitHub personal access token classic with `read` permissions.
+2. In `luv-coffee-fe` repo add token as a `Actions` secret with the name `NPM_FE_SHARED_TOKEN`. (https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions)
 
+# Release
+1. Create release branch `release_x.x.x`.
+2. Update versions in:
+  - package.json (version x.x.x as release branch)
+  - projects/ngx-shared/package.json (version y.y.y)
 
-# Deployment
+# Deployment ???
 https://cloud.google.com/appengine/docs/the-appengine-environments
 Run `gcloud auth login`
 
 ## Hosting requirements
 1. Server should be adjusted to serve SPA.
 2. Server should do gzip.
-
 
 # Optimization
 ## Webpack analyser ???

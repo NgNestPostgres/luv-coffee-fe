@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AccessTokenWrapped, UserLogin } from '@ngnestpostgres/packages/fe-shared';
+import { AccessTokenWrapped, UserLogin } from '@ngnestpostgres/fe-shared';
 import {
   catchError, map, Observable, tap
 } from 'rxjs';
