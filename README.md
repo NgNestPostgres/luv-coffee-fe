@@ -23,7 +23,7 @@
     - Run `npm login --scope=@ngnestpostgres --auth-type=legacy --registry=https://npm.pkg.github.com`
         Username: ngnestpostgres
         Password: access_token_classic
-  1.2 `npm i @ngnestpostgres/fe-shared@latest` (or version yopu need).
+  1.2 `npm i @ngnestpostgres/fe-shared@latest` (or version you need).
 2. Run local server.
 3. Build ngx-shared lib:
   - run `npm run build:lib:ngx-shared` to build a lib,
