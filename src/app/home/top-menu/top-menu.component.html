@@ -1,0 +1,36 @@
+<a
+  mat-button
+  [routerLink]="['../coffees']"
+  [routerLinkActive]="'selected'"
+  [routerLinkActiveOptions]="{ exact: true }"
+>Coffees</a>
+
+<a
+  mat-button
+  [routerLink]="['../users']"
+  [routerLinkActive]="'selected'"
+>Users</a>
+
+<button mat-button [matMenuTriggerFor]="menu">Menu</button>
+<mat-menu #menu="matMenu">
+  <a
+    mat-menu-item
+    [routerLink]="['../coffees']"
+    [routerLinkActive]="'selected'"
+  >Coffees</a>
+
+  <a
+    mat-menu-item
+    [routerLink]="['../users']"
+    [routerLinkActive]="'selected'"
+  >Users</a>
+</mat-menu>
+
+<button mat-button [matMenuTriggerFor]="libDev">Lib Dev</button>
+<mat-menu #libDev="matMenu">
+  <a
+    mat-menu-item
+    [routerLink]="['../lib-dev/phone-form-field']"
+    [routerLinkActive]="'selected'"
+  >Phone Form Field</a>
+</mat-menu>
