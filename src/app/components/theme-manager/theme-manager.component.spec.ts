@@ -2,7 +2,6 @@ import { HarnessLoader } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatMenuModule } from '@angular/material/menu';
 import { MatMenuHarness } from '@angular/material/menu/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ThemeManagerService } from '@core/services/theme-manager.service';
@@ -22,10 +21,9 @@ describe('ThemeToggleComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        MatMenuModule,
         NoopAnimationsModule
       ],
-      declarations: [ThemeManagerComponent],
+      declarations: [],
       providers: [
         { provide: ThemeManagerService, useClass: MockThemeManagerService }
       ],

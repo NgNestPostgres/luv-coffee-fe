@@ -21,7 +21,6 @@ import { TopMenuComponent } from './components/top-menu/top-menu.component';
     TopMenuComponent,
     SidenavTreeComponent,
     SearchBoxComponent,
-    ThemeManagerComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,6 +28,7 @@ import { TopMenuComponent } from './components/top-menu/top-menu.component';
     SharedModule,
     AuthModule,
     AppRoutingModule,
+    ThemeManagerComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
