@@ -1,0 +1,44 @@
+@use '../../../styles/variables' as vars;
+
+:host-context(.light-theme) {
+  .selected {
+    background: vars.$light_primary_100;
+  }
+}
+
+:host {
+  display: block;
+  min-width: 200px;
+  padding: 16px 0;
+}
+
+mat-tree-node {
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.selected {
+  background: vars.$dark_primary_300;
+}
+
+.menu-item {
+  border-radius: 0;
+  width: 100%;
+
+  &.link {
+    align-items: center;
+    display: flex;
+  }
+
+  &.expandable {
+    .content-wrapper {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .initial-indent {
+    padding-left: 16px;
+  }
+}
