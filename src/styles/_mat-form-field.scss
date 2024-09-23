@@ -1,3 +1,4 @@
+@use '/src/styles/themes/all' as themes;
 @use '/src/styles/variables' as vars;
 
 mat-form-field {
@@ -13,10 +14,10 @@ mat-form-field {
     &.mat-form-field-appearance-outline:not(.mat-focused) {
       /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version.*/
       .mat-form-field-outline-thick {
-        color: vars.$dark_accent_300;
+        @include vars.mat-color(themes.$light-theme, neutral-variant, 80); //vars.$dark_accent_300;
 
-        body.light-theme & {
-          color: vars.$light_accent_300;
+        body.dark-theme & {
+          @include vars.mat-color(themes.$dark-theme, tertiary, 20); // vars.$light_accent_300;
          }
       }
     }

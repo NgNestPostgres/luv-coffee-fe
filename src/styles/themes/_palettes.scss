@@ -1,8 +1,8 @@
 @use '/node_modules/@angular/material' as mat;
 
 // Set palettes
-$dark-primary-palette: mat.m2-define-palette(mat.$m2-indigo-palette);
-$dark-accent-palette: mat.m2-define-palette(mat.$m2-blue-gray-palette);
-$dark-warn-palette: mat.m2-define-palette(mat.$m2-red-palette);
-$light-primary-palette: mat.m2-define-palette(mat.$m2-indigo-palette);
-$light-accent-palette: mat.m2-define-palette(mat.$m2-light-blue-palette);
+$dark-primary-palette: mat.$magenta-palette;
+$dark-tertiary-palette: mat.$violet-palette;
+// $dark-error-pallete:
+$light-primary-palette: mat.$azure-palette;
+$light-tertiary-palette: mat.$blue-palette;

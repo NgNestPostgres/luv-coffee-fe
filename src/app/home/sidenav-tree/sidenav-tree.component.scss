@@ -1,8 +1,9 @@
+@use '../../../styles/themes/all' as themes;
 @use '../../../styles/variables' as vars;
 
-:host-context(.light-theme) {
+:host-context(.dark-theme) {
   .selected {
-    background: vars.$light_primary_100;
+    @include vars.mat-background-color(themes.$dark-theme, primary, 20);
   }
 }
 
@@ -18,7 +19,7 @@ mat-tree-node {
 }
 
 .selected {
-  background: vars.$dark_primary_300;
+  @include vars.mat-background-color(themes.$light-theme, secondary, 80);
 }
 
 .menu-item {
