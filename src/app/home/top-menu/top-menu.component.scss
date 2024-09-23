@@ -1,19 +1,20 @@
+@use '/src/styles/themes/themes' as themes;
 @use '/src/styles/variables' as vars;
 
-:host-context(.light-theme) {
+:host-context(.dark-theme) {
   a:hover, button:hover {
-    background: vars.$light_primary_700;
+    @include vars.mat-background-color(themes.$dark-theme, primary, 10);
   }
 
   .selected {
-    background: vars.$light_primary_400;
+    @include vars.mat-background-color(themes.$dark-theme, primary, 30);
   }
 }
 
 a:hover, button:hover {
-  background: vars.$dark_primary_700;
+  @include vars.mat-background-color(themes.$light-theme, secondary, 98);
 }
 
 .selected {
-  background: vars.$dark_primary_400;
+  @include vars.mat-background-color(themes.$light-theme, secondary, 80);
 }

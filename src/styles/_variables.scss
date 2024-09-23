@@ -1,5 +1,4 @@
 @use '/node_modules/@angular/material' as mat;
-@use 'themes/palettes' as palette;
 
 @mixin mat-background-color($theme, $pallete, $weight) {
   // $type: mat.get-theme-type($theme);

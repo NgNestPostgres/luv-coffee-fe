@@ -1,5 +1,5 @@
-@use '../../../styles/themes/all' as themes;
-@use '../../../styles/variables' as vars;
+@use '/src/styles/themes/themes' as themes;
+@use '/src/styles/variables' as vars;
 
 :host-context(.dark-theme) {
   .selected {
