@@ -1,12 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 @use "/node_modules/@angular/material" as mat;
 @use "./styles/themes/themes" as themes;
+@use "./styles/themes/sizes";
 @use 'styles/variables' as vars;
 @use 'styles/mat-form-field';
 
 @include mat.core();
 /*
-  Do not forget to add '@inctlude' to dark theme: 'scr/styles/themes/dark.scss'
+  Do not forget to add '@inctlude' to
+   - dark theme colors: 'scr/styles/themes/dark.scss',
+   - theme density: 'src/styles/themes/_sizes.scss'.
 */
 :root {
   @include mat.core-theme(themes.$light-theme);
@@ -20,6 +23,8 @@
   @include mat.sidenav-theme(themes.$light-theme);
   @include mat.toolbar-theme(themes.$light-theme);
   @include mat.tree-theme(themes.$light-theme);
+
+  @include mat.typography-hierarchy(themes.$light-theme);
 }
 
 
