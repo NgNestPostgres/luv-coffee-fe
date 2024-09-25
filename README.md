@@ -43,6 +43,7 @@ Use standard mat typography classes whenever possible: https://material.angular.
 
 ## Angular Material
 ### Custom Theming
+- https://material.angular.io/guides
 - https://angular-material.dev/courses/m2-ng-components/m2-ng-components/create-custom-theme
 - Default theme - default System theme.
 - Dark theme is lazy loading setup is in angular.json.

@@ -1,11 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 @use "/node_modules/@angular/material" as mat;
-@use "./styles/themes/themes" as themes;
-@use "./styles/themes/sizes";
+@use "styles/themes/themes" as themes;
+@use "styles/themes/sizes";
 @use 'styles/variables' as vars;
-@use 'styles/mat-form-field';
+@use 'styles/mat-mixins' as mixin;
+@use 'styles/mat-button';
 
 @include mat.core();
+// @include mat.strong-focus-indicators((
+//   border-style: dotted,
+//   border-width: 4px,
+//   border-radius: 2px,
+// ));
 /*
   Do not forget to add '@inctlude' to
    - dark theme colors: 'scr/styles/themes/dark.scss',
@@ -25,6 +31,9 @@
   @include mat.tree-theme(themes.$light-theme);
 
   @include mat.typography-hierarchy(themes.$light-theme);
+  // @include mat.strong-focus-indicators-theme(themes.$light-theme);
+
+  @include mixin.mat-button-hover-selected(themes.$light-theme);
 }
 
 
