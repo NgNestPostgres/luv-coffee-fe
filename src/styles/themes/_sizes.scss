@@ -1,0 +1,59 @@
+@use "@angular/material" as mat;
+
+$densities: (
+  "sm":
+    mat.define-theme(
+      (
+        density: (
+          scale: -1,
+        ),
+      )
+    ),
+  "xs":
+    mat.define-theme(
+      (
+        density: (
+          scale: -2,
+        ),
+      )
+    ),
+  "xxs":
+    mat.define-theme(
+      (
+        density: (
+          scale: -3,
+        ),
+      )
+    ),
+  "3xs":
+    mat.define-theme(
+      (
+        density: (
+          scale: -4,
+        ),
+      )
+    ),
+  "4xs":
+    mat.define-theme(
+      (
+        density: (
+          scale: -5,
+        ),
+      )
+    ),
+);
+
+@each $name, $density in $densities {
+  .density-#{$name} {
+    // @include mat.all-component-densities($density);
+    @include mat.autocomplete-density($density);
+    @include mat.button-density($density);
+    @include mat.form-field-density($density);
+    @include mat.icon-density($density);
+    @include mat.input-density($density);
+    @include mat.menu-density($density);
+    @include mat.sidenav-density($density);
+    @include mat.toolbar-density($density);
+    @include mat.tree-density($density);
+  }
+}

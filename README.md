@@ -43,6 +43,7 @@ Use standard mat typography classes whenever possible: https://material.angular.
 
 ## Angular Material
 ### Custom Theming
+- https://material.angular.io/guides
 - https://angular-material.dev/courses/m2-ng-components/m2-ng-components/create-custom-theme
 - Default theme - default System theme.
 - Dark theme is lazy loading setup is in angular.json.
@@ -51,7 +52,8 @@ Use standard mat typography classes whenever possible: https://material.angular.
 1. Add module to `app/shared/shared.module.ts`. (???)
 2. Add module styles:
   - to light theme: `src/styles.scss`,
-  - to dark theme: `src/styles/themes/light-theme.scss`.
+  - to dark theme colors: `src/styles/themes/dark-theme.scss`,
+  - to theme density: `src/styles/themes/_sizes.scss`.
 
 # Lint
 https://dev.to/digitaldino/set-up-eslint-with-angular-and-the-airbnb-style-guide-effortlessly-55a8

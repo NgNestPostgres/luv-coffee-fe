@@ -1,0 +1,26 @@
+@use '/node_modules/@angular/material' as mat;
+
+@mixin mat-background-color($theme, $pallete, $hue-weight) {
+  background-color: mat.get-theme-color($theme, $pallete, $hue-weight);
+}
+
+@mixin mat-color($theme, $pallete, $hue-weight) {
+  color: mat.get-theme-color($theme, $pallete, $hue-weight);
+}
+
+@mixin mat-button-hover-selected($theme) {
+  $type: mat.get-theme-type($theme);
+  $is-dark-theme: $type == dark;
+  // $is-light-theme: $type == light;
+  // $exportBackgroundOpacity: if($is-dark-theme, 0.12, 0.06);
+  $background-color: if($is-dark-theme, mat.get-theme-color($theme, primary, 10), mat.get-theme-color($theme, secondary, 90));
+  $background-color-selected: if($is-dark-theme, mat.get-theme-color($theme, primary, 30), mat.get-theme-color($theme, secondary, 70));
+
+  a:not([disabled]):hover, button:not([disabled]):hover {
+    background-color: $background-color;
+  }
+
+  a.selected, button.selected {
+    background-color: $background-color-selected;
+  }
+}

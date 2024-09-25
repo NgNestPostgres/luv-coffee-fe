@@ -1,11 +1,3 @@
-@use '../../../styles/variables' as vars;
-
-:host-context(.light-theme) {
-  .selected {
-    background: vars.$light_primary_100;
-  }
-}
-
 :host {
   display: block;
   min-width: 200px;
@@ -17,12 +9,9 @@ mat-tree-node {
   overflow: hidden;
 }
 
-.selected {
-  background: vars.$dark_primary_300;
-}
-
 .menu-item {
   border-radius: 0;
+  height: inherit;
   width: 100%;
 
   &.link {

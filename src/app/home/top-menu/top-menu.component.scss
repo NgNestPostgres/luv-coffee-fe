@@ -1,19 +1,2 @@
-@use '/src/styles/variables' as vars;
 
-:host-context(.light-theme) {
-  a:hover, button:hover {
-    background: vars.$light_primary_700;
-  }
 
-  .selected {
-    background: vars.$light_primary_400;
-  }
-}
-
-a:hover, button:hover {
-  background: vars.$dark_primary_700;
-}
-
-.selected {
-  background: vars.$dark_primary_400;
-}
