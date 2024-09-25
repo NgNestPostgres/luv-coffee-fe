@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import { DOCUMENT } from '@angular/common';
 import { inject, Injectable } from '@angular/core';
-import { LocalStorage } from '@core/services/storage.service';
+import { LocalStorageService } from '@core/services/local-storage.service';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { take } from 'rxjs/operators';
 
@@ -10,7 +10,7 @@ const LOCAL_STORAGE_KEY = 'anp-theme';
 @Injectable({ providedIn: 'root' })
 export class ThemeManagerService {
   private document = inject(DOCUMENT);
-  private localStorage = inject(LocalStorage);
+  private localStorage = inject(LocalStorageService);
   private _isDarkSub = new BehaviorSubject(false);
   isDark$ = this._isDarkSub.asObservable();
   private _window = this.document.defaultView;
@@ -32,13 +32,13 @@ export class ThemeManagerService {
     }
   }
 
-  private getStoredTheme = (key: string = LOCAL_STORAGE_KEY) => JSON.parse(this.localStorage.getItem(key) ?? '{}')
+  private getStoredTheme = (key: string = LOCAL_STORAGE_KEY) => JSON.parse(this.localStorage.get(key) ?? '{}')
     .theme;
 
   private setStoredTheme = (theme: string, key: string = LOCAL_STORAGE_KEY) => {
-    const meta = JSON.parse(this.localStorage.getItem(key) ?? '{}');
+    const meta = JSON.parse(this.localStorage.get(key) ?? '{}');
     meta.theme = theme;
-    this.localStorage.setItem(key, JSON.stringify(meta));
+    this.localStorage.set(key, JSON.stringify(meta));
   };
 
   private getPreferredTheme = (key: string = LOCAL_STORAGE_KEY): 'dark' | 'light' => {

@@ -1,0 +1,40 @@
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+  <mat-tree-node
+    @expandNode
+    *matTreeNodeDef="let node"
+  >
+    <a
+      class="menu-item link"
+      mat-menu-item
+      matTreeNodePadding
+      [matTreeNodePaddingIndent]="16"
+      [routerLinkActive]="'selected'"
+      [routerLink]="node.path"
+      (click)="itemChosen()"
+    >
+      <div class="initial-indent">{{node.name}}</div>
+    </a>
+  </mat-tree-node>
+
+  <mat-tree-node
+    @expandNode
+    *matTreeNodeDef="let node;when: hasChild"
+  >
+    <button
+      [attr.aria-label]="'Toggle ' + node.name"
+      class="menu-item expandable"
+      mat-menu-item
+      matTreeNodeToggle
+      matTreeNodePadding
+      [matTreeNodePaddingIndent]="16"
+    >
+      <div class="content-wrapper initial-indent">
+        <div>{{node.name}}</div>
+
+        <mat-icon [@expandArrow]="treeControl.isExpanded(node) ? 'expand' : 'close'">
+          chevron_right
+        </mat-icon>
+      </div>
+    </button>
+  </mat-tree-node>
+</mat-tree>

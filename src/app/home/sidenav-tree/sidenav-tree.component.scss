@@ -1,0 +1,33 @@
+:host {
+  display: block;
+  min-width: 200px;
+  padding: 16px 0;
+}
+
+mat-tree-node {
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.menu-item {
+  border-radius: 0;
+  height: inherit;
+  width: 100%;
+
+  &.link {
+    align-items: center;
+    display: flex;
+  }
+
+  &.expandable {
+    .content-wrapper {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .initial-indent {
+    padding-left: 16px;
+  }
+}

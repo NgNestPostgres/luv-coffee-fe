@@ -6,4 +6,9 @@
   .icon-close {
     @include mixins.mat-icon-size(18);
   }
+
+  .search-box {
+    position: relative;
+    top: 10px;
+  }
 }

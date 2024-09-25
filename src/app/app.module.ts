@@ -6,12 +6,12 @@ import { SharedModule } from '@shared/shared.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from './auth/auth.module';
-import { HomeComponent } from './components/home/home.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
-import { SearchBoxComponent } from './components/search-box/search-box.component';
-import { SidenavTreeComponent } from './components/sidenav-tree/sidenav-tree.component';
-import { ThemeManagerComponent } from './components/theme-manager/theme-manager.component';
-import { TopMenuComponent } from './components/top-menu/top-menu.component';
+import { HomeComponent } from './home/home/home.component';
+import { NotFoundComponent } from './home/not-found/not-found.component';
+import { SearchBoxComponent } from './home/search-box/search-box.component';
+import { SidenavTreeComponent } from './home/sidenav-tree/sidenav-tree.component';
+import { ThemeManagerComponent } from './home/theme-manager/theme-manager.component';
+import { TopMenuComponent } from './home/top-menu/top-menu.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,6 @@ import { TopMenuComponent } from './components/top-menu/top-menu.component';
     TopMenuComponent,
     SidenavTreeComponent,
     SearchBoxComponent,
-    ThemeManagerComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,6 +28,7 @@ import { TopMenuComponent } from './components/top-menu/top-menu.component';
     SharedModule,
     AuthModule,
     AppRoutingModule,
+    ThemeManagerComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
