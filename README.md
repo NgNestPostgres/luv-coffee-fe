@@ -126,6 +126,8 @@ And also:
 2. Update versions in:
   - package.json (version x.x.x as release branch)
   - projects/ngx-shared/package.json (version y.y.y)
+3. Merge `relesex.x.x` branch to `main` branch.
+4. Merge `main` branch to `dev`.
 
 # Deployment ???
 https://cloud.google.com/appengine/docs/the-appengine-environments
