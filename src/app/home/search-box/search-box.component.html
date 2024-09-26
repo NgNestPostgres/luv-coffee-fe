@@ -19,24 +19,26 @@
       (input)="search(searchBox.value)"
     >
 
-    <button
-      *ngIf="searchBox.value"
-      aria-label="Clear"
-      matSuffix
-      mat-icon-button
-      (click)="searchBox.value=''; search('')"
-    >
-      <mat-icon class="icon-close">close</mat-icon>
-    </button>
+    @if (searchBox.value) {
+      <button
+        aria-label="Clear"
+        matIconSuffix
+        mat-icon-button
+        (click)="searchBox.value=''; search('')"
+      >
+        <mat-icon class="icon-close">close</mat-icon>
+      </button>
+    }
 
     <mat-autocomplete #auto="matAutocomplete">
-      <mat-option
-        *ngFor="let option of searchOptions$ | async"
-        [value]="option.name"
-        (click)="optionSelected(option)"
-      >
-        {{option.name}}
-      </mat-option>
+      @for (option of searchOptions$ | async; track option) {
+        <mat-option
+          [value]="option.name"
+          (click)="optionSelected(option)"
+        >
+          {{option.name}}
+        </mat-option>
+      }
     </mat-autocomplete>
   </mat-form-field>
 </form>

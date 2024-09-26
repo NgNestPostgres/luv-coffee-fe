@@ -1,8 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { RouterTestingModule } from '@angular/router/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { SearchBoxComponent } from './search-box.component';
 
@@ -12,12 +10,8 @@ describe('SearchBoxComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        MatAutocompleteModule,
-        ReactiveFormsModule,
-        RouterTestingModule,
-      ],
-      declarations: [SearchBoxComponent],
+      imports: [NoopAnimationsModule],
+      declarations: [],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
       .compileComponents();

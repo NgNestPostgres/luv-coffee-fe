@@ -16,11 +16,8 @@ import { TopMenuComponent } from './home/top-menu/top-menu.component';
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundComponent,
-    HomeComponent,
     TopMenuComponent,
     SidenavTreeComponent,
-    SearchBoxComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,6 +25,9 @@ import { TopMenuComponent } from './home/top-menu/top-menu.component';
     SharedModule,
     AuthModule,
     AppRoutingModule,
+    HomeComponent,
+    NotFoundComponent,
+    SearchBoxComponent,
     ThemeManagerComponent,
   ],
   providers: [],

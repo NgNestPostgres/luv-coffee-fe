@@ -84,6 +84,7 @@ https://dev.to/digitaldino/set-up-eslint-with-angular-and-the-airbnb-style-guide
   2.2 Run `npm run publish:ngx-shared`.
 3. Publish with GitHub Actions (https://docs.github.com/en/packages/managing-github-packages-using-github-actions-workflows/publishing-and-installing-a-package-with-github-actions#upgrading-a-workflow-that-accesses-a-registry-using-a-personal-access-token):
   3.1 On `dev` branch create release (set as pre-release).
+4. Packages can be found here: https://github.com/orgs/NgNestPostgres/packages.
 
 ## Library npm packages update
 1. Manually update packages (dependencies, peerDependencies) verions according to repository (main) `package.json`.
@@ -127,7 +128,8 @@ And also:
   - package.json (version x.x.x as release branch)
   - projects/ngx-shared/package.json (version y.y.y)
 3. Merge `relesex.x.x` branch to `main` branch.
-4. Merge `main` branch to `dev`.
+4. On GitHub on `release_x.x.x` branch create new release. (Will be triggered packages publishing).
+5. Merge `main` branch to `dev`.
 
 # Deployment ???
 https://cloud.google.com/appengine/docs/the-appengine-environments

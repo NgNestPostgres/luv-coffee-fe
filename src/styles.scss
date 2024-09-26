@@ -3,7 +3,7 @@
 @use "styles/themes/themes" as themes;
 @use "styles/themes/sizes";
 @use 'styles/variables' as vars;
-@use 'styles/mat-mixins' as mixin;
+@use 'styles/mat-mixins';
 @use 'styles/mat-button';
 
 @include mat.core();
@@ -33,7 +33,7 @@
   @include mat.typography-hierarchy(themes.$light-theme);
   // @include mat.strong-focus-indicators-theme(themes.$light-theme);
 
-  @include mixin.mat-button-hover-selected(themes.$light-theme);
+  @include mat-mixins.mat-custom-global-styles(themes.$light-theme);
 }
 
 
