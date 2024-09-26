@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -24,7 +23,6 @@ const SHARED_MODULES = [
 ];
 
 const ANGULAR_MATERIAL_MODULES = [
-  MatAutocompleteModule,
   MatButtonModule,
   MatDialogModule,
   MatFormFieldModule,

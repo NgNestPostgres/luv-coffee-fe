@@ -1,6 +1,12 @@
+import { AsyncPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { Router, RouterModule } from '@angular/router';
 import {
   debounceTime, distinctUntilChanged, Observable, of, Subject, switchMap
 } from 'rxjs';
@@ -17,7 +23,18 @@ const OPTIONS: SearchOption[] = [
 ];
 
 @Component({
+  standalone: true,
   selector: 'anp-search-box',
+  imports: [
+    AsyncPipe,
+    MatAutocompleteModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    RouterModule
+  ],
   templateUrl: './search-box.component.html',
   styleUrls: ['./search-box.component.scss']
 })

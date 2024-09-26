@@ -15,5 +15,5 @@
   @include mat.toolbar-color(themes.$dark-theme);
   @include mat.tree-color(themes.$dark-theme);
 
-  @include mixin.mat-button-hover-selected(themes.$dark-theme);
+  @include mixin.mat-custom-global-styles(themes.$dark-theme);
 }
