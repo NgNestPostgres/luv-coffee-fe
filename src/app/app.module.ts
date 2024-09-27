@@ -16,7 +16,6 @@ import { TopMenuComponent } from './home/top-menu/top-menu.component';
 @NgModule({
   declarations: [
     AppComponent,
-    TopMenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,6 +28,7 @@ import { TopMenuComponent } from './home/top-menu/top-menu.component';
     SearchBoxComponent,
     SidenavTreeComponent,
     ThemeManagerComponent,
+    TopMenuComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
