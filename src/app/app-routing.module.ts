@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   {
     path: 'users',
-    loadChildren: () => import('./lazy-loaded/users/users.module').then((m) => m.UsersModule),
+    loadChildren: () => import('./lazy-loaded/users/users.routes').then((m) => m.USERS_ROUTES),
   },
   {
     path: 'coffees',

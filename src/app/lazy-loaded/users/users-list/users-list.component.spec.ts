@@ -12,7 +12,7 @@ describe('UsersListComponent', () => {
     const spyDialogsService = jasmine.createSpyObj('DialogsService', ['login']);
 
     await TestBed.configureTestingModule({
-      declarations: [UsersListComponent],
+      declarations: [],
       providers: [
         { provide: DialogsService, useValue: spyDialogsService },
       ]
