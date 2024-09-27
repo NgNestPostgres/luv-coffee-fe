@@ -9,7 +9,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatTreeModule } from '@angular/material/tree';
 import { NgxSharedModule } from '@ngx-shared';
 
 import { TestComponent } from './components/test/test.component';
@@ -31,7 +30,6 @@ const ANGULAR_MATERIAL_MODULES = [
   MatMenuModule,
   MatSidenavModule,
   MatToolbarModule,
-  MatTreeModule,
 ];
 
 const SHARED_COMPONENTS = [

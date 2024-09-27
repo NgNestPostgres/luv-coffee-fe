@@ -23,8 +23,10 @@ const OPTIONS: SearchOption[] = [
 ];
 
 @Component({
-  standalone: true,
   selector: 'anp-search-box',
+  templateUrl: './search-box.component.html',
+  styleUrls: ['./search-box.component.scss'],
+  standalone: true,
   imports: [
     AsyncPipe,
     MatAutocompleteModule,
@@ -35,8 +37,6 @@ const OPTIONS: SearchOption[] = [
     ReactiveFormsModule,
     RouterModule
   ],
-  templateUrl: './search-box.component.html',
-  styleUrls: ['./search-box.component.scss']
 })
 export class SearchBoxComponent implements OnInit {
   public form!: FormGroup;

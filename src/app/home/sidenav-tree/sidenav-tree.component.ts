@@ -1,17 +1,24 @@
 import {
   animate, state, style, transition, trigger
 } from '@angular/animations';
-import { FlatTreeControl } from '@angular/cdk/tree';
-import { Component, EventEmitter, Output } from '@angular/core';
-import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
+import {
+  ChangeDetectionStrategy, Component, EventEmitter, Output
+} from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTreeModule } from '@angular/material/tree';
+import { RouterModule } from '@angular/router';
 
 import { TREE_DATA } from './sidenav-datasource';
-import { MenuItemFlatNode, MenuItemNode } from './sidenav-tree.enum';
+import { MenuItemNode } from './sidenav-tree.enum';
 
 @Component({
   selector: 'anp-sidenav-tree',
   templateUrl: './sidenav-tree.component.html',
   styleUrls: ['./sidenav-tree.component.scss'],
+  standalone: true,
+  imports: [MatIconModule, MatMenuModule, MatTreeModule, RouterModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     trigger('expandNode', [
       transition(':enter', [
@@ -32,33 +39,9 @@ import { MenuItemFlatNode, MenuItemNode } from './sidenav-tree.enum';
 export class SidenavTreeComponent {
   @Output() menuItemChosen = new EventEmitter<void>();
 
-  public treeControl = new FlatTreeControl<MenuItemFlatNode>(
-    (node) => node.level,
-    (node) => node.expandable,
-  );
-
-  public dataSource: MatTreeFlatDataSource<MenuItemNode, MenuItemFlatNode>;
-
-  private transformer = (node: MenuItemNode, level: number) => ({
-    expandable: !!node.children && node.children.length > 0,
-    name: node.name,
-    path: node.path || null,
-    level,
-  });
-
-  private treeFlattener = new MatTreeFlattener(
-    this.transformer,
-    (node) => node.level,
-    (node) => node.expandable,
-    (node) => node.children,
-  );
-
-  constructor() {
-    this.dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
-    this.dataSource.data = TREE_DATA;
-  }
-
-  public hasChild = (_: number, node: MenuItemFlatNode) => node.expandable;
+  public dataSource = TREE_DATA;
+  public childrenAccessor = (node: MenuItemNode) => node.children ?? [];
+  public hasChild = (_: number, node: MenuItemNode) => !!node.children && node.children.length > 0;
 
   public itemChosen(): void {
     this.menuItemChosen.emit();
