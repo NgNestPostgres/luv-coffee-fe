@@ -16,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: 'lib-dev',
-    loadChildren: () => import('./lazy-loaded/lib-dev/lib-dev.module').then((m) => m.LibDevModule),
+    loadChildren: () => import('./lazy-loaded/lib-dev/lib-dev.routes').then((m) => m.LIB_DEV_ROUTES),
   },
   { path: '**', component: NotFoundComponent },
 ];
