@@ -8,10 +8,6 @@
   color: mat.get-theme-color($theme, $pallete, $hue-weight);
 }
 
-@mixin mat-background-color($theme, $pallete, $hue-weight) {
-  --mat-toolbar-container-background-color: mat.get-theme-color($theme, $pallete, $hue-weight);
-}
-
 @mixin mat-custom-global-styles($theme) {
   $type: mat.get-theme-type($theme);
   $is-dark-theme: $type == dark;

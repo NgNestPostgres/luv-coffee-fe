@@ -1,6 +1,6 @@
 @use "/node_modules/@angular/material" as mat;
 @use "./themes" as themes;
-@use '../mat-mixins' as mixin;
+@use "../mat-mixins" as mixin;
 
 .dark-theme {
   @include mat.core-color(themes.$dark-theme);
