@@ -3,7 +3,7 @@
 @use "styles/themes/all-themes" as themes;
 @use "styles/themes/densities";
 @use "styles/variables" as vars;
-@use "styles/mat-global-mixins";
+@use "styles/themes/theme-mixins";
 @use "styles/mat-button";
 
 @include mat.core();
@@ -27,7 +27,7 @@
 
   @include mat.typography-hierarchy(themes.$light-theme);
 
-  @include mat-global-mixins.mat-custom-global-styles(themes.$light-theme);
+  @include theme-mixins.mat-custom-global-styles(themes.$light-theme);
 }
 
 
