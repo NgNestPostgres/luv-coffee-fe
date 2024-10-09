@@ -1,6 +1,6 @@
 @use "/node_modules/@angular/material" as mat;
-@use "./themes" as themes;
-@use "../mat-mixins" as mixin;
+@use "./all-themes" as themes;
+@use "../mat-global-mixins" as global-mixins;
 
 .dark-theme {
   @include mat.core-color(themes.$dark-theme);
@@ -15,5 +15,5 @@
   @include mat.toolbar-color(themes.$dark-theme);
   @include mat.tree-color(themes.$dark-theme);
 
-  @include mixin.mat-custom-global-styles(themes.$dark-theme);
+  @include global-mixins.mat-custom-global-styles(themes.$dark-theme);
 }

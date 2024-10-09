@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { CoffeesFilter } from './interfaces/coffees-filter';
 
 @Component({
   selector: 'anp-coffees',
   styles: [''],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <anp-table-filters
       [widthPx]="filtersWidthPx"

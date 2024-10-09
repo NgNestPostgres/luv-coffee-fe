@@ -1,14 +1,16 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'anp-users',
-  styles: [`
-  `],
+  standalone: true,
+  imports: [RouterOutlet],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div>
-      <router-outlet></router-outlet>
-    </div>
-  `,
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+`,
 })
 export class UsersComponent {
 

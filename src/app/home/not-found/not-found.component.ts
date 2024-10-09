@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 
 @Component({
-  standalone: true,
   selector: 'anp-not-found',
-  imports: [RouterModule],
   templateUrl: './not-found.component.html',
-  styleUrls: ['./not-found.component.scss']
+  styleUrls: ['./not-found.component.scss'],
+  standalone: true,
+  imports: [RouterModule],
 })
 export class NotFoundComponent implements OnInit {
   public url!: string;

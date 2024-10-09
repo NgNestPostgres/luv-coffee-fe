@@ -1,9 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @use "/node_modules/@angular/material" as mat;
-@use "styles/themes/themes" as themes;
-@use "styles/themes/desities";
+@use "styles/themes/all-themes" as themes;
+@use "styles/themes/densities";
 @use "styles/variables" as vars;
-@use "styles/mat-mixins";
+@use "styles/mat-global-mixins";
 @use "styles/mat-button";
 
 @include mat.core();
@@ -27,7 +27,7 @@
 
   @include mat.typography-hierarchy(themes.$light-theme);
 
-  @include mat-mixins.mat-custom-global-styles(themes.$light-theme);
+  @include mat-global-mixins.mat-custom-global-styles(themes.$light-theme);
 }
 
 

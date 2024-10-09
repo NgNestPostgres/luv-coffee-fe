@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
@@ -23,8 +23,10 @@ const OPTIONS: SearchOption[] = [
 ];
 
 @Component({
-  standalone: true,
   selector: 'anp-search-box',
+  templateUrl: './search-box.component.html',
+  styleUrls: ['./search-box.component.scss'],
+  standalone: true,
   imports: [
     AsyncPipe,
     MatAutocompleteModule,
@@ -35,8 +37,7 @@ const OPTIONS: SearchOption[] = [
     ReactiveFormsModule,
     RouterModule
   ],
-  templateUrl: './search-box.component.html',
-  styleUrls: ['./search-box.component.scss']
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchBoxComponent implements OnInit {
   public form!: FormGroup;

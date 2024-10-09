@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   {
     path: 'users',
-    loadChildren: () => import('./lazy-loaded/users/users.module').then((m) => m.UsersModule),
+    loadChildren: () => import('./lazy-loaded/users/users.routes').then((m) => m.USERS_ROUTES),
   },
   {
     path: 'coffees',
@@ -16,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: 'lib-dev',
-    loadChildren: () => import('./lazy-loaded/lib-dev/lib-dev.module').then((m) => m.LibDevModule),
+    loadChildren: () => import('./lazy-loaded/lib-dev/lib-dev.routes').then((m) => m.LIB_DEV_ROUTES),
   },
   { path: '**', component: NotFoundComponent },
 ];
