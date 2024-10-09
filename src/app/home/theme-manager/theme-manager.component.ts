@@ -3,7 +3,8 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
-import { ThemeManagerService } from '@core/services/theme-manager.service';
+
+import { ThemeManagerService } from './service/theme-manager.service';
 
 @Component({
   selector: 'anp-theme-manager',

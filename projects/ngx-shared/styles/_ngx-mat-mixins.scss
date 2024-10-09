@@ -1,0 +1,24 @@
+ @mixin mat-icon-size($size: 24) {
+  --mdc-icon-button-icon-size: #{$size}px;
+  font-size: #{$size}px;
+  height: #{$size}px;
+  line-height: #{$size}px;
+  width: #{$size}px;
+}
+
+@mixin mat-icon-button-size($size: 24) {
+  .mat-mdc-icon-button {
+    --mdc-icon-button-icon-size: #{$size}px;
+
+    &.mat-mdc-button-base {
+      --mdc-icon-button-state-layer-size: #{$size * 2.2}px;
+    }
+
+    .mat-icon {
+      font-size: #{$size}px;
+      height: #{$size}px;
+      line-height: #{$size}px;
+      width: #{$size}px;
+    }
+  }
+}
