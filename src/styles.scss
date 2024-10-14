@@ -2,8 +2,8 @@
 @use "/node_modules/@angular/material" as mat;
 @use "styles/themes/all-themes" as themes;
 @use "styles/themes/densities";
-@use "styles/variables" as vars;
 @use "styles/themes/theme-mixins";
+@use "styles/variables" as vars;
 @use "styles/mat-button";
 
 @include mat.core();
