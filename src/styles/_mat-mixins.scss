@@ -7,3 +7,36 @@
 @mixin mat-color($theme, $pallete, $hue-weight) {
   color: mat.get-theme-color($theme, $pallete, $hue-weight);
 }
+
+@mixin mat-icon-size($size: 20) {
+  --mdc-icon-button-icon-size: #{$size}px;
+  font-size: #{$size}px;
+  height: #{$size}px;
+  line-height: #{$size}px;
+  width: #{$size}px;
+}
+
+@mixin mat-icon-button-size($size: 24) {
+  .mat-mdc-icon-button {
+    --mdc-icon-button-icon-size: #{$size}px;
+
+    &.mat-mdc-button-base {
+      --mdc-icon-button-state-layer-size: #{$size * 2.2}px;
+    }
+
+    .mat-icon {
+      font-size: #{$size}px;
+      height: #{$size}px;
+      line-height: #{$size}px;
+      width: #{$size}px;
+    }
+  }
+}
+
+@mixin mat-button-round($borderRadius: 16) {
+  --border-radius: #{$borderRadius}px;
+  --mdc-text-button-container-shape: var(--border-radius);
+  --mdc-protected-button-container-shape: var(--border-radius);
+  --mdc-outlined-button-container-shape: var(--border-radius);
+  --mdc-filled-button-container-shape: var(--border-radius);
+}
