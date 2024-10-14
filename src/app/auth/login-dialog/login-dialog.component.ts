@@ -21,7 +21,7 @@ export class LoginDialogComponent implements OnInit {
   }
 
   public login(creds: UserLogin) {
-    this.authService.login(creds).subscribe((token) => {
+    this.authService.login(creds).subscribe((token: string) => {
       this.closeDialog(token);
     });
   }

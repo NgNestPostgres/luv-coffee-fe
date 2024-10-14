@@ -38,7 +38,7 @@
         "dist/ngx-shared"
       ]
     },
-    // "useDefineForClassFields": false
+    "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
