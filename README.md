@@ -67,7 +67,7 @@ https://dev.to/digitaldino/set-up-eslint-with-angular-and-the-airbnb-style-guide
 1. Personal Access Token Classic (within the Organization)
   1.1 Generate `access_token_classic` for luv-coffee-fe with `read/write` and `repo/repo:status/repo_deployment/public_repo/repo:invite/security:ivents` permissions.
   1.2 Generate `access_token_classic` for `client` repo with `read` permissions.
-  1.3* In `client` repo add token as a `Actions` secret with the name `XXX_TOKEN`. (https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions)
+  1.3* In `client` repo add token as a `Actions` secret with the name `XXX_TOKEN` with value `access_token_classic`. (https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions)
 
 ## Library development
 1. Run `npm run build:lib:ngx-shared:watch` in the first terminal.
