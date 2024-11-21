@@ -8,8 +8,8 @@ import { RouterModule } from '@angular/router';
   templateUrl: './top-menu.component.html',
   styleUrls: ['./top-menu.component.scss'],
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatButtonModule, MatMenuModule, RouterModule],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TopMenuComponent {
 
