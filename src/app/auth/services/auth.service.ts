@@ -23,9 +23,9 @@ export class AuthService {
       { ...creds }
     )
       .pipe(
-        tap((token) => this.tokenService.setAccessToken(token.data.accessToken)),
-        map((token) => token.data.accessToken),
-        catchError((err) => JSON.stringify(err))
+        tap((token: AccessTokenWrapped) => this.tokenService.setAccessToken(token.data.accessToken)),
+        map((token: AccessTokenWrapped) => token.data.accessToken),
+        catchError((err: Error) => JSON.stringify(err))
       );
   }
 }

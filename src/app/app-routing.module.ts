@@ -12,7 +12,7 @@ const routes: Routes = [
   },
   {
     path: 'coffees',
-    loadChildren: () => import('./lazy-loaded/coffees/coffees.module').then((m) => m.CoffeesModule),
+    loadChildren: () => import('./lazy-loaded/coffees/coffees.routes').then((m) => m.COFFEES_ROUTES),
   },
   {
     path: 'lib-dev',

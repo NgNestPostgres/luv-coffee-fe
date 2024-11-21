@@ -1,6 +1,6 @@
 @use '/node_modules/@angular/material' as mat;
 
-@mixin mat-custom-global-styles($theme) {
+@mixin global-styles($theme) {
   $type: mat.get-theme-type($theme);
   $is-dark-theme: $type == dark;
   $mat-container-background-color: if($is-dark-theme,

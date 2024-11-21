@@ -75,7 +75,7 @@ export class ThemeManagerService {
   };
 
   private setMaterialTheme() {
-    this.isDark$.pipe(take(1)).subscribe((isDark) => {
+    this.isDark$.pipe(take(1)).subscribe((isDark: boolean) => {
       if (isDark) {
         const href = 'dark-theme.css';
         this.getLinkElementForKey('dark-theme').setAttribute('href', href);

@@ -11,8 +11,8 @@ import { ThemeManagerService } from './service/theme-manager.service';
   templateUrl: './theme-manager.component.html',
   styleUrls: ['./theme-manager.component.scss'],
   standalone: true,
-  imports: [AsyncPipe, MatButtonModule, MatIconModule, MatMenuModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [AsyncPipe, MatButtonModule, MatIconModule, MatMenuModule],
 })
 export class ThemeManagerComponent {
   private themeManager = inject(ThemeManagerService);

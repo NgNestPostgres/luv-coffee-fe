@@ -38,7 +38,7 @@ export class PhoneFormFieldHostComponent {
 
     merge(this.form.controls['tel'].statusChanges, this.form.controls['tel'].valueChanges)
       .pipe(takeUntilDestroyed())
-      .subscribe((val) => {
+      .subscribe((val: PhoneParts) => {
         console.log(`This is for testing purposes: ${val}`);
       });
   }
