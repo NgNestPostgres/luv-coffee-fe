@@ -8,6 +8,7 @@
 - Run `nvm install 1.x.x`
 - Run `nvm use x.x.x`
 - Run `npm i -g @angular/cli`
+- Run `npm i`
 - Run `npx husky init`
 
 ## Dependencies CLI
@@ -18,7 +19,7 @@
 # Development
 ## Local development
 0. Get Presonal Access Token (classic).
-1. Update shared packages:
+1. Update shared packages (fe-shared):
   1.1. Authenticate with personal access token (classic):
     - Run `npm login --scope=@ngnestpostgres --auth-type=legacy --registry=https://npm.pkg.github.com`
         Username: ngnestpostgres
