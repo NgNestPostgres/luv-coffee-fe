@@ -10,8 +10,7 @@ describe('SearchBoxComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NoopAnimationsModule, SearchBoxComponent],
-      declarations: [],
+      imports: [NoopAnimationsModule],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
       .compileComponents();

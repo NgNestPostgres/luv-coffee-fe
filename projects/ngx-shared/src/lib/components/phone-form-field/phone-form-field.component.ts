@@ -3,6 +3,7 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
+  ChangeDetectionStrategy,
   Component,
   DoCheck,
   ElementRef,
@@ -23,9 +24,12 @@ import {
   FormGroupDirective,
   NgControl,
   NgForm,
+  ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatFormField, MatFormFieldControl } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { Subject } from 'rxjs';
 
 /** Data structure for holding telephone number. */
@@ -41,7 +45,14 @@ export class PhoneParts {
   selector: 'ngx-phone-form-field',
   templateUrl: 'phone-form-field.component.html',
   styleUrls: ['phone-form-field.component.scss'],
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: MatFormFieldControl, useExisting: PhoneFormFieldComponent }],
+  imports: [
+    MatButtonModule,
+    MatInputModule,
+    ReactiveFormsModule,
+  ]
 })
 export class PhoneFormFieldComponent
 implements ControlValueAccessor, MatFormFieldControl<PhoneParts>, OnInit, DoCheck, OnDestroy {
