@@ -20,11 +20,7 @@ describe('ThemeToggleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        NoopAnimationsModule,
-        ThemeManagerComponent
-      ],
-      declarations: [],
+      imports: [NoopAnimationsModule],
       providers: [
         { provide: ThemeManagerService, useClass: MockThemeManagerService }
       ],

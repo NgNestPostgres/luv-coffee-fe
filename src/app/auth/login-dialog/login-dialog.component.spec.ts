@@ -15,7 +15,6 @@ describe('LoginDialogComponent', () => {
 
     await TestBed.configureTestingModule({
       imports: [
-        LoginDialogComponent,
         MatDialogModule,
         NoopAnimationsModule
       ],

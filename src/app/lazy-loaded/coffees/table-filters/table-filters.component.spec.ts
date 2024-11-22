@@ -8,7 +8,7 @@ describe('TableFiltersComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TableFiltersComponent]
+      imports: []
     })
       .compileComponents();
   });

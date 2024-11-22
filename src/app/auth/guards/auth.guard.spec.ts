@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideRouter } from '@angular/router';
 import { TokenService } from '@auth/services/token.service';
 
 import { AuthGuard } from './auth.guard';
@@ -12,8 +12,8 @@ describe('AuthGuard', () => {
     const spyTokenService = jasmine.createSpyObj('TokenService', ['getAccessToken']);
 
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
       providers: [
+        provideRouter([]),
         { provide: TokenService, useValue: spyTokenService },
       ]
     });

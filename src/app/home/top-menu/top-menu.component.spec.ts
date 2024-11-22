@@ -17,7 +17,6 @@ describe('TopMenuComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [NoopAnimationsModule],
-      declarations: [],
       providers: [provideRouter([])],
     })
       .compileComponents();

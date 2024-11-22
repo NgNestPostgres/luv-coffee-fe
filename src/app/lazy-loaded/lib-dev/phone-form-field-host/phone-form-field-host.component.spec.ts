@@ -11,7 +11,6 @@ describe('PhoneFormFieldHostComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [NoopAnimationsModule],
-      declarations: [],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
       .compileComponents();
