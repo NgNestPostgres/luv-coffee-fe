@@ -4,7 +4,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatMenuHarness } from '@angular/material/menu/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { ThemeManagerService } from '@core/services/theme-manager.service';
+import { ThemeManagerService } from 'src/app/home/theme-manager/service/theme-manager.service';
 
 import { ThemeManagerComponent } from './theme-manager.component';
 
@@ -20,10 +20,7 @@ describe('ThemeToggleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        NoopAnimationsModule
-      ],
-      declarations: [],
+      imports: [NoopAnimationsModule],
       providers: [
         { provide: ThemeManagerService, useClass: MockThemeManagerService }
       ],

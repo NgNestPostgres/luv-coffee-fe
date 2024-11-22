@@ -1,0 +1,28 @@
+@use '/node_modules/@angular/material' as mat;
+
+@mixin global-styles($theme) {
+  $type: mat.get-theme-type($theme);
+  $is-dark-theme: $type == dark;
+  $mat-container-background-color: if($is-dark-theme,
+    mat.get-theme-color($theme, primary, 20),
+    mat.get-theme-color($theme, primary, 90)
+  );
+
+  --mat-toolbar-container-background-color: #{$mat-container-background-color};
+  --mat-tree-container-background-color: #{$mat-container-background-color};
+  --mat-sidenav-container-background-color: #{$mat-container-background-color};
+
+  .mat-mdc-button:not([disabled]):hover, .mat-mdc-menu-item:not([disabled]):hover {
+    background-color: if($is-dark-theme,
+      mat.get-theme-color($theme, primary, 10),
+      mat.get-theme-color($theme, secondary, 90)
+    );
+  }
+
+  .mat-mdc-button.selected, .mat-mdc-menu-item.selected {
+    background-color: if($is-dark-theme,
+      mat.get-theme-color($theme, primary, 30),
+      mat.get-theme-color($theme, secondary, 70)
+    );
+  }
+}

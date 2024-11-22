@@ -16,7 +16,7 @@ describe('TableComponent', () => {
     mockCoffeeService.getCoffees.and.returnValue(of(testData));
 
     await TestBed.configureTestingModule({
-      declarations: [TableComponent],
+      imports: [],
       providers: [{ provide: CoffeeService, useValue: mockCoffeeService }],
     })
       .compileComponents();

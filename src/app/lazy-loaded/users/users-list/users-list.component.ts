@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { DialogsService } from '@core/services/dialogs.service';
 
 @Component({
   selector: 'anp-users-list',
   templateUrl: './users-list.component.html',
-  styleUrls: ['./users-list.component.scss']
+  styleUrls: ['./users-list.component.scss'],
+  standalone: true,
+  imports: [MatButtonModule]
 })
 export class UsersListComponent {
   public token: string = 'no token';
@@ -14,7 +17,7 @@ export class UsersListComponent {
   ) {}
 
   public showLoginForm(): void {
-    this.dialogs.login().subscribe((token) => {
+    this.dialogs.login().subscribe((token: string) => {
       this.token = token;
     });
   }

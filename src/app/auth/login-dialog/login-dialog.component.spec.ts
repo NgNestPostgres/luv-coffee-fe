@@ -14,8 +14,10 @@ describe('LoginDialogComponent', () => {
     const spyAuthService = jasmine.createSpyObj('AuthService', ['login']);
 
     await TestBed.configureTestingModule({
-      imports: [MatDialogModule, NoopAnimationsModule],
-      declarations: [LoginDialogComponent],
+      imports: [
+        MatDialogModule,
+        NoopAnimationsModule
+      ],
       providers: [
         { provide: AuthService, useValue: spyAuthService },
         { provide: MatDialogRef, useValue: {} },

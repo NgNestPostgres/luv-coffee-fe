@@ -1,13 +1,29 @@
 import { Component } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder, FormGroup, ReactiveFormsModule, Validators
+} from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { PhoneFormFieldComponent } from '@ngx-shared';
 import { PhoneParts } from 'projects/ngx-shared/src/public-api';
 import { merge } from 'rxjs';
 
 @Component({
   selector: 'anp-phone-form-field-host',
   templateUrl: './phone-form-field-host.component.html',
-  styleUrls: ['./phone-form-field-host.component.scss']
+  styleUrls: ['./phone-form-field-host.component.scss'],
+  standalone: true,
+  imports: [
+    MatButtonModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    PhoneFormFieldComponent,
+    ReactiveFormsModule
+  ]
 })
 export class PhoneFormFieldHostComponent {
   public form!: FormGroup;
@@ -22,7 +38,7 @@ export class PhoneFormFieldHostComponent {
 
     merge(this.form.controls['tel'].statusChanges, this.form.controls['tel'].valueChanges)
       .pipe(takeUntilDestroyed())
-      .subscribe((val) => {
+      .subscribe((val: PhoneParts) => {
         console.log(`This is for testing purposes: ${val}`);
       });
   }
