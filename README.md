@@ -121,8 +121,8 @@ Angular library rules (https://angular.dev/tools/libraries/creating-libraries):
 2. Update versions in:
     - package.json (version x.y.z as release branch)
     - projects/ngx-shared/package.json (version x.y.z as release branch)
-3. Make PR and merge `release_x.y.z` to `dev`.
-4. Make PR and merge `release_x.y.z` to `main`.
+3. Make PR and merge `release_x.y.z` to `main`.
+4. Make PR and merge `main` to `dev`.
 5. In GitHub on `main` branch create release (to trigger packages publishing).
 
 # Deployment ???
@@ -173,7 +173,9 @@ Run `yarn build:analyze`.
 1. Update manually:
 npm i eslint@8 eslint-plugin-unused-imports@3 --save-dev
 
-npm i @angular-eslint/builder@latest @angular-eslint/eslint-plugin@latest @angular-eslint/eslint-plugin-template@latest @angular-eslint/schematics@latest @angular-eslint/template-parser@latest @typescript-eslint/eslint-plugin@latest @typescript-eslint/parser@latest eslint-config-airbnb-base@latest eslint-config-airbnb-typescript@latest eslint-plugin-simple-import-sort@latest --save-dev
+npm i @typescript-eslint/eslint-plugin@7 @typescript-eslint/parser@7 --save-dev
+
+npm i @angular-eslint/builder@latest @angular-eslint/eslint-plugin@latest @angular-eslint/eslint-plugin-template@latest @angular-eslint/schematics@latest @angular-eslint/template-parser@latest eslint-config-airbnb-base@latest eslint-config-airbnb-typescript@latest eslint-plugin-simple-import-sort@latest --save-dev
 
 # REFACTOR TO NEW STARTUP
 ## Change prefix
