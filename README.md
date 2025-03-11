@@ -12,7 +12,7 @@
 - Run `npx husky init`
 
 ## Dependencies CLI
-- `gcloud` (Google Cloud SDK)
+<!-- - `gcloud` (Google Cloud SDK) -->
 - `node` version x.x.x
 - `ng`
 
@@ -49,6 +49,7 @@ Use standard mat typography classes whenever possible: https://material.angular.
 - Default theme - default System theme.
 - Dark theme is lazy loading setup is in angular.json.
 
+<!-- TODO: change -->
 ### Add Angular Material Module
 1. Add module to `app/shared/shared.module.ts`. (???)
 2. Add module styles:
@@ -121,20 +122,25 @@ Angular library rules (https://angular.dev/tools/libraries/creating-libraries):
 2. Update versions in:
     - package.json (version x.y.z as release branch)
     - projects/ngx-shared/package.json (version x.y.z as release branch)
-3. Make PR and merge `release_x.y.z` to `dev`.
-4. Make PR and merge `release_x.y.z` to `main`.
+3. Make PR and merge `release_x.y.z` to `main`.
+4. Make PR and merge `main` to `dev`.
 5. In GitHub on `main` branch create release (to trigger packages publishing).
 
-# Deployment ???
+<!-- TODO: setup
+# Deployment
 https://cloud.google.com/appengine/docs/the-appengine-environments
 Run `gcloud auth login`
+-->
 
+<!-- TODO setup
 ## Hosting requirements
 1. Server should be adjusted to serve SPA.
 2. Server should do gzip.
+-->
 
 # Optimization
-## Webpack analyser ???
+<!-- TODO: check to obsolence
+## Webpack analyser
 Run `yarn add -D webpack-bundle-analyzer` (`npm i -g webpack-bundle-analyzer`).
 Run `yarn build:analyze`.
 
@@ -168,12 +174,15 @@ Run `yarn build:analyze`.
 
   total main = 598.2 kB
 ````
+-->
 
 # Angular Update
 1. Update manually:
 npm i eslint@8 eslint-plugin-unused-imports@3 --save-dev
 
-npm i @angular-eslint/builder@latest @angular-eslint/eslint-plugin@latest @angular-eslint/eslint-plugin-template@latest @angular-eslint/schematics@latest @angular-eslint/template-parser@latest @typescript-eslint/eslint-plugin@latest @typescript-eslint/parser@latest eslint-config-airbnb-base@latest eslint-config-airbnb-typescript@latest eslint-plugin-simple-import-sort@latest --save-dev
+npm i @typescript-eslint/eslint-plugin@7 @typescript-eslint/parser@7 --save-dev
+
+npm i @angular-eslint/builder@latest @angular-eslint/eslint-plugin@latest @angular-eslint/eslint-plugin-template@latest @angular-eslint/schematics@latest @angular-eslint/template-parser@latest eslint-config-airbnb-base@latest eslint-config-airbnb-typescript@latest eslint-plugin-simple-import-sort@latest --save-dev
 
 # REFACTOR TO NEW STARTUP
 ## Change prefix
