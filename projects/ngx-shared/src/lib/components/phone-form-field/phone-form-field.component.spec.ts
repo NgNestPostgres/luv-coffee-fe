@@ -1,7 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule } from '@angular/forms';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {ReactiveFormsModule} from '@angular/forms';
 
-import { PhoneFormFieldComponent } from './phone-form-field.component';
+import {PhoneFormFieldComponent} from './phone-form-field.component';
 
 describe('PhoneFormFieldComponent', () => {
   let component: PhoneFormFieldComponent;
@@ -12,7 +12,7 @@ describe('PhoneFormFieldComponent', () => {
       imports: [
         PhoneFormFieldComponent,
         ReactiveFormsModule,
-      ]
+      ],
     })
       .compileComponents();
   });
@@ -35,7 +35,7 @@ describe('PhoneFormFieldComponent', () => {
 
   it('should check initial values for the parts Form Group', () => {
     const partsFormGroup = component.parts;
-    const initialValues = { area: '', exchange: '', subscriber: '' };
+    const initialValues = {area: '', exchange: '', subscriber: ''};
     expect(partsFormGroup.value).toEqual(initialValues);
   });
 

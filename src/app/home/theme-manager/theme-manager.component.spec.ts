@@ -1,12 +1,12 @@
-import { HarnessLoader } from '@angular/cdk/testing';
-import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatMenuHarness } from '@angular/material/menu/testing';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { ThemeManagerService } from 'src/app/home/theme-manager/service/theme-manager.service';
+import {HarnessLoader} from '@angular/cdk/testing';
+import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {MatMenuHarness} from '@angular/material/menu/testing';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {ThemeManagerService} from 'src/app/home/theme-manager/service/theme-manager.service';
 
-import { ThemeManagerComponent } from './theme-manager.component';
+import {ThemeManagerComponent} from './theme-manager.component';
 
 class MockThemeManagerService {
   // eslint-disable-next-line class-methods-use-this
@@ -22,9 +22,9 @@ describe('ThemeToggleComponent', () => {
     await TestBed.configureTestingModule({
       imports: [NoopAnimationsModule],
       providers: [
-        { provide: ThemeManagerService, useClass: MockThemeManagerService }
+        {provide: ThemeManagerService, useClass: MockThemeManagerService},
       ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
       .compileComponents();
   });

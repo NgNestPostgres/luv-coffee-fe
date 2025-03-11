@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable max-classes-per-file */
-import { FocusMonitor } from '@angular/cdk/a11y';
-import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import {FocusMonitor} from '@angular/cdk/a11y';
+import {BooleanInput, coerceBooleanProperty} from '@angular/cdk/coercion';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -27,17 +27,17 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatFormField, MatFormFieldControl } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { Subject } from 'rxjs';
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormField, MatFormFieldControl} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {Subject} from 'rxjs';
 
 /** Data structure for holding telephone number. */
 export class PhoneParts {
   constructor(
     public area: string,
     public exchange: string,
-    public subscriber: string
+    public subscriber: string,
   ) {}
 }
 
@@ -46,12 +46,12 @@ export class PhoneParts {
   templateUrl: 'phone-form-field.component.html',
   styleUrls: ['phone-form-field.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: MatFormFieldControl, useExisting: PhoneFormFieldComponent }],
+  providers: [{provide: MatFormFieldControl, useExisting: PhoneFormFieldComponent}],
   imports: [
     MatButtonModule,
     MatInputModule,
     ReactiveFormsModule,
-  ]
+  ],
 })
 export class PhoneFormFieldComponent
 implements ControlValueAccessor, MatFormFieldControl<PhoneParts>, OnInit, DoCheck, OnDestroy {
@@ -108,14 +108,14 @@ implements ControlValueAccessor, MatFormFieldControl<PhoneParts>, OnInit, DoChec
   @Input()
   get value(): PhoneParts | null {
     if (this.parts.valid) {
-      const { area, exchange, subscriber } = this.parts.value;
+      const {area, exchange, subscriber} = this.parts.value;
       return new PhoneParts(area || '', exchange || '', subscriber || '');
     }
     return null;
   }
   set value(tel: PhoneParts | null) {
-    const { area, exchange, subscriber } = tel || new PhoneParts('', '', '');
-    this.parts.setValue({ area, exchange, subscriber });
+    const {area, exchange, subscriber} = tel || new PhoneParts('', '', '');
+    this.parts.setValue({area, exchange, subscriber});
     this.stateChanges.next();
   }
 
@@ -136,7 +136,7 @@ implements ControlValueAccessor, MatFormFieldControl<PhoneParts>, OnInit, DoChec
 
   // implements MatFormFieldControl
   get empty(): boolean {
-    const { value: { area, exchange, subscriber } } = this.parts;
+    const {value: {area, exchange, subscriber}} = this.parts;
     return !area && !exchange && !subscriber;
   }
 
@@ -159,19 +159,19 @@ implements ControlValueAccessor, MatFormFieldControl<PhoneParts>, OnInit, DoChec
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(3),
-        Validators.pattern('^\\+[1-9]{2}$')
+        Validators.pattern('^\\+[1-9]{2}$'),
       ]],
       exchange: ['', [
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(3),
-        Validators.pattern('^[0-9]*$')
+        Validators.pattern('^[0-9]*$'),
       ]],
       subscriber: ['', [
         Validators.required,
         Validators.minLength(7),
         Validators.maxLength(7),
-        Validators.pattern('^[0-9]*$')
+        Validators.pattern('^[0-9]*$'),
       ]],
     });
 
