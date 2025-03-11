@@ -7,7 +7,6 @@ import { TableFiltersComponent } from './table-filters/table-filters.component';
 @Component({
   selector: 'anp-coffees',
   styles: [''],
-  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     TableComponent,
@@ -23,7 +22,7 @@ import { TableFiltersComponent } from './table-filters/table-filters.component';
       [filters]="filters"
       (moduleWidth)="setFiltersWidth($event)"
     ></anp-table>
-  `,
+  `
 })
 export class CoffeesComponent {
   public filters: CoffeesFilter | undefined;

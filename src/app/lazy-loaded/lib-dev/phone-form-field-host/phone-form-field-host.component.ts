@@ -15,7 +15,6 @@ import { merge } from 'rxjs';
   selector: 'anp-phone-form-field-host',
   templateUrl: './phone-form-field-host.component.html',
   styleUrls: ['./phone-form-field-host.component.scss'],
-  standalone: true,
   imports: [
     MatButtonModule,
     MatFormFieldModule,

@@ -6,7 +6,6 @@ import { DialogsService } from '@core/services/dialogs.service';
   selector: 'anp-users-list',
   templateUrl: './users-list.component.html',
   styleUrls: ['./users-list.component.scss'],
-  standalone: true,
   imports: [MatButtonModule]
 })
 export class UsersListComponent {

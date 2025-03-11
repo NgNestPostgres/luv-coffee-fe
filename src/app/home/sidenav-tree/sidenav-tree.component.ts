@@ -16,7 +16,6 @@ import { MenuItemNode } from './sidenav-tree.enum';
   selector: 'anp-sidenav-tree',
   templateUrl: './sidenav-tree.component.html',
   styleUrls: ['./sidenav-tree.component.scss'],
-  standalone: true,
   imports: [MatIconModule, MatMenuModule, MatTreeModule, RouterModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [

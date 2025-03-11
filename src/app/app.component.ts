@@ -17,7 +17,6 @@ import { TopMenuComponent } from './home/top-menu/top-menu.component';
   selector: 'anp-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  standalone: true,
   imports: [
     MatButtonModule,
     MatIconModule,

@@ -7,9 +7,8 @@ import { RouterModule } from '@angular/router';
   selector: 'anp-top-menu',
   templateUrl: './top-menu.component.html',
   styleUrls: ['./top-menu.component.scss'],
-  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatButtonModule, MatMenuModule, RouterModule],
+  imports: [MatButtonModule, MatMenuModule, RouterModule]
 })
 export class TopMenuComponent {
 

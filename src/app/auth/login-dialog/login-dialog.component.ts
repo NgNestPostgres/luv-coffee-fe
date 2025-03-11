@@ -11,7 +11,6 @@ import { UserLogin } from '@ngnestpostgres/fe-shared';
   selector: 'anp-login-dialog',
   templateUrl: './login-dialog.component.html',
   styleUrls: ['./login-dialog.component.scss'],
-  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MatButtonModule,

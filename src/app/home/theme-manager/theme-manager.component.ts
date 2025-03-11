@@ -10,9 +10,8 @@ import { ThemeManagerService } from './service/theme-manager.service';
   selector: 'anp-theme-manager',
   templateUrl: './theme-manager.component.html',
   styleUrls: ['./theme-manager.component.scss'],
-  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [AsyncPipe, MatButtonModule, MatIconModule, MatMenuModule],
+  imports: [AsyncPipe, MatButtonModule, MatIconModule, MatMenuModule]
 })
 export class ThemeManagerComponent {
   private themeManager = inject(ThemeManagerService);

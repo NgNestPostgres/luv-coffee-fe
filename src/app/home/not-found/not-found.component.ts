@@ -5,9 +5,8 @@ import { Router, RouterModule } from '@angular/router';
   selector: 'anp-not-found',
   templateUrl: './not-found.component.html',
   styleUrls: ['./not-found.component.scss'],
-  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterModule],
+  imports: [RouterModule]
 })
 export class NotFoundComponent implements OnInit {
   public url!: string;

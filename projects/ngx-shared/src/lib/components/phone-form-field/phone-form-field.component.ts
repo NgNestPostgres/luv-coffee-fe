@@ -45,7 +45,6 @@ export class PhoneParts {
   selector: 'ngx-phone-form-field',
   templateUrl: 'phone-form-field.component.html',
   styleUrls: ['phone-form-field.component.scss'],
-  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: MatFormFieldControl, useExisting: PhoneFormFieldComponent }],
   imports: [
