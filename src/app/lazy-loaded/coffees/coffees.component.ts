@@ -1,17 +1,16 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 
-import { CoffeesFilter } from './interfaces/coffees-filter';
-import { TableComponent } from './table/table.component';
-import { TableFiltersComponent } from './table-filters/table-filters.component';
+import {CoffeesFilter} from './interfaces/coffees-filter';
+import {TableComponent} from './table/table.component';
+import {TableFiltersComponent} from './table-filters/table-filters.component';
 
 @Component({
   selector: 'anp-coffees',
   styles: [''],
-  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     TableComponent,
-    TableFiltersComponent
+    TableFiltersComponent,
   ],
   template: `
     <anp-table-filters

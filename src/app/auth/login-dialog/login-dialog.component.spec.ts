@@ -1,9 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { AuthService } from '@auth/services/auth.service';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {AuthService} from '@auth/services/auth.service';
 
-import { LoginDialogComponent } from './login-dialog.component';
+import {LoginDialogComponent} from './login-dialog.component';
 
 describe('LoginDialogComponent', () => {
   let component: LoginDialogComponent;
@@ -16,13 +16,13 @@ describe('LoginDialogComponent', () => {
     await TestBed.configureTestingModule({
       imports: [
         MatDialogModule,
-        NoopAnimationsModule
+        NoopAnimationsModule,
       ],
       providers: [
-        { provide: AuthService, useValue: spyAuthService },
-        { provide: MatDialogRef, useValue: {} },
-        { provide: MAT_DIALOG_DATA, useValue: {} }
-      ]
+        {provide: AuthService, useValue: spyAuthService},
+        {provide: MatDialogRef, useValue: {}},
+        {provide: MAT_DIALOG_DATA, useValue: {}},
+      ],
     })
       .compileComponents();
   });

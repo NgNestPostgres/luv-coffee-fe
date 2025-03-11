@@ -1,13 +1,13 @@
 /* eslint-disable no-underscore-dangle */
-import { DOCUMENT } from '@angular/common';
-import { inject, Injectable } from '@angular/core';
-import { LocalStorageService } from '@core/services/local-storage.service';
-import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
-import { take } from 'rxjs/operators';
+import {DOCUMENT} from '@angular/common';
+import {inject, Injectable} from '@angular/core';
+import {LocalStorageService} from '@core/services/local-storage.service';
+import {BehaviorSubject} from 'rxjs/internal/BehaviorSubject';
+import {take} from 'rxjs/operators';
 
 const LOCAL_STORAGE_KEY = 'anp-theme';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class ThemeManagerService {
   private document = inject(DOCUMENT);
   private localStorage = inject(LocalStorageService);
@@ -49,9 +49,9 @@ export class ThemeManagerService {
     }
 
     if (this._window?.matchMedia) {
-      return this._window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? 'dark'
-        : 'light';
+      return this._window.matchMedia('(prefers-color-scheme: dark)').matches ?
+        'dark' :
+        'light';
     }
 
     return 'light';
@@ -60,8 +60,8 @@ export class ThemeManagerService {
   private setTheme = (theme: string) => {
     if (this._window?.matchMedia) {
       if (
-        theme === 'auto'
-        && this._window.matchMedia('(prefers-color-scheme: dark)').matches
+        theme === 'auto' &&
+        this._window.matchMedia('(prefers-color-scheme: dark)').matches
       ) {
         this.document.documentElement.setAttribute('data-bs-theme', 'dark');
         this._isDarkSub.next(true);
@@ -101,7 +101,7 @@ export class ThemeManagerService {
 
   private getExistingLinkElementByKey(key: string): HTMLLinkElement | null {
     return this.document.head.querySelector(
-      `link[rel="stylesheet"].${this.getClassNameForKey(key)}`
+      `link[rel="stylesheet"].${this.getClassNameForKey(key)}`,
     );
   }
 

@@ -1,12 +1,12 @@
-import { HarnessLoader } from '@angular/cdk/testing';
-import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatTreeHarness } from '@angular/material/tree/testing';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { provideRouter } from '@angular/router';
+import {HarnessLoader} from '@angular/cdk/testing';
+import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {MatTreeHarness} from '@angular/material/tree/testing';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {provideRouter} from '@angular/router';
 
-import { TREE_DATA } from './sidenav-datasource';
-import { SidenavTreeComponent } from './sidenav-tree.component';
+import {TREE_DATA} from './sidenav-datasource';
+import {SidenavTreeComponent} from './sidenav-tree.component';
 
 describe('SidenavTreeComponent', () => {
   let component: SidenavTreeComponent;
@@ -62,12 +62,12 @@ describe('SidenavTreeComponent', () => {
 
     expect(await tree.getTreeStructure()).toEqual({
       children: [
-        { text: TREE_DATA[0].name },
-        { text: TREE_DATA[1].name },
+        {text: TREE_DATA[0].name},
+        {text: TREE_DATA[1].name},
         // TODO: was notworking properly with Nodes with chidlren. Sees '' instead of 'Menu'. Re-check.
         // { text: TREE_DATA[3].name },
-        { text: '' },
-        { text: '' }
+        {text: ''},
+        {text: ''},
       ],
     });
 
@@ -79,8 +79,8 @@ describe('SidenavTreeComponent', () => {
 
     expect(await tree.getTreeStructure()).toEqual({
       children: [
-        { text: TREE_DATA[0].name },
-        { text: TREE_DATA[1].name },
+        {text: TREE_DATA[0].name},
+        {text: TREE_DATA[1].name},
         {
           // TODO: was notworking properly with Nodes with chidlren. Sees '' instead of 'Menu'. Re-check.
           // text: TREE_DATA[3].name,
@@ -91,7 +91,7 @@ describe('SidenavTreeComponent', () => {
           //   { text: TREE_DATA[2].children![1].name },
           // ]
         },
-        { text: '' }
+        {text: ''},
       ],
     });
   });

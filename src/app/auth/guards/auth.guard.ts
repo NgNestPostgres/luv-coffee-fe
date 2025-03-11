@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {
-  ActivatedRouteSnapshot, Route, Router, RouterStateSnapshot, UrlSegment, UrlTree
+  ActivatedRouteSnapshot, Route, Router, RouterStateSnapshot, UrlSegment, UrlTree,
 } from '@angular/router';
-import { Observable } from 'rxjs';
+import {Observable} from 'rxjs';
 
-import { TokenService } from '../services/token.service';
+import {TokenService} from '../services/token.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthGuard {
   constructor(
@@ -18,13 +18,13 @@ export class AuthGuard {
 
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
+    state: RouterStateSnapshot,
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return true;
   }
   canLoad(
     route: Route,
-    segments: UrlSegment[]
+    segments: UrlSegment[],
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return true;
   }

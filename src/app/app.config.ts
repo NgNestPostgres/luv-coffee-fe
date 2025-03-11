@@ -1,16 +1,16 @@
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
-import { ApplicationConfig } from '@angular/core';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { PreloadAllModules, provideRouter, withPreloading } from '@angular/router';
-import { interceptors } from '@core/interceptors';
+import {provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
+import {ApplicationConfig} from '@angular/core';
+import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
+import {PreloadAllModules, provideRouter, withPreloading} from '@angular/router';
+import {interceptors} from '@core/interceptors';
 
-import { routes } from './app.routes';
+import {routes} from './app.routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     interceptors,
     provideAnimationsAsync(),
     provideHttpClient(withInterceptorsFromDi()),
-    provideRouter(routes, withPreloading(PreloadAllModules))
-  ]
+    provideRouter(routes, withPreloading(PreloadAllModules)),
+  ],
 };

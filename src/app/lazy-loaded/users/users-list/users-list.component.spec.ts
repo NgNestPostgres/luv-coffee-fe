@@ -1,7 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { DialogsService } from '@core/services/dialogs.service';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {DialogsService} from '@core/services/dialogs.service';
 
-import { UsersListComponent } from './users-list.component';
+import {UsersListComponent} from './users-list.component';
 
 describe('UsersListComponent', () => {
   let component: UsersListComponent;
@@ -13,8 +13,8 @@ describe('UsersListComponent', () => {
 
     await TestBed.configureTestingModule({
       providers: [
-        { provide: DialogsService, useValue: spyDialogsService },
-      ]
+        {provide: DialogsService, useValue: spyDialogsService},
+      ],
     })
       .compileComponents();
   });

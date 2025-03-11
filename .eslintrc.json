@@ -16,8 +16,8 @@
         "*.ts"
       ],
       "extends": [
-        "airbnb-base",
-        "airbnb-typescript/base",
+        "eslint:recommended",
+        "google",
         "plugin:@typescript-eslint/recommended",
         "plugin:@angular-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates"
@@ -25,14 +25,14 @@
       "rules": {
         /* My eslint rules */
         // "linebreak-style": ["error", "windows"],
-        "no-plusplus": "off",
+        // "import/first": "error",
+        // "import/newline-after-import": "error",
+        // "import/no-duplicates": "error",
         "class-methods-use-this": "off",
-        /* ESLint rules */
+        "indent": ["error", 2],
         "import/prefer-default-export": "off",
-        "import/first": "error",
-        "import/newline-after-import": "error",
-        "import/no-duplicates": "error",
         "max-len": [ "error", 120 ],
+        "no-plusplus": "off",
         "simple-import-sort/imports": "error",
         "simple-import-sort/exports": "error",
         /* eslint-plugin-unused-imports rules */
@@ -43,6 +43,10 @@
           "args": "after-used",
           "argsIgnorePattern": "^_"
         }],
+        /* google rules overrides*/
+        "new-cap": 0,
+        "require-jsdoc" : "off",
+        "valid-jsdoc": "off",
         /* My Typescript rules */
         "@typescript-eslint/no-unused-expressions": ["error", {
           "allowTernary": true
@@ -56,10 +60,9 @@
           "functions": false
         }],
         /* TypeScript Eslint rules */
-        "@typescript-eslint/indent": ["error", 2],
         "@typescript-eslint/comma-dangle": "off",
         "@typescript-eslint/lines-between-class-members": "off",
-        "@typescript-eslint/quotes": ["error", "single"],
+        // "@typescript-eslint/quotes": ["error", "single"],
         "@typescript-eslint/no-shadow": "error",
         "@typescript-eslint/no-explicit-any": 0,
         /* Angular ESLint rules */

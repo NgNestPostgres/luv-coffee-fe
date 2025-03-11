@@ -178,11 +178,19 @@ Run `yarn build:analyze`.
 
 # Angular Update
 1. Update manually:
-npm i eslint@8 eslint-plugin-unused-imports@3 --save-dev
+npm i eslint@latest
+  eslint-config-google@latest
+  eslint-plugin-unused-imports@latest
+  eslint-plugin-simple-import-sort@latest
+  @angular-eslint/builder@latest
+  @angular-eslint/eslint-plugin@latest
+  @angular-eslint/eslint-plugin-template@latest
+  @angular-eslint/schematics@latest
+  @angular-eslint/template-parser@latest
+  @typescript-eslint/eslint-plugin@latest
+  @typescript-eslint/parser@latest
+--save-dev
 
-npm i @typescript-eslint/eslint-plugin@7 @typescript-eslint/parser@7 --save-dev
-
-npm i @angular-eslint/builder@latest @angular-eslint/eslint-plugin@latest @angular-eslint/eslint-plugin-template@latest @angular-eslint/schematics@latest @angular-eslint/template-parser@latest eslint-config-airbnb-base@latest eslint-config-airbnb-typescript@latest eslint-plugin-simple-import-sort@latest --save-dev
 
 # REFACTOR TO NEW STARTUP
 ## Change prefix

@@ -8,9 +8,17 @@
     mat.get-theme-color($theme, primary, 90)
   );
 
-  --mat-toolbar-container-background-color: #{$mat-container-background-color};
-  --mat-tree-container-background-color: #{$mat-container-background-color};
-  --mat-sidenav-container-background-color: #{$mat-container-background-color};
+  @include mat.toolbar-overrides((
+    container-background-color: $mat-container-background-color
+  ));
+
+  @include mat.tree-overrides((
+    container-background-color: $mat-container-background-color
+  ));
+
+  @include mat.sidenav-overrides((
+    container-background-color: $mat-container-background-color
+  ));
 
   .mat-mdc-button:not([disabled]):hover, .mat-mdc-menu-item:not([disabled]):hover {
     background-color: if($is-dark-theme,

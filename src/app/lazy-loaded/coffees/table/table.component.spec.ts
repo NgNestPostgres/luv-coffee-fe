@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { of } from 'rxjs';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {of} from 'rxjs';
 
-import { CoffeeService } from '../services/coffee.service';
-import { TableComponent } from './table.component';
+import {CoffeeService} from '../services/coffee.service';
+import {TableComponent} from './table.component';
 
 const testData = {};
 
@@ -17,7 +17,7 @@ describe('TableComponent', () => {
 
     await TestBed.configureTestingModule({
       imports: [],
-      providers: [{ provide: CoffeeService, useValue: mockCoffeeService }],
+      providers: [{provide: CoffeeService, useValue: mockCoffeeService}],
     })
       .compileComponents();
   });
