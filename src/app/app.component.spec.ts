@@ -1,10 +1,10 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatButtonModule } from '@angular/material/button';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { provideRouter } from '@angular/router';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {MatButtonModule} from '@angular/material/button';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {provideRouter} from '@angular/router';
 
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
 
 describe('AppComponent', () => {
   let component: AppComponent;
@@ -17,9 +17,9 @@ describe('AppComponent', () => {
         NoopAnimationsModule,
       ],
       providers: [
-        provideRouter([])
+        provideRouter([]),
       ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
   });
 

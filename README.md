@@ -12,7 +12,7 @@
 - Run `npx husky init`
 
 ## Dependencies CLI
-- `gcloud` (Google Cloud SDK)
+<!-- - `gcloud` (Google Cloud SDK) -->
 - `node` version x.x.x
 - `ng`
 
@@ -31,9 +31,11 @@
   - or run `npm run build:lib:ngx-shared:watch` for ngx-shared library development.
 4. Run `npm run serve:local` to start FE develoment.
 
-## Run build locally (???)
+<!-- TODO: check
+## Run build locally
 Run `npm i -g spa-server-gzip`
 Run `npm run build:start`
+-->
 
 ## PhoneFormFieldComponent
 https://material.angular.io/guide/creating-a-custom-form-field-control
@@ -45,13 +47,12 @@ Use standard mat typography classes whenever possible: https://material.angular.
 ## Angular Material
 ### Custom Theming
 - https://material.angular.io/guides
-- https://angular-material.dev/courses/m2-ng-components/m2-ng-components/create-custom-theme
 - Default theme - default System theme.
 - Dark theme is lazy loading setup is in angular.json.
 
 ### Add Angular Material Module
-1. Add module to `app/shared/shared.module.ts`. (???)
-2. Add module styles:
+1. Add MatModule to `app/app.component.ts`.
+2. Add MatModule styles:
     - to light theme: `src/styles.scss`,
     - to dark theme colors: `src/styles/themes/dark-theme.scss`,
     - to theme density: `src/styles/themes/_sizes.scss`.
@@ -75,8 +76,8 @@ https://dev.to/digitaldino/set-up-eslint-with-angular-and-the-airbnb-style-guide
 
 ## Publish libraries/packages
 1. Update versions in (versions are the same!!!):
-    - package.json
-    - packages/package.json
+    - package.json (version x.y.z)
+    - packages/package.json (version x.y.z)
 2. Publish from local machine:
     1. Authenticate to GitHub Registry (see [GitHub Registry Auth](#gitHub-registry-auth))
     2. Run `npm run publish:ngx-shared`.
@@ -121,20 +122,26 @@ Angular library rules (https://angular.dev/tools/libraries/creating-libraries):
 2. Update versions in:
     - package.json (version x.y.z as release branch)
     - projects/ngx-shared/package.json (version x.y.z as release branch)
-3. Make PR and merge `release_x.y.z` to `dev`.
+3. Update package-lock.json: `npm i`.
 4. Make PR and merge `release_x.y.z` to `main`.
-5. In GitHub on `main` branch create release (to trigger packages publishing).
+5. Make PR and merge `main` to `dev`.
+6. In GitHub on `main` branch create release (to trigger packages publishing).
 
-# Deployment ???
+<!-- TODO: setup
+# Deployment
 https://cloud.google.com/appengine/docs/the-appengine-environments
 Run `gcloud auth login`
+-->
 
+<!-- TODO setup
 ## Hosting requirements
 1. Server should be adjusted to serve SPA.
 2. Server should do gzip.
+-->
 
 # Optimization
-## Webpack analyser ???
+<!-- TODO: check to obsolence
+## Webpack analyser
 Run `yarn add -D webpack-bundle-analyzer` (`npm i -g webpack-bundle-analyzer`).
 Run `yarn build:analyze`.
 
@@ -168,12 +175,13 @@ Run `yarn build:analyze`.
 
   total main = 598.2 kB
 ````
+-->
 
 # Angular Update
-1. Update manually:
-npm i eslint@8 eslint-plugin-unused-imports@3 --save-dev
+1. Update lint manually:
+  npm i eslint@latest eslint-config-google@latest eslint-plugin-unused-imports@latesteslint-plugin-simple-import-sort@latest @angular-eslint/builder@latest @angular-eslint/eslint-plugin@latest @angular-eslint/eslint-plugin-template@latest @angular-eslint/schematics@latest @angular-eslint/template-parser@latest @typescript-eslint/eslint-plugin@latest @typescript-eslint/parser@latest --save-dev
+2. In `projects/ngx-shared/package.json` update `peerDependencies` and `dependencies`.
 
-npm i @angular-eslint/builder@latest @angular-eslint/eslint-plugin@latest @angular-eslint/eslint-plugin-template@latest @angular-eslint/schematics@latest @angular-eslint/template-parser@latest @typescript-eslint/eslint-plugin@latest @typescript-eslint/parser@latest eslint-config-airbnb-base@latest eslint-config-airbnb-typescript@latest eslint-plugin-simple-import-sort@latest --save-dev
 
 # REFACTOR TO NEW STARTUP
 ## Change prefix

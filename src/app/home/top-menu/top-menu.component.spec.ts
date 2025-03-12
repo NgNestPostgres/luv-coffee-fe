@@ -1,12 +1,12 @@
-import { HarnessLoader } from '@angular/cdk/testing';
-import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatButtonHarness } from '@angular/material/button/testing';
-import { MatMenuHarness } from '@angular/material/menu/testing';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { provideRouter } from '@angular/router';
+import {HarnessLoader} from '@angular/cdk/testing';
+import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {MatButtonHarness} from '@angular/material/button/testing';
+import {MatMenuHarness} from '@angular/material/menu/testing';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {provideRouter} from '@angular/router';
 
-import { TopMenuComponent } from './top-menu.component';
+import {TopMenuComponent} from './top-menu.component';
 
 describe('TopMenuComponent', () => {
   let component: TopMenuComponent;
@@ -40,7 +40,7 @@ describe('TopMenuComponent', () => {
     });
 
     it('should load button with exact text "Coffees"', async () => {
-      const buttons = await loader.getAllHarnesses(buttonHarness.with({ text: 'Coffees' }));
+      const buttons = await loader.getAllHarnesses(buttonHarness.with({text: 'Coffees'}));
       expect(buttons.length).toBe(1);
       expect(await buttons[0].getText()).toBe('Coffees');
     });
@@ -64,7 +64,7 @@ describe('TopMenuComponent', () => {
     });
 
     it('should open and close', async () => {
-      const menu = await loader.getHarness(MatMenuHarness.with({ triggerText: 'Menu' }));
+      const menu = await loader.getHarness(MatMenuHarness.with({triggerText: 'Menu'}));
       expect(await menu.isOpen()).toBe(false);
       await menu.open();
       expect(await menu.isOpen()).toBe(true);
@@ -73,7 +73,7 @@ describe('TopMenuComponent', () => {
     });
 
     it('should get all items', async () => {
-      const menu = await loader.getHarness(MatMenuHarness.with({ triggerText: 'Menu' }));
+      const menu = await loader.getHarness(MatMenuHarness.with({triggerText: 'Menu'}));
       await menu.open();
       expect((await menu.getItems()).length).toBe(2);
     });

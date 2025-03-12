@@ -1,4 +1,4 @@
-import { Pagination } from '@core/interfaces/pagination';
+import {Pagination} from '@core/interfaces/pagination';
 
 export interface CoffeesFilter {
   brand: string;

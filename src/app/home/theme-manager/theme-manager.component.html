@@ -1,6 +1,7 @@
 <button
-  mat-icon-button
   aria-label="Change theme"
+  class="btn-icon-theme"
+  mat-icon-button
   [matMenuTriggerFor]="themeMenu"
 >
   <mat-icon>{{ (isDark$ | async) === true ? "dark_mode" : "light_mode" }}</mat-icon>

@@ -1,10 +1,10 @@
-import { inject, Injectable } from '@angular/core';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { LoginDialogComponent } from '@auth/login-dialog/login-dialog.component';
-import { Observable } from 'rxjs';
+import {inject, Injectable} from '@angular/core';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import {LoginDialogComponent} from '@auth/login-dialog/login-dialog.component';
+import {Observable} from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DialogsService {
   private readonly dialog = inject(MatDialog);

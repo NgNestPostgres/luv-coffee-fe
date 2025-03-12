@@ -1,23 +1,22 @@
-import { MediaMatcher } from '@angular/cdk/layout';
+import {MediaMatcher} from '@angular/cdk/layout';
 import {
-  ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild
+  ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild,
 } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatSidenav, MatSidenavModule} from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {RouterModule, RouterOutlet} from '@angular/router';
 
-import { SearchBoxComponent } from './home/search-box/search-box.component';
-import { SidenavTreeComponent } from './home/sidenav-tree/sidenav-tree.component';
-import { ThemeManagerComponent } from './home/theme-manager/theme-manager.component';
-import { TopMenuComponent } from './home/top-menu/top-menu.component';
+import {SearchBoxComponent} from './home/search-box/search-box.component';
+import {SidenavTreeComponent} from './home/sidenav-tree/sidenav-tree.component';
+import {ThemeManagerComponent} from './home/theme-manager/theme-manager.component';
+import {TopMenuComponent} from './home/top-menu/top-menu.component';
 
 @Component({
   selector: 'anp-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  standalone: true,
   imports: [
     MatButtonModule,
     MatIconModule,
@@ -28,8 +27,8 @@ import { TopMenuComponent } from './home/top-menu/top-menu.component';
     ThemeManagerComponent,
     TopMenuComponent,
     RouterModule,
-    RouterOutlet
-  ]
+    RouterOutlet,
+  ],
 })
 export class AppComponent implements OnInit, OnDestroy {
   @ViewChild('sidenav') private sidenav!: MatSidenav;

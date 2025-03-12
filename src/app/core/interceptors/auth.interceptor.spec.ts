@@ -1,11 +1,11 @@
 import {
-  HTTP_INTERCEPTORS, HttpClient, provideHttpClient, withInterceptorsFromDi
+  HTTP_INTERCEPTORS, HttpClient, provideHttpClient, withInterceptorsFromDi,
 } from '@angular/common/http';
-import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
-import { TestBed } from '@angular/core/testing';
-import { TokenService } from '@auth/services/token.service';
+import {HttpTestingController, provideHttpClientTesting} from '@angular/common/http/testing';
+import {TestBed} from '@angular/core/testing';
+import {TokenService} from '@auth/services/token.service';
 
-import { AuthInterceptor } from './auth.interceptor';
+import {AuthInterceptor} from './auth.interceptor';
 
 describe('AuthInterceptor', () => {
   let client: HttpClient;
@@ -18,15 +18,15 @@ describe('AuthInterceptor', () => {
     TestBed.configureTestingModule({
       imports: [],
       providers: [
-        { provide: TokenService, useValue: spyTokenService },
+        {provide: TokenService, useValue: spyTokenService},
         {
           provide: HTTP_INTERCEPTORS,
           multi: true,
-          useClass: AuthInterceptor
+          useClass: AuthInterceptor,
         },
         provideHttpClient(withInterceptorsFromDi()),
-        provideHttpClientTesting()
-      ]
+        provideHttpClientTesting(),
+      ],
     });
 
     client = TestBed.inject(HttpClient);
@@ -45,8 +45,8 @@ describe('AuthInterceptor', () => {
 
     const dummyToken = 'TokenString';
     const dummyUsers: User[] = [
-      { login: 'John' },
-      { login: 'Doe' }
+      {login: 'John'},
+      {login: 'Doe'},
     ];
 
     tokenServiceSpy.getAccessToken.and.returnValue(dummyToken);
