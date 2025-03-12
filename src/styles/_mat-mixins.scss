@@ -1,4 +1,5 @@
 @use '/node_modules/@angular/material' as mat;
+@use './gen-mixins';
 
 @mixin mat-background-color($theme, $pallete, $hue-weight) {
   background-color: mat.get-theme-color($theme, $pallete, $hue-weight);
@@ -16,19 +17,27 @@
   width: #{$size}px;
 }
 
-@mixin mat-icon-button-size($size: 24) {
-  .mat-mdc-icon-button {
-    --mdc-icon-button-icon-size: #{$size}px;
+@mixin mat-icon-button-size($btn-size: 36, $icn-size: 18) {
+  $button-size: #{$btn-size}px;
+  $icon-size: #{$icn-size}px;
 
-    &.mat-mdc-button-base {
-      --mdc-icon-button-state-layer-size: #{$size * 2.2}px;
+  &.mdc-icon-button:not([class*="mat-mdc-paginator"]) {
+    height: $button-size;
+    line-height: $button-size;
+    width: $button-size;
+
+    .mat-mdc-button-touch-target {
+      height: $button-size;
+      width: $button-size;
     }
 
     .mat-icon {
-      font-size: #{$size}px;
-      height: #{$size}px;
-      line-height: #{$size}px;
-      width: #{$size}px;
+      @include gen-mixins.center-absolute();
+      --mdc-icon-button-icon-size: $icon-size;
+      font-size: $icon-size;
+      height: $icon-size;
+      line-height: $icon-size;
+      width: $icon-size;
     }
   }
 }

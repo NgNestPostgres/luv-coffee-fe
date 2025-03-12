@@ -22,11 +22,12 @@
     @if (searchBox.value) {
       <button
         aria-label="Clear"
+        class="btn-icon-close"
         matIconSuffix
         mat-icon-button
         (click)="searchBox.value=''; search('')"
       >
-        <mat-icon class="icon-close">close</mat-icon>
+        <mat-icon>close</mat-icon>
       </button>
     }
 
