@@ -31,9 +31,11 @@
   - or run `npm run build:lib:ngx-shared:watch` for ngx-shared library development.
 4. Run `npm run serve:local` to start FE develoment.
 
-## Run build locally (???)
+<!-- TODO: check
+## Run build locally
 Run `npm i -g spa-server-gzip`
 Run `npm run build:start`
+-->
 
 ## PhoneFormFieldComponent
 https://material.angular.io/guide/creating-a-custom-form-field-control
@@ -45,14 +47,12 @@ Use standard mat typography classes whenever possible: https://material.angular.
 ## Angular Material
 ### Custom Theming
 - https://material.angular.io/guides
-- https://angular-material.dev/courses/m2-ng-components/m2-ng-components/create-custom-theme
 - Default theme - default System theme.
 - Dark theme is lazy loading setup is in angular.json.
 
-<!-- TODO: change -->
 ### Add Angular Material Module
-1. Add module to `app/shared/shared.module.ts`. (???)
-2. Add module styles:
+1. Add MatModule to `app/app.component.ts`.
+2. Add MatModule styles:
     - to light theme: `src/styles.scss`,
     - to dark theme colors: `src/styles/themes/dark-theme.scss`,
     - to theme density: `src/styles/themes/_sizes.scss`.
@@ -122,9 +122,10 @@ Angular library rules (https://angular.dev/tools/libraries/creating-libraries):
 2. Update versions in:
     - package.json (version x.y.z as release branch)
     - projects/ngx-shared/package.json (version x.y.z as release branch)
-3. Make PR and merge `release_x.y.z` to `main`.
-4. Make PR and merge `main` to `dev`.
-5. In GitHub on `main` branch create release (to trigger packages publishing).
+3. Update package-lock.json: `npm i`.
+4. Make PR and merge `release_x.y.z` to `main`.
+5. Make PR and merge `main` to `dev`.
+6. In GitHub on `main` branch create release (to trigger packages publishing).
 
 <!-- TODO: setup
 # Deployment
