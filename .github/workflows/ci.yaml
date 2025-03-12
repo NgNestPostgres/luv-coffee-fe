@@ -12,10 +12,10 @@ jobs:
     name: Run CI
     runs-on: ubuntu-latest
 
-    # permissions:
-    #   actions: read # for github/codeql-action
-    #   contents: read # for github/codeql-action
-    #   security-events: write # for github/codeql-action/upload-sarif to upload SARIF results
+    permissions:
+      actions: read # for github/codeql-action
+      contents: read # for github/codeql-action
+      security-events: write # for github/codeql-action/upload-sarif to upload SARIF results
 
     steps:
       - name: Checkout repository
