@@ -1,0 +1,22 @@
+// TODO: setup
+// @mixin ellipses($rowNumer) {
+//   overflow: hidden;
+//   text-overflow: ellipsis;
+//   white-space: nowrap;
+
+//   @supports (-webkit-line-clamp: $rowNumer) {
+//     overflow: hidden;
+//     text-overflow: ellipsis;
+//     white-space: initial;
+//     display: -webkit-box;
+//     -webkit-line-clamp: $rowNumer;
+//     -webkit-box-orient: vertical;
+//   }
+// }
+
+@mixin center-absolute() {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}

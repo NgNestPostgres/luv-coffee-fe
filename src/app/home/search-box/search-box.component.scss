@@ -1,10 +1,11 @@
-@use '/dist/ngx-shared/styles/ngx-mat-mixins';
+@use '../../../styles/mat-mixins';
 
 .form {
   font-size: 16px;
 
-  .icon-close {
-    @include ngx-mat-mixins.mat-icon-size(18);
+  .btn-icon-close {
+    @include mat-mixins.mat-icon-button-size(36, 18);
+    margin-right: 4px;
   }
 
   .search-box {

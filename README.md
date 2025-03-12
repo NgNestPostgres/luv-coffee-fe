@@ -76,8 +76,8 @@ https://dev.to/digitaldino/set-up-eslint-with-angular-and-the-airbnb-style-guide
 
 ## Publish libraries/packages
 1. Update versions in (versions are the same!!!):
-    - package.json
-    - packages/package.json
+    - package.json (version x.y.z)
+    - packages/package.json (version x.y.z)
 2. Publish from local machine:
     1. Authenticate to GitHub Registry (see [GitHub Registry Auth](#gitHub-registry-auth))
     2. Run `npm run publish:ngx-shared`.
@@ -177,19 +177,8 @@ Run `yarn build:analyze`.
 -->
 
 # Angular Update
-1. Update manually:
-npm i eslint@latest
-  eslint-config-google@latest
-  eslint-plugin-unused-imports@latest
-  eslint-plugin-simple-import-sort@latest
-  @angular-eslint/builder@latest
-  @angular-eslint/eslint-plugin@latest
-  @angular-eslint/eslint-plugin-template@latest
-  @angular-eslint/schematics@latest
-  @angular-eslint/template-parser@latest
-  @typescript-eslint/eslint-plugin@latest
-  @typescript-eslint/parser@latest
---save-dev
+1. Update lint manually:
+  npm i eslint@latest eslint-config-google@latest eslint-plugin-unused-imports@latesteslint-plugin-simple-import-sort@latest @angular-eslint/builder@latest @angular-eslint/eslint-plugin@latest @angular-eslint/eslint-plugin-template@latest @angular-eslint/schematics@latest @angular-eslint/template-parser@latest @typescript-eslint/eslint-plugin@latest @typescript-eslint/parser@latest --save-dev
 
 
 # REFACTOR TO NEW STARTUP
