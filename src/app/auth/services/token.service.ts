@@ -1,4 +1,4 @@
-import {Inject, Injectable} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {LocalStorageService} from '@core/services/local-storage.service';
 
 const ACCESS_TOKEN = 'access_token';
@@ -9,15 +9,13 @@ const REFRESH_TOKEN = 'refresh_token';
   providedIn: 'root',
 })
 export class TokenService {
-  constructor(
-    @Inject(LocalStorageService) private localStorage: Storage,
-  ) { }
+  private localStorage = inject(LocalStorageService);
 
-  public getAccessToken(): string {
-    return 'QWERTY';
+  public getAccessToken(): string | null {
+    return this.localStorage.getItem(ACCESS_TOKEN);
   }
 
   public setAccessToken(token: string) {
-    this.localStorage.setItem(ACCESS_TOKEN, String(token));
+    this.localStorage.setItem(ACCESS_TOKEN, token);
   }
 }

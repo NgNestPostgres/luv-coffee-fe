@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, inject} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {DialogsService} from '@core/services/dialogs.service';
 
@@ -6,9 +6,11 @@ import {DialogsService} from '@core/services/dialogs.service';
   selector: 'anp-users-list',
   templateUrl: './users-list.component.html',
   styleUrls: ['./users-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatButtonModule],
 })
 export class UsersListComponent {
+  private ref = inject(ChangeDetectorRef);
   public token: string = 'no token';
 
   constructor(
@@ -18,6 +20,7 @@ export class UsersListComponent {
   public showLoginForm(): void {
     this.dialogs.login().subscribe((token: string) => {
       this.token = token;
+      this.ref.markForCheck();
     });
   }
 }

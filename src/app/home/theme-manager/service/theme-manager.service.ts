@@ -32,13 +32,13 @@ export class ThemeManagerService {
     }
   }
 
-  private getStoredTheme = (key: string = LOCAL_STORAGE_KEY) => JSON.parse(this.localStorage.get(key) ?? '{}')
+  private getStoredTheme = (key: string = LOCAL_STORAGE_KEY) => JSON.parse(this.localStorage.getItem(key) ?? '{}')
     .theme;
 
   private setStoredTheme = (theme: string, key: string = LOCAL_STORAGE_KEY) => {
-    const meta = JSON.parse(this.localStorage.get(key) ?? '{}');
+    const meta = JSON.parse(this.localStorage.getItem(key) ?? '{}');
     meta.theme = theme;
-    this.localStorage.set(key, JSON.stringify(meta));
+    this.localStorage.setItem(key, JSON.stringify(meta));
   };
 
   private getPreferredTheme = (key: string = LOCAL_STORAGE_KEY): 'dark' | 'light' => {

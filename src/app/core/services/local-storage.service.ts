@@ -1,23 +1,25 @@
-import {Inject, Injectable, InjectionToken} from '@angular/core';
+import {inject, Injectable, InjectionToken} from '@angular/core';
 
 export const LOCAL_STORAGE = new InjectionToken<Storage>('Local Storage', {
   providedIn: 'root',
   factory: () => localStorage,
 });
 
-@Injectable({providedIn: 'root'})
+@Injectable(
+  {providedIn: 'root'},
+)
 export class LocalStorageService {
-  constructor(@Inject(LOCAL_STORAGE) public storage: Storage) {}
+  private storage: Storage = inject(LOCAL_STORAGE);
 
-  get(key: string) {
+  getItem(key: string) {
     return this.storage.getItem(key);
   }
 
-  set(key: string, value: string) {
+  setItem(key: string, value: string) {
     this.storage.setItem(key, value);
   }
 
-  remove(key: string) {
+  removeItem(key: string) {
     this.storage.removeItem(key);
   }
 
