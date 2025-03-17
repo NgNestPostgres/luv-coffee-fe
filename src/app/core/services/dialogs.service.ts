@@ -11,9 +11,10 @@ export class DialogsService {
 
   private readonly defaultDialogConfig: MatDialogConfig = {
     panelClass: 'ta-dialog',
-    disableClose: true,
-    minWidth: '640px',
-    width: '640px',
+    disableClose: false,
+    maxWidth: '640px',
+    minWidth: '500px',
+    width: '90%',
   };
 
   public login(inputData?: unknown): Observable<string> {

@@ -122,7 +122,7 @@ Angular library rules (https://angular.dev/tools/libraries/creating-libraries):
 2. Update versions in:
     - package.json (version x.y.z as release branch)
     - projects/ngx-shared/package.json (version x.y.z as release branch)
-3. Update package-lock.json: `npm i`.
+3. Update package-lock.json: `npm update`.
 4. Make PR and merge `release_x.y.z` to `main`.
 5. Make PR and merge `main` to `dev`.
 6. In GitHub on `main` branch create release (to trigger packages publishing).

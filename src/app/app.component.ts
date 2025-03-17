@@ -1,5 +1,6 @@
 import {MediaMatcher} from '@angular/cdk/layout';
 import {
+  ChangeDetectionStrategy,
   ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild,
 } from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
@@ -17,6 +18,7 @@ import {TopMenuComponent} from './home/top-menu/top-menu.component';
   selector: 'anp-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MatButtonModule,
     MatIconModule,

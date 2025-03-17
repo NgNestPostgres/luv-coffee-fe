@@ -1,17 +1,29 @@
 import {
   HttpEvent, HttpHandler, HttpInterceptor, HttpRequest,
 } from '@angular/common/http';
-import {Injectable} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {TokenService} from '@auth/services/token.service';
 import {Observable} from 'rxjs';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(private tokenService: TokenService) {}
+  private tokenService = inject(TokenService);
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const accessToken = this.tokenService.getAccessToken();
-    return next.handle(request);
+
+    const credentialRequest = req.clone({
+      withCredentials: true,
+    });
+
+    if (!accessToken) {
+      return next.handle(credentialRequest);
+    }
+
+    const authReq = req.clone({
+      headers: req.headers.set('Authorization', `Bearer ${accessToken}`),
+    });
+
+    return next.handle(authReq);
   }
 }
