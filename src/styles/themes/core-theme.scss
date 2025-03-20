@@ -1,0 +1,33 @@
+@use "/node_modules/@angular/material" as mat;
+@use "./themes-setup";
+@use "./theme-styles";
+@use "./theme-densities";
+
+
+@mixin light-theme() {
+  @include mat.core();
+  @include mat.core-theme(themes-setup.$light-theme);
+  @include mat.typography-hierarchy(themes-setup.$light-theme);
+  @include theme-densities.mat-densities();
+
+  /*
+    Do not forget to add "@inctlude" to
+    - dark theme colors: "scr/styles/themes/dark.scss",
+    - theme density: "src/styles/themes/_theme-densities.scss".
+  */
+  @include mat.autocomplete-theme(themes-setup.$light-theme);
+  @include mat.button-theme(themes-setup.$light-theme);
+  @include mat.form-field-theme(themes-setup.$light-theme);
+  @include mat.icon-theme(themes-setup.$light-theme);
+  @include mat.input-theme(themes-setup.$light-theme);
+  @include mat.menu-theme(themes-setup.$light-theme);
+  @include mat.sidenav-theme(themes-setup.$light-theme);
+  @include mat.toolbar-theme(themes-setup.$light-theme);
+  @include mat.tree-theme(themes-setup.$light-theme);
+
+  /*
+    Do not forget to add "@inctlude" to
+    - dark theme colors: "scr/styles/themes/dark.scss",
+  */
+  @include theme-styles.global-styles(themes-setup.$light-theme);
+}

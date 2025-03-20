@@ -1,19 +1,18 @@
 @use "/node_modules/@angular/material" as mat;
-@use "./all-themes" as themes;
-@use "./theme-global-styles" as theme-global-styles;
+@use "./themes-setup";
+@use "./theme-styles";
 
 .dark-theme {
-  @include mat.core-color(themes.$dark-theme);
+  @include mat.core-color(themes-setup.$dark-theme);
+  @include mat.autocomplete-color(themes-setup.$dark-theme);
+  @include mat.button-color(themes-setup.$dark-theme);
+  @include mat.form-field-color(themes-setup.$dark-theme);
+  @include mat.icon-color(themes-setup.$dark-theme);
+  @include mat.input-color(themes-setup.$dark-theme);
+  @include mat.menu-color(themes-setup.$dark-theme);
+  @include mat.sidenav-color(themes-setup.$dark-theme);
+  @include mat.toolbar-color(themes-setup.$dark-theme);
+  @include mat.tree-color(themes-setup.$dark-theme);
 
-  @include mat.autocomplete-color(themes.$dark-theme);
-  @include mat.button-color(themes.$dark-theme);
-  @include mat.form-field-color(themes.$dark-theme);
-  @include mat.icon-color(themes.$dark-theme);
-  @include mat.input-color(themes.$dark-theme);
-  @include mat.menu-color(themes.$dark-theme);
-  @include mat.sidenav-color(themes.$dark-theme);
-  @include mat.toolbar-color(themes.$dark-theme);
-  @include mat.tree-color(themes.$dark-theme);
-
-  @include theme-global-styles.global-styles(themes.$dark-theme);
+  @include theme-styles.global-styles(themes-setup.$dark-theme);
 }
