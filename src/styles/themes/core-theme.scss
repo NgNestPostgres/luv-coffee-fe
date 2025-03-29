@@ -1,7 +1,8 @@
 @use "/node_modules/@angular/material" as mat;
 @use "./themes-setup";
-@use "./theme-styles";
 @use "./theme-densities";
+@use "./theme-mat-colors-overrides";
+@use "./theme-mat-not-colors-overrides";
 
 
 @mixin light-theme() {
@@ -9,6 +10,7 @@
   @include mat.core-theme(themes-setup.$light-theme);
   @include mat.typography-hierarchy(themes-setup.$light-theme);
   @include theme-densities.mat-densities();
+  @include theme-mat-not-colors-overrides.override();
 
   /*
     Do not forget to add "@inctlude" to
@@ -29,5 +31,5 @@
     Do not forget to add "@inctlude" to
     - dark theme colors: "scr/styles/themes/dark.scss",
   */
-  @include theme-styles.global-styles(themes-setup.$light-theme);
+  @include theme-mat-colors-overrides.override-colors(themes-setup.$light-theme);
 }

@@ -1,0 +1,10 @@
+@use '/node_modules/@angular/material' as mat;
+
+:root {
+  // mat-evevation-z classes workaround
+  @for $i from 0 through 24 {
+    .mat-elevation-z#{$i} {
+      @include mat.elevation($i);
+    }
+  }
+}
