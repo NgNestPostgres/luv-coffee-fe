@@ -21,7 +21,7 @@
     [cdkTreeNodeTypeaheadLabel]="node.name"
     @expandNode
   >
-    <div
+    <button
       [attr.aria-label]="'Toggle ' + node.name"
       class="menu-item expandable"
       mat-menu-item
@@ -34,6 +34,6 @@
           chevron_right
         </mat-icon>
       </div>
-    </div>
+    </button>
   </mat-tree-node>
 </mat-tree>
