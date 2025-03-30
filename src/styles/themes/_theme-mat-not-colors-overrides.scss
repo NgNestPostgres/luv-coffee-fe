@@ -4,4 +4,14 @@
 
 @mixin override() {
   @include mat-mixins.mat-icon-button-size(48, 24);
+
+  .mat-tree {
+    .mat-tree-node {
+      .mat-mdc-menu-item {
+        .mat-mdc-menu-item-text {
+          width: 100%;
+        }
+      }
+    }
+  }
 }

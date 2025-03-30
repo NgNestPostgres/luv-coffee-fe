@@ -2,10 +2,10 @@
   <mat-tree-node
     *matTreeNodeDef="let node"
     matTreeNodePadding
+    [matTreeNodePaddingIndent]="20"
     @expandNode
   >
     <a
-      class="menu-item link"
       mat-menu-item
       [routerLinkActive]="'selected'"
       [routerLink]="node.path"
@@ -17,12 +17,11 @@
 
   <mat-tree-node
     *matTreeNodeDef="let node;when: hasChild"
-    matTreeNodePadding
     matTreeNodeToggle
     [cdkTreeNodeTypeaheadLabel]="node.name"
     @expandNode
   >
-    <button
+    <div
       [attr.aria-label]="'Toggle ' + node.name"
       class="menu-item expandable"
       mat-menu-item
@@ -35,6 +34,6 @@
           chevron_right
         </mat-icon>
       </div>
-    </button>
+    </div>
   </mat-tree-node>
 </mat-tree>
