@@ -19,13 +19,13 @@ import {DialogsService} from '@core/services/dialogs.service';
   ],
 })
 export class ProfileMenuComponent {
-  private dialogs = inject(DialogsService)
+  private dialogs = inject(DialogsService);
 
   token: string = 'no token';
 
   public showLoginForm(inputData = 'inpuData'): void {
     this.dialogs.login(inputData).subscribe((token: string) => {
-      console.log('dialog closed')
+      console.log('dialog closed');
       this.token = token;
     });
   }

@@ -1,7 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {provideRouter} from '@angular/router';
 
 import {ProfileMenuComponent} from './profile-menu.component';
-import { provideRouter } from '@angular/router';
 
 describe('ProfileMenuComponent', () => {
   let component: ProfileMenuComponent;
@@ -10,7 +10,7 @@ describe('ProfileMenuComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [],
-      providers: [provideRouter([])]
+      providers: [provideRouter([])],
     })
       .compileComponents();
 
