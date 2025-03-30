@@ -9,10 +9,10 @@ import {MatSidenav, MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {RouterModule, RouterOutlet} from '@angular/router';
 
-import {SearchBoxComponent} from './home/search-box/search-box.component';
-import {SidenavTreeComponent} from './home/sidenav-tree/sidenav-tree.component';
-import {ThemeManagerComponent} from './home/theme-manager/theme-manager.component';
-import {TopMenuComponent} from './home/top-menu/top-menu.component';
+import {SearchBoxComponent} from './navigation/search-box/search-box.component';
+import {SidenavTreeComponent} from './navigation/sidenav-tree/sidenav-tree.component';
+import {ThemeManagerComponent} from './navigation/theme-manager/theme-manager.component';
+import {TopMenuComponent} from './navigation/top-menu/top-menu.component';
 
 @Component({
   selector: 'anp-root',
