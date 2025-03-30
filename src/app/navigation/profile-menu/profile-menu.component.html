@@ -1,9 +1,9 @@
 <button
-  aria-label="Change theme"
+  aria-label="Profile"
   mat-icon-button
   [matMenuTriggerFor]="profileMenu"
 >
-  <mat-icon>person</mat-icon>
+  <mat-icon>account_circle</mat-icon>
 </button>
 
 <mat-menu #profileMenu="matMenu">
@@ -11,7 +11,18 @@
     mat-menu-item
     [routerLink]="['../profile']"
     [routerLinkActive]="'selected'"
-  >Profile</a>
+  >
+    <mat-icon>person</mat-icon>
+    <span>Profile</span>
+  </a>
 
-  <button mat-menu-item (click)="showLoginForm()">Login</button>
+  <button mat-menu-item (click)="showLoginForm()">
+    <mat-icon>login</mat-icon>
+    <span>Login</span>
+  </button>
+
+  <button mat-menu-item>
+    <mat-icon>logout</mat-icon>
+    <span>Logout</span>
+  </button>
 </mat-menu>

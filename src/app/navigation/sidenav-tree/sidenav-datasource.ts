@@ -12,8 +12,24 @@ export const TREE_DATA: MenuItemNode[] = [
   },
   {
     name: 'Lib Dev',
+    iconName: 'local_library',
     children: [
       {name: 'Phone Form Field', path: ['lib-dev', 'phone-form-field']},
+    ],
+  },
+  {
+    name: 'Account',
+    iconName: 'account_circle',
+    children: [
+      {
+        name: 'Profile',
+        iconName: 'person',
+        path: ['profile'],
+      },
+      {
+        name: 'Login',
+        iconName: 'login',
+      },
     ],
   },
 ];

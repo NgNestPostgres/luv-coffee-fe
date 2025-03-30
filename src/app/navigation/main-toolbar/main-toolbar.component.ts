@@ -25,7 +25,7 @@ import {TopMenuComponent} from '../top-menu/top-menu.component';
   ],
 })
 export class MainToolbarComponent {
-  sidenavToggled = output<boolean>();
+  sidenavToggled = output<void>();
 
   responsicService = inject(ResponsiveService);
 
@@ -33,6 +33,6 @@ export class MainToolbarComponent {
   isDesktop: Signal<boolean> = this.responsicService.isDesktop;
 
   toggleSidenav(): void {
-    this.sidenavToggled.emit(true);
+    this.sidenavToggled.emit();
   }
 }

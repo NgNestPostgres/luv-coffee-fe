@@ -13,7 +13,7 @@
       [mode]="isMobile() ? 'over' : 'side'"
     >
       <anp-sidenav-tree
-        (menuItemChosen)="isMobile() && sidenav.close()"
+        (menuItemChosen)="!isDesktop() && sidenav.close()"
       ></anp-sidenav-tree>
     </mat-sidenav>
 

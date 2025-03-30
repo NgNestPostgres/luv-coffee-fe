@@ -2,12 +2,13 @@ import {
   animate, state, style, transition, trigger,
 } from '@angular/animations';
 import {
-  ChangeDetectionStrategy, Component, EventEmitter, Output,
+  ChangeDetectionStrategy, Component, inject, output,
 } from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatTreeModule} from '@angular/material/tree';
 import {RouterModule} from '@angular/router';
+import {DialogsService} from '@core/services/dialogs.service';
 
 import {TREE_DATA} from './sidenav-datasource';
 import {MenuItemNode} from './sidenav-tree.enum';
@@ -36,13 +37,27 @@ import {MenuItemNode} from './sidenav-tree.enum';
   ],
 })
 export class SidenavTreeComponent {
-  @Output() menuItemChosen = new EventEmitter<void>();
+  menuItemChosen = output<void>();
 
-  public dataSource = TREE_DATA;
-  public childrenAccessor = (node: MenuItemNode) => node.children ?? [];
-  public hasChild = (_: number, node: MenuItemNode) => !!node.children && node.children.length > 0;
+  private dialogs = inject(DialogsService);
+  token: string = 'no token';
 
-  public itemChosen(): void {
+  dataSource = TREE_DATA;
+  childrenAccessor = (node: MenuItemNode) => node.children ?? [];
+  hasChild = (_: number, node: MenuItemNode) => !!node.children && node.children.length > 0;
+
+  itemChosen(node: MenuItemNode): void {
+    if (node.name === 'Login') {
+      this.showLoginForm();
+    }
+
     this.menuItemChosen.emit();
+  }
+
+  private showLoginForm(inputData = 'inpuData'): void {
+    this.dialogs.login(inputData).subscribe((token: string) => {
+      console.log('dialog closed');
+      this.token = token;
+    });
   }
 }

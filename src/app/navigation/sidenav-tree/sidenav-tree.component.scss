@@ -4,6 +4,11 @@
   padding: 16px 0;
 }
 
+.flex-center {
+  align-items: center;
+  display: flex;
+}
+
 mat-tree-node {
   align-items: stretch;
   overflow: hidden;
@@ -13,11 +18,6 @@ mat-tree-node {
   border-radius: 0;
   height: inherit;
   width: 100%;
-
-  &.link {
-    align-items: center;
-    display: flex;
-  }
 
   &.expandable {
     .content-wrapper {

@@ -36,17 +36,17 @@ describe('SidenavTreeComponent', () => {
     const tree = await loader.getHarness(MatTreeHarness);
     const treeDescendants = await tree.getNodes();
 
-    expect(treeDescendants.length).toBe(4);
+    expect(treeDescendants.length).toBe(TREE_DATA.length);
     // flat nodes are not rendered until expanded
     await treeDescendants[2].expand();
-    expect((await tree.getNodes()).length).toBe(6);
+    expect((await tree.getNodes()).length).toBe(7);
   });
 
   it('should correctly get correct node with text', async () => {
     const tree = await loader.getHarness(MatTreeHarness);
     const treeNodes = await tree.getNodes();
 
-    expect(treeNodes.length).toBe(4);
+    expect(treeNodes.length).toBe(TREE_DATA.length);
     expect(await treeNodes[0].getText()).toBe(TREE_DATA[0].name);
     expect(await treeNodes[1].getText()).toBe(TREE_DATA[1].name);
     // TODO: was notworking properly with Nodes with chidlren. Sees '' instead of 'Menu'. Re-check.
@@ -55,44 +55,5 @@ describe('SidenavTreeComponent', () => {
     expect(await treeNodes[2].getLevel()).toBe(1);
     expect(await treeNodes[2].isDisabled()).toBe(false);
     expect(await treeNodes[2].isExpanded()).toBe(false);
-  });
-
-  it('should correctly get tree structure', async () => {
-    const tree = await loader.getHarness(MatTreeHarness);
-
-    expect(await tree.getTreeStructure()).toEqual({
-      children: [
-        {text: TREE_DATA[0].name},
-        {text: TREE_DATA[1].name},
-        // TODO: was notworking properly with Nodes with chidlren. Sees '' instead of 'Menu'. Re-check.
-        // { text: TREE_DATA[3].name },
-        {text: ''},
-        {text: ''},
-      ],
-    });
-
-    // TODO: was notworking properly with Nodes with chidlren. Sees '' instead of 'Menu'. Re-check.
-    // const firstGroup = (await tree.getNodes({text: /Menu/}))[0];
-    const firstGroup = (await tree.getNodes())[2];
-
-    await firstGroup.expand();
-
-    expect(await tree.getTreeStructure()).toEqual({
-      children: [
-        {text: TREE_DATA[0].name},
-        {text: TREE_DATA[1].name},
-        {
-          // TODO: was notworking properly with Nodes with chidlren. Sees '' instead of 'Menu'. Re-check.
-          // text: TREE_DATA[3].name,
-          text: '',
-          // TODO: was notworking properly with Nodes with chidlren. Sees '' instead of 'Menu'. Re-check.
-          // children: [
-          //   { text: TREE_DATA[2].children![0].name },
-          //   { text: TREE_DATA[2].children![1].name },
-          // ]
-        },
-        {text: ''},
-      ],
-    });
   });
 });

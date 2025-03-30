@@ -9,14 +9,17 @@
       mat-menu-item
       [routerLinkActive]="'selected'"
       [routerLink]="node.path"
-      (click)="itemChosen()"
+      (click)="itemChosen(node)"
     >
-      <div>{{node.name}}</div>
+      <div class="flex-center">
+        <mat-icon>{{node.iconName}}</mat-icon>
+        <span>{{node.name}}</span>
+      </div>
     </a>
   </mat-tree-node>
 
   <mat-tree-node
-    *matTreeNodeDef="let node;when: hasChild"
+    *matTreeNodeDef="let node; when: hasChild"
     matTreeNodeToggle
     [cdkTreeNodeTypeaheadLabel]="node.name"
     @expandNode
@@ -28,7 +31,10 @@
       matTreeNodeToggle
     >
       <div class="content-wrapper">
-        <div>{{node.name}}</div>
+        <div class="flex-center">
+          <mat-icon>{{node.iconName}}</mat-icon>
+          <span>{{node.name}}</span>
+        </div>
 
         <mat-icon [@expandArrow]="tree.isExpanded(node) ? 'expand' : 'close'">
           chevron_right
