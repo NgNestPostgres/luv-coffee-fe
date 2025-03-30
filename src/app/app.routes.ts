@@ -6,6 +6,10 @@ import {NotFoundComponent} from './shared/components/not-found/not-found.compone
 export const routes: Routes = [
   {path: '', component: HomeComponent},
   {
+    path: 'profile',
+    loadChildren: () => import('./lazy-loaded/profile/profile.routes').then((m) => m.PROFILE_ROUTES),
+  },
+  {
     path: 'users',
     loadChildren: () => import('./lazy-loaded/users/users.routes').then((m) => m.USERS_ROUTES),
   },

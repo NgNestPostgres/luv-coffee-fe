@@ -1,0 +1,17 @@
+<button
+  aria-label="Change theme"
+  mat-icon-button
+  [matMenuTriggerFor]="profileMenu"
+>
+  <mat-icon>person</mat-icon>
+</button>
+
+<mat-menu #profileMenu="matMenu">
+  <a
+    mat-menu-item
+    [routerLink]="['../profile']"
+    [routerLinkActive]="'selected'"
+  >Profile</a>
+
+  <button mat-menu-item (click)="showLoginForm()">Login</button>
+</mat-menu>

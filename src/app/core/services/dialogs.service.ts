@@ -10,15 +10,17 @@ export class DialogsService {
   private readonly dialog = inject(MatDialog);
 
   private readonly defaultDialogConfig: MatDialogConfig = {
-    panelClass: 'ta-dialog',
-    disableClose: false,
-    maxWidth: '640px',
+    autoFocus: false,
+    // panelClass: 'ta-dialog',
+    disableClose: true,
+    maxHeight: '90vh',
+    maxWidth: '90vw',
     minWidth: '500px',
-    width: '90%',
+    width: '90vw',
   };
 
-  public login(inputData?: unknown): Observable<string> {
-    return this.dialog.open(LoginDialogComponent, {
+  login(inputData?: unknown): Observable<string> {
+    return this.dialog.open<LoginDialogComponent, unknown>(LoginDialogComponent, {
       data: inputData,
       ...this.defaultDialogConfig,
     })

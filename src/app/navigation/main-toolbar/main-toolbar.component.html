@@ -16,7 +16,15 @@
 </a>
 
 <anp-top-menu class="top-menu" [class.g-hide]="!isDesktop()"></anp-top-menu>
+
 <span class="toolbar-spacer"></span>
+
 <anp-search-box></anp-search-box>
+
 <span class="toolbar-spacer"></span>
+
 <anp-theme-manager></anp-theme-manager>
+
+@if(isDesktop()) {
+  <anp-profile-menu></anp-profile-menu>
+}

@@ -4,19 +4,20 @@ import {MatIconModule} from '@angular/material/icon';
 import {RouterModule} from '@angular/router';
 import {ResponsiveService} from '@core/services/responsive.service';
 
+import {ProfileMenuComponent} from '../profile-menu/profile-menu.component';
 import {SearchBoxComponent} from '../search-box/search-box.component';
 import {ThemeManagerComponent} from '../theme-manager/theme-manager.component';
 import {TopMenuComponent} from '../top-menu/top-menu.component';
 
 @Component({
   selector: 'anp-main-toolbar',
-
   templateUrl: './main-toolbar.component.html',
   styleUrl: './main-toolbar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MatButtonModule,
     MatIconModule,
+    ProfileMenuComponent,
     SearchBoxComponent,
     ThemeManagerComponent,
     TopMenuComponent,
