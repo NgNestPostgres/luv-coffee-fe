@@ -1,18 +1,15 @@
 import {
   ChangeDetectionStrategy,
   Component, inject, Signal,
+  ViewChild,
 } from '@angular/core';
-import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
-import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatSidenav, MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {RouterModule, RouterOutlet} from '@angular/router';
 import {ResponsiveService} from '@core/services/responsive.service';
 
-import {SearchBoxComponent} from './navigation/search-box/search-box.component';
+import {MainToolbarComponent} from './navigation/main-toolbar/main-toolbar.component';
 import {SidenavTreeComponent} from './navigation/sidenav-tree/sidenav-tree.component';
-import {ThemeManagerComponent} from './navigation/theme-manager/theme-manager.component';
-import {TopMenuComponent} from './navigation/top-menu/top-menu.component';
 
 @Component({
   selector: 'anp-root',
@@ -20,21 +17,23 @@ import {TopMenuComponent} from './navigation/top-menu/top-menu.component';
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    MatButtonModule,
-    MatIconModule,
+    MainToolbarComponent,
     MatSidenavModule,
     MatToolbarModule,
-    SearchBoxComponent,
     SidenavTreeComponent,
-    ThemeManagerComponent,
-    TopMenuComponent,
     RouterModule,
     RouterOutlet,
   ],
 })
 export class AppComponent {
+  @ViewChild('sidenav') private sidenav!: MatSidenav;
+
   responsicService = inject(ResponsiveService);
 
   isMobile: Signal<boolean> = this.responsicService.isMobile;
   isDesktop: Signal<boolean> = this.responsicService.isDesktop;
+
+  toggleSidnav(): void {
+    this.sidenav.toggle();
+  }
 }
