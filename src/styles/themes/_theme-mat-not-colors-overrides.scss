@@ -1,6 +1,7 @@
 @use '/node_modules/@angular/material' as mat;
-@use '../variables' as vars;
+@use '../mat-mixins';
+
 
 @mixin override() {
-
+  @include mat-mixins.mat-icon-button-size(48, 24);
 }

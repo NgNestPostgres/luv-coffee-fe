@@ -1,23 +1,18 @@
 @use '../styles/variables' as vars;
 
-.toolbar {
-  left: 0;
-  position: fixed;
-  right: 0;
-  top: 0;
-  z-index: 2;
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
 
+.mat-toolbar {
   .toolbar-spacer {
     flex: 1 1 auto;
   }
 
-  .main-toolbar-row {
-    .mob-menu-icon {
-      aspect-ratio: 1/1;
-      height: 100%;
-      margin-right: 8px;
-      width: auto;
-    }
+  .mat-toolbar-row {
+    padding: 0 8px;
 
     .logo-link {
       align-items: center;
@@ -34,24 +29,11 @@
         max-width: none;
       }
     }
-
-    @media(max-width: vars.$tab-width) {
-      padding-left: 0;
-    }
   }
 }
 
-.sidenav-container {
-  bottom: 0;
+.mat-sidenav-container {
   display: flex;
   flex-direction: column;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-
-  mat-sidenav {
-    border-radius: 0;
-    width: auto;
-  }
+  height: 100%;
 }

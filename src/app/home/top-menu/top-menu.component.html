@@ -3,26 +3,23 @@
   [routerLink]="['../coffees']"
   [routerLinkActive]="'selected'"
   [routerLinkActiveOptions]="{ exact: true }"
-  class="mat-button-rounded"
 >Coffees</a>
 
 <a
   mat-button
   [routerLink]="['../users']"
   [routerLinkActive]="'selected'"
-  class="mat-button-rounded"
 >Users</a>
 
 <button
   mat-button
   [matMenuTriggerFor]="menu"
-  class="mat-button-rounded"
 >Menu</button>
+
 <mat-menu #menu="matMenu">
   <a
     mat-menu-item
     [routerLink]="['../coffees']"
-    [routerLinkActive]="'selected'"
   >Coffees</a>
 
   <a
@@ -35,8 +32,8 @@
 <button
   mat-button
   [matMenuTriggerFor]="libDev"
-  class="mat-button-rounded"
 >Lib Dev</button>
+
 <mat-menu #libDev="matMenu">
   <a
     mat-menu-item

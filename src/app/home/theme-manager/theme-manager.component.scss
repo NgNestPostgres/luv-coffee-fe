@@ -1,5 +1,0 @@
-@use '../../../styles/mat-mixins';
-
-.btn-icon-theme {
-  @include mat-mixins.mat-icon-button-size(48, 24);
-}

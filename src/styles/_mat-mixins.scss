@@ -15,7 +15,7 @@
   $button-size: #{$btn-size}px;
   $icon-size: #{$icn-size}px;
 
-  &.mdc-icon-button {
+  .mdc-icon-button {
     height: $button-size;
     line-height: $button-size;
     width: $button-size;
