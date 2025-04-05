@@ -125,22 +125,14 @@ describe('ThemeManagerService', () => {
   });
 
   describe('setTheme', () => {
-    it('should set dark theme', (done: DoneFn) => {
+    it('should set dark theme', () => {
       service['setTheme']('dark');
-
-      service.isDark$.subscribe((isDark) => {
-        expect(isDark).toBe(true);
-        done();
-      });
+      expect(service.isDark()).toBeTrue();
     });
 
-    it('should set light theme', (done: DoneFn) => {
+    it('should set light theme', () => {
       service['setTheme']('light');
-
-      service.isDark$.subscribe((isDark) => {
-        expect(isDark).toBe(false);
-        done();
-      });
+      expect(service.isDark()).toBeFalse();
     });
   });
 });

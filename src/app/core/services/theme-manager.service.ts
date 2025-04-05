@@ -1,19 +1,22 @@
 /* eslint-disable no-underscore-dangle */
 import {DOCUMENT} from '@angular/common';
-import {inject, Injectable} from '@angular/core';
+import {computed, inject, Injectable, Signal, signal, WritableSignal} from '@angular/core';
 import {LocalStorageService} from '@core/services/local-storage.service';
 import {BehaviorSubject} from 'rxjs/internal/BehaviorSubject';
-import {take} from 'rxjs/operators';
 
 const LOCAL_STORAGE_KEY = 'anp-theme';
 
-@Injectable({providedIn: 'root'})
+@Injectable({
+  providedIn: 'root',
+})
 export class ThemeManagerService {
-  private document = inject(DOCUMENT);
-  private localStorage = inject(LocalStorageService);
-  private _isDarkSub = new BehaviorSubject(false);
-  isDark$ = this._isDarkSub.asObservable();
-  private _window = this.document.defaultView;
+  private readonly document = inject(DOCUMENT);
+  private readonly localStorage = inject(LocalStorageService);
+  private readonly isDarkBS$ = new BehaviorSubject(false);
+  private readonly isDarkWS: WritableSignal<boolean> = signal(false);
+  private readonly _window = this.document.defaultView;
+
+  isDark: Signal<boolean> = computed(() => this.isDarkWS());
 
   constructor() {
     this.setTheme(this.getPreferredTheme());
@@ -30,6 +33,17 @@ export class ThemeManagerService {
           }
         });
     }
+
+    this.isDarkBS$.subscribe((isDark: boolean) => {
+      if (isDark) {
+        const href = 'dark-theme.css';
+        this.getLinkElementForKey('dark-theme').setAttribute('href', href);
+        this.document.documentElement.classList.add('dark-theme');
+      } else {
+        this.removeStyle('dark-theme');
+        this.document.documentElement.classList.remove('dark-theme');
+      }
+    });
   }
 
   private getStoredTheme = (key: string = LOCAL_STORAGE_KEY) => JSON.parse(this.localStorage.getItem(key) ?? '{}')
@@ -64,28 +78,15 @@ export class ThemeManagerService {
         this._window.matchMedia('(prefers-color-scheme: dark)').matches
       ) {
         this.document.documentElement.setAttribute('data-bs-theme', 'dark');
-        this._isDarkSub.next(true);
+        this.isDarkBS$.next(true);
+        this.isDarkWS.set(true);
       } else {
         this.document.documentElement.setAttribute('data-bs-theme', theme);
-        this._isDarkSub.next(theme === 'dark');
+        this.isDarkBS$.next(theme === 'dark');
+        this.isDarkWS.set(theme === 'dark');
       }
-
-      this.setMaterialTheme();
     }
   };
-
-  private setMaterialTheme() {
-    this.isDark$.pipe(take(1)).subscribe((isDark: boolean) => {
-      if (isDark) {
-        const href = 'dark-theme.css';
-        this.getLinkElementForKey('dark-theme').setAttribute('href', href);
-        this.document.documentElement.classList.add('dark-theme');
-      } else {
-        this.removeStyle('dark-theme');
-        this.document.documentElement.classList.remove('dark-theme');
-      }
-    });
-  }
 
   private removeStyle(key: string): void {
     const existingLinkElement = this.getExistingLinkElementByKey(key);

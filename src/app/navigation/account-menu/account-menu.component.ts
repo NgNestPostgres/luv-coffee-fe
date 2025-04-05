@@ -4,6 +4,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {RouterModule} from '@angular/router';
 import {DialogsService} from '@core/services/dialogs.service';
+import {ThemeManagerService} from '@core/services/theme-manager.service';
 
 @Component({
   selector: 'anp-profile-menu',
@@ -20,10 +21,16 @@ import {DialogsService} from '@core/services/dialogs.service';
 })
 export class AccountMenuComponent {
   private dialogs = inject(DialogsService);
+  private themeManager = inject(ThemeManagerService);
 
+  isDark = this.themeManager.isDark;
   token: string = 'no token';
 
-  public showLoginForm(inputData = 'inpuData'): void {
+  changeTheme(theme: string) {
+    this.themeManager.changeTheme(theme);
+  }
+
+  showLoginForm(inputData = 'inpuData'): void {
     this.dialogs.login(inputData).subscribe((token: string) => {
       console.log('dialog closed');
       this.token = token;

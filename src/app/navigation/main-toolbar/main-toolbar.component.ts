@@ -6,7 +6,6 @@ import {ResponsiveService} from '@core/services/responsive.service';
 
 import {AccountMenuComponent} from '../account-menu/account-menu.component';
 import {SearchBoxComponent} from '../search-box/search-box.component';
-import {ThemeManagerComponent} from '../theme-manager/theme-manager.component';
 import {TopMenuComponent} from '../top-menu/top-menu.component';
 
 @Component({
@@ -19,7 +18,6 @@ import {TopMenuComponent} from '../top-menu/top-menu.component';
     MatIconModule,
     AccountMenuComponent,
     SearchBoxComponent,
-    ThemeManagerComponent,
     TopMenuComponent,
     RouterModule,
   ],
