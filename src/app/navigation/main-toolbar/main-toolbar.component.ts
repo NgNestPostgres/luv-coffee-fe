@@ -25,10 +25,10 @@ import {TopMenuComponent} from '../top-menu/top-menu.component';
 export class MainToolbarComponent {
   sidenavToggled = output<void>();
 
-  responsicService = inject(ResponsiveService);
+  responsiveService = inject(ResponsiveService);
 
-  isMobile: Signal<boolean> = this.responsicService.isMobile;
-  isDesktop: Signal<boolean> = this.responsicService.isDesktop;
+  isMobile: Signal<boolean> = this.responsiveService.isMobile;
+  isDesktop: Signal<boolean> = this.responsiveService.isDesktop;
 
   toggleSidenav(): void {
     this.sidenavToggled.emit();

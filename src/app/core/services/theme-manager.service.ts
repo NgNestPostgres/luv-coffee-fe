@@ -18,7 +18,7 @@ export class ThemeManagerService {
 
   isDark: Signal<boolean> = computed(() => this.isDarkWS());
 
-  constructor() {
+  init(): void {
     this.setTheme(this.getPreferredTheme());
 
     if (this._window?.matchMedia) {

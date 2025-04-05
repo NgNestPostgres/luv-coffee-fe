@@ -20,6 +20,8 @@ export class ResponsiveService {
       Breakpoints.XSmall,
       Breakpoints.Small,
       Breakpoints.Medium,
+      Breakpoints.Large,
+      Breakpoints.XLarge,
     ])
       .subscribe((result) => {
         const breakpoints = result.breakpoints;
@@ -40,7 +42,11 @@ export class ResponsiveService {
           }
         }
 
-        if (breakpoints[Breakpoints.Medium]) {
+        const isDesktop = breakpoints[Breakpoints.Medium] ||
+          breakpoints[Breakpoints.Large] ||
+          breakpoints[Breakpoints.XLarge];
+
+        if (isDesktop) {
           if (result.matches) {
             this.isDesktopWS.set(true);
           }
