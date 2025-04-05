@@ -14,7 +14,7 @@ export class ThemeManagerService {
   private readonly localStorage = inject(LocalStorageService);
   private readonly isDarkBS$ = new BehaviorSubject(false);
   private readonly isDarkWS: WritableSignal<boolean> = signal(false);
-  private readonly _window = this.document.defaultView;
+  private _window = this.document.defaultView;
 
   isDark: Signal<boolean> = computed(() => this.isDarkWS());
 
