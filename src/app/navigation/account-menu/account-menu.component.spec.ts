@@ -1,11 +1,11 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {provideRouter} from '@angular/router';
 
-import {ProfileMenuComponent} from './profile-menu.component';
+import {AccountMenuComponent} from './account-menu.component';
 
-describe('ProfileMenuComponent', () => {
-  let component: ProfileMenuComponent;
-  let fixture: ComponentFixture<ProfileMenuComponent>;
+describe('AccountMenuComponent', () => {
+  let component: AccountMenuComponent;
+  let fixture: ComponentFixture<AccountMenuComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -14,7 +14,7 @@ describe('ProfileMenuComponent', () => {
     })
       .compileComponents();
 
-    fixture = TestBed.createComponent(ProfileMenuComponent);
+    fixture = TestBed.createComponent(AccountMenuComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

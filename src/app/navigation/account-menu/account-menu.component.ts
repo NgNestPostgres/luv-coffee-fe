@@ -8,8 +8,8 @@ import {DialogsService} from '@core/services/dialogs.service';
 @Component({
   selector: 'anp-profile-menu',
 
-  templateUrl: './profile-menu.component.html',
-  styleUrl: './profile-menu.component.scss',
+  templateUrl: './account-menu.component.html',
+  styleUrl: './account-menu.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MatButtonModule,
@@ -18,7 +18,7 @@ import {DialogsService} from '@core/services/dialogs.service';
     RouterModule,
   ],
 })
-export class ProfileMenuComponent {
+export class AccountMenuComponent {
   private dialogs = inject(DialogsService);
 
   token: string = 'no token';
