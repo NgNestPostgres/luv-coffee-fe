@@ -6,6 +6,12 @@ import {BehaviorSubject} from 'rxjs/internal/BehaviorSubject';
 
 const LOCAL_STORAGE_KEY = 'anp-theme';
 
+export enum Theme {
+  Auto = 'auto',
+  Light = 'light',
+  Dark = 'dark'
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -28,7 +34,7 @@ export class ThemeManagerService {
         .addEventListener('change', () => {
           const storedTheme = this.getStoredTheme();
 
-          if (storedTheme !== 'light' && storedTheme !== 'dark') {
+          if (storedTheme !== Theme.Light && storedTheme !== Theme.Dark) {
             this.setTheme(this.getPreferredTheme());
           }
         });
@@ -55,7 +61,7 @@ export class ThemeManagerService {
     this.localStorage.setItem(key, JSON.stringify(meta));
   };
 
-  private getPreferredTheme = (key: string = LOCAL_STORAGE_KEY): 'dark' | 'light' => {
+  private getPreferredTheme = (key: string = LOCAL_STORAGE_KEY): Theme => {
     const storedTheme = this.getStoredTheme(key);
 
     if (storedTheme) {
@@ -64,17 +70,17 @@ export class ThemeManagerService {
 
     if (this._window?.matchMedia) {
       return this._window.matchMedia('(prefers-color-scheme: dark)').matches ?
-        'dark' :
-        'light';
+        Theme.Dark :
+        Theme.Light;
     }
 
-    return 'light';
+    return Theme.Light;
   };
 
   private setTheme = (theme: string) => {
     if (this._window?.matchMedia) {
       if (
-        theme === 'auto' &&
+        theme === Theme.Auto &&
         this._window.matchMedia('(prefers-color-scheme: dark)').matches
       ) {
         this.document.documentElement.setAttribute('data-bs-theme', 'dark');

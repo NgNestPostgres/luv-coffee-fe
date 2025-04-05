@@ -37,17 +37,17 @@
 </mat-menu>
 
 <mat-menu #themeMenu="matMenu">
-  <button mat-menu-item (click)="changeTheme('auto')">
+  <button mat-menu-item (click)="changeTheme(Theme.Auto)">
     <mat-icon>dns</mat-icon>
     <span>System</span>
   </button>
 
-  <button mat-menu-item (click)="changeTheme('light')">
+  <button mat-menu-item (click)="changeTheme(Theme.Light)">
     <mat-icon>light_mode</mat-icon>
     <span>Light</span>
   </button>
 
-  <button mat-menu-item (click)="changeTheme('dark')">
+  <button mat-menu-item (click)="changeTheme(Theme.Dark)">
     <mat-icon>dark_mode</mat-icon>
     <span>Dark</span>
   </button>

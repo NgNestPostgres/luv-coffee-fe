@@ -4,10 +4,10 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {RouterModule} from '@angular/router';
 import {DialogsService} from '@core/services/dialogs.service';
-import {ThemeManagerService} from '@core/services/theme-manager.service';
+import {Theme, ThemeManagerService} from '@core/services/theme-manager.service';
 
 @Component({
-  selector: 'anp-profile-menu',
+  selector: 'anp-account-menu',
 
   templateUrl: './account-menu.component.html',
   styleUrl: './account-menu.component.scss',
@@ -25,6 +25,7 @@ export class AccountMenuComponent {
 
   isDark = this.themeManager.isDark;
   token: string = 'no token';
+  Theme = Theme;
 
   changeTheme(theme: string) {
     this.themeManager.changeTheme(theme);

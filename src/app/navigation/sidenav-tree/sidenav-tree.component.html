@@ -1,4 +1,4 @@
-<mat-tree #tree [dataSource]="dataSource" [childrenAccessor]="childrenAccessor">
+<mat-tree #tree [dataSource]="dataSource()" [childrenAccessor]="childrenAccessor">
   <mat-tree-node
     *matTreeNodeDef="let node"
     matTreeNodePadding
@@ -12,7 +12,7 @@
       (click)="itemChosen(node)"
     >
       <div class="flex-center">
-        <mat-icon>{{node.iconName}}</mat-icon>
+        <mat-icon>{{node.icon}}</mat-icon>
         <span>{{node.name}}</span>
       </div>
     </a>
@@ -21,6 +21,8 @@
   <mat-tree-node
     *matTreeNodeDef="let node; when: hasChild"
     matTreeNodeToggle
+    matTreeNodePadding
+    [matTreeNodePaddingIndent]="20"
     [cdkTreeNodeTypeaheadLabel]="node.name"
     @expandNode
   >
@@ -32,7 +34,7 @@
     >
       <div class="content-wrapper">
         <div class="flex-center">
-          <mat-icon>{{node.iconName}}</mat-icon>
+          <mat-icon>{{node.icon}}</mat-icon>
           <span>{{node.name}}</span>
         </div>
 
