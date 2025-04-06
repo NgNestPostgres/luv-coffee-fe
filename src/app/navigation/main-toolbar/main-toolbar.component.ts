@@ -1,12 +1,12 @@
-import {ChangeDetectionStrategy, Component, inject, output, Signal} from '@angular/core';
-import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
-import {RouterModule} from '@angular/router';
-import {ResponsiveService} from '@core/services/responsive.service';
+import { ChangeDetectionStrategy, Component, inject, output, Signal } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { RouterModule } from '@angular/router';
+import { ResponsiveService } from '@core/services/responsive.service';
 
-import {AccountMenuComponent} from '../account-menu/account-menu.component';
-import {SearchBoxComponent} from '../search-box/search-box.component';
-import {TopMenuComponent} from '../top-menu/top-menu.component';
+import { AccountMenuComponent } from '../account-menu/account-menu.component';
+import { SearchBoxComponent } from '../search-box/search-box.component';
+import { TopMenuComponent } from '../top-menu/top-menu.component';
 
 @Component({
   selector: 'anp-main-toolbar',

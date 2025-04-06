@@ -1,10 +1,10 @@
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
-import {MatMenuModule} from '@angular/material/menu';
-import {RouterModule} from '@angular/router';
-import {DialogsService} from '@core/services/dialogs.service';
-import {Theme, ThemeManagerService} from '@core/services/theme-manager.service';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { RouterModule } from '@angular/router';
+import { DialogsService } from '@core/services/dialogs.service';
+import { Theme, ThemeManagerService } from '@core/services/theme-manager.service';
 
 @Component({
   selector: 'anp-account-menu',

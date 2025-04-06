@@ -1,16 +1,16 @@
 import {
   ChangeDetectionStrategy,
-  Component, inject, OnInit, Signal,
-  ViewChild,
-} from '@angular/core';
-import {MatSidenav, MatSidenavModule} from '@angular/material/sidenav';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {RouterModule, RouterOutlet} from '@angular/router';
-import {CoreService} from '@core/services/core.service';
-import {ResponsiveService} from '@core/services/responsive.service';
+  Component, inject, OnInit,
+  Signal,
+  ViewChild } from '@angular/core';
+import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { RouterModule, RouterOutlet } from '@angular/router';
+import { CoreService } from '@core/services/core.service';
+import { ResponsiveService } from '@core/services/responsive.service';
 
-import {MainToolbarComponent} from './navigation/main-toolbar/main-toolbar.component';
-import {SidenavTreeComponent} from './navigation/sidenav-tree/sidenav-tree.component';
+import { MainToolbarComponent } from './navigation/main-toolbar/main-toolbar.component';
+import { SidenavTreeComponent } from './navigation/sidenav-tree/sidenav-tree.component';
 
 @Component({
   selector: 'anp-root',

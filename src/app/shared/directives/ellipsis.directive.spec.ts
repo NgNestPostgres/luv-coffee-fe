@@ -1,7 +1,7 @@
-import {ElementRef} from '@angular/core';
-import {inject} from '@angular/core/testing';
+import { ElementRef } from '@angular/core';
+import { inject } from '@angular/core/testing';
 
-import {EllipsisDirective} from './ellipsis.directive';
+import { EllipsisDirective } from './ellipsis.directive';
 
 describe('EllipsisDirective', () => {
   it('should create an instance', () => {

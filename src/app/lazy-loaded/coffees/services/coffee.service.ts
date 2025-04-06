@@ -1,8 +1,8 @@
-import {HttpClient} from '@angular/common/http';
-import {Injectable} from '@angular/core';
-import {Observable, of} from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 
-import {CoffeesSearchParams} from '../interfaces/coffees-filter';
+import { CoffeesSearchParams } from '../interfaces/coffees-filter';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +12,7 @@ export class CoffeeService {
     private http: HttpClient,
   ) { }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars, class-methods-use-this
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   public getCoffees(filter: CoffeesSearchParams): Observable<unknown> {
     return of(null);
   }

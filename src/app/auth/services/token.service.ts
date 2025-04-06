@@ -1,5 +1,5 @@
-import {inject, Injectable} from '@angular/core';
-import {LocalStorageService} from '@core/services/local-storage.service';
+import { inject, Injectable } from '@angular/core';
+import { LocalStorageService } from '@core/services/local-storage.service';
 
 const ACCESS_TOKEN = 'access_token';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

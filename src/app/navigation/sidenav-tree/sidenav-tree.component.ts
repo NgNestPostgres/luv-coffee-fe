@@ -4,14 +4,14 @@ import {
 import {
   ChangeDetectionStrategy, Component, inject, output,
 } from '@angular/core';
-import {MatIconModule} from '@angular/material/icon';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatTreeModule} from '@angular/material/tree';
-import {RouterModule} from '@angular/router';
-import {DialogsService} from '@core/services/dialogs.service';
-import {Theme} from '@core/services/theme-manager.service';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTreeModule } from '@angular/material/tree';
+import { RouterModule } from '@angular/router';
+import { DialogsService } from '@core/services/dialogs.service';
+import { Theme } from '@core/services/theme-manager.service';
 
-import {MenuItemNode, SidenavDatasourceService} from './sidenav-datasource.service';
+import { MenuItemNode, SidenavDatasourceService } from './sidenav-datasource.service';
 
 @Component({
   selector: 'anp-sidenav-tree',
@@ -23,16 +23,16 @@ import {MenuItemNode, SidenavDatasourceService} from './sidenav-datasource.servi
   animations: [
     trigger('expandNode', [
       transition(':enter', [
-        style({'opacity': 0, 'height': 0, 'min-height': 0}),
-        animate('150ms', style({'opacity': 1, 'height': '*', 'min-height': '*'})),
+        style({ 'opacity': 0, 'height': 0, 'min-height': 0 }),
+        animate('150ms', style({ 'opacity': 1, 'height': '*', 'min-height': '*' })),
       ]),
       transition(':leave', [
-        animate('150ms', style({'opacity': 0, 'height': 0, 'min-height': '0px'})),
+        animate('150ms', style({ 'opacity': 0, 'height': 0, 'min-height': '0px' })),
       ]),
     ]),
     trigger('expandArrow', [
-      state('close', style({transform: 'rotate(0)'})),
-      state('expand', style({transform: 'rotate(90deg)'})),
+      state('close', style({ transform: 'rotate(0)' })),
+      state('expand', style({ transform: 'rotate(90deg)' })),
       transition('* => *', [animate('150ms cubic-bezier(0.25, 0.8, 0.25, 1)')]),
     ]),
   ],

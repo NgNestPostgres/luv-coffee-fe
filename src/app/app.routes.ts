@@ -1,10 +1,10 @@
-import {Routes} from '@angular/router';
+import { Routes } from '@angular/router';
 
-import {HomeComponent} from './home/home.component';
-import {NotFoundComponent} from './shared/components/not-found/not-found.component';
+import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 
 export const routes: Routes = [
-  {path: '', component: HomeComponent},
+  { path: '', component: HomeComponent },
   {
     path: 'profile',
     loadChildren: () => import('./lazy-loaded/profile/profile.routes').then((m) => m.PROFILE_ROUTES),
@@ -21,5 +21,5 @@ export const routes: Routes = [
     path: 'lib-dev',
     loadChildren: () => import('./lazy-loaded/lib-dev/lib-dev.routes').then((m) => m.LIB_DEV_ROUTES),
   },
-  {path: '**', component: NotFoundComponent},
+  { path: '**', component: NotFoundComponent },
 ];

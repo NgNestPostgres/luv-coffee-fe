@@ -1,14 +1,14 @@
 // import { UserRole } from '@ngnestpostgres/fe-shared';
 import {
-  ChangeDetectionStrategy, Component, inject, OnInit,
-} from '@angular/core';
-import {MatButtonModule} from '@angular/material/button';
-import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
-import {MatIconModule} from '@angular/material/icon';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {AuthState} from '@auth/interfaces/auth-state.enum';
-import {AuthService} from '@auth/services/auth.service';
-import {AuthMethod, UserLogin} from '@ngnestpostgres/fe-shared';
+  ChangeDetectionStrategy, Component, inject,
+  OnInit } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { AuthState } from '@auth/interfaces/auth-state.enum';
+import { AuthService } from '@auth/services/auth.service';
+import { AuthMethod, UserLogin } from '@ngnestpostgres/fe-shared';
 
 @Component({
   selector: 'anp-login-dialog',

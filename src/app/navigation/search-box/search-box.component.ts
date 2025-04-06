@@ -1,12 +1,12 @@
-import {AsyncPipe} from '@angular/common';
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import {MatButtonModule} from '@angular/material/button';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatIconModule} from '@angular/material/icon';
-import {MatInputModule} from '@angular/material/input';
-import {Router, RouterModule} from '@angular/router';
+import { AsyncPipe } from '@angular/common';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { Router, RouterModule } from '@angular/router';
 import {
   debounceTime, distinctUntilChanged, Observable, of, Subject, switchMap,
 } from 'rxjs';
@@ -17,9 +17,9 @@ interface SearchOption {
 }
 
 const OPTIONS: SearchOption[] = [
-  {name: 'Coffees1', link: 'coffees'},
-  {name: 'Users1', link: 'users'},
-  {name: 'Lib1', link: 'lib'},
+  { name: 'Coffees1', link: 'coffees' },
+  { name: 'Users1', link: 'users' },
+  { name: 'Lib1', link: 'lib' },
 ];
 
 @Component({

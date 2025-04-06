@@ -3,6 +3,7 @@
     *matTreeNodeDef="let node"
     matTreeNodePadding
     [matTreeNodePaddingIndent]="20"
+    [class.g-hide]="node.isHidden"
     @expandNode
   >
     <a
@@ -24,6 +25,7 @@
     matTreeNodePadding
     [matTreeNodePaddingIndent]="20"
     [cdkTreeNodeTypeaheadLabel]="node.name"
+    [class.g-hide]="node.isHidden"
     @expandNode
   >
     <button

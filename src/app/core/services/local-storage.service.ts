@@ -1,4 +1,4 @@
-import {inject, Injectable, InjectionToken} from '@angular/core';
+import { inject, Injectable, InjectionToken } from '@angular/core';
 
 export const LOCAL_STORAGE = new InjectionToken<Storage>('Local Storage', {
   providedIn: 'root',
@@ -6,7 +6,7 @@ export const LOCAL_STORAGE = new InjectionToken<Storage>('Local Storage', {
 });
 
 @Injectable(
-  {providedIn: 'root'},
+  { providedIn: 'root' },
 )
 export class LocalStorageService {
   private storage: Storage = inject(LOCAL_STORAGE);

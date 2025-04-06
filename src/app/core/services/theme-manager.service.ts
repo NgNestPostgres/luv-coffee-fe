@@ -1,8 +1,8 @@
-/* eslint-disable no-underscore-dangle */
-import {DOCUMENT} from '@angular/common';
-import {computed, inject, Injectable, Signal, signal, WritableSignal} from '@angular/core';
-import {LocalStorageService} from '@core/services/local-storage.service';
-import {BehaviorSubject} from 'rxjs/internal/BehaviorSubject';
+
+import { DOCUMENT } from '@angular/common';
+import { computed, inject, Injectable, Signal, signal, WritableSignal } from '@angular/core';
+import { LocalStorageService } from '@core/services/local-storage.service';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 
 const LOCAL_STORAGE_KEY = 'anp-theme';
 

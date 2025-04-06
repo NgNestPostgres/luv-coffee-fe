@@ -1,7 +1,7 @@
-import {TestBed} from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
-import {CoreService} from './core.service';
-import {ThemeManagerService} from './theme-manager.service';
+import { CoreService } from './core.service';
+import { ThemeManagerService } from './theme-manager.service';
 
 describe('CoreService', () => {
   let service: CoreService;
@@ -12,7 +12,7 @@ describe('CoreService', () => {
 
     TestBed.configureTestingModule({
       providers: [
-        {provide: ThemeManagerService, useValue: themeManagerServiceSpy},
+        { provide: ThemeManagerService, useValue: themeManagerServiceSpy },
       ],
     });
     service = TestBed.inject(CoreService);

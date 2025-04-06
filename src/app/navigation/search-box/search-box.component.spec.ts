@@ -1,8 +1,8 @@
-import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-import {SearchBoxComponent} from './search-box.component';
+import { SearchBoxComponent } from './search-box.component';
 
 describe('SearchBoxComponent', () => {
   let component: SearchBoxComponent;
