@@ -33,9 +33,9 @@ export default defineConfig([
         createDefaultProgram: true,
       },
     },
-  }, {
+  },
+  {
     files: ['**/*.ts'],
-
     extends: compat.extends(
       'eslint:recommended',
       'google',
@@ -43,7 +43,6 @@ export default defineConfig([
       'plugin:@angular-eslint/recommended',
       'plugin:@angular-eslint/template/process-inline-templates',
     ),
-
     rules: {
       // eslint
       'class-methods-use-this': 'off',
@@ -51,23 +50,25 @@ export default defineConfig([
       'import/prefer-default-export': 'off',
       'max-len': ['error', 120],
       'no-plusplus': 'off',
-      'simple-import-sort/imports': 'error',
-      'simple-import-sort/exports': 'error',
-      'unused-imports/no-unused-imports': 'error',
+      'new-cap': 0,
+      'require-jsdoc': 'off',
+      'valid-jsdoc': 'off',
 
       // @stylistic/js
       'object-curly-spacing': ['error', 'always'],
 
+      // simple-import-sort
+      'simple-import-sort/imports': 'error',
+      'simple-import-sort/exports': 'error',
+
+      // 'unused-imports/no-unused-imports': 'error',
+      'unused-imports/no-unused-imports': 'error',
       'unused-imports/no-unused-vars': ['warn', {
         vars: 'all',
         varsIgnorePattern: '^_',
         args: 'after-used',
         argsIgnorePattern: '^_',
       }],
-
-      'new-cap': 0,
-      'require-jsdoc': 'off',
-      'valid-jsdoc': 'off',
 
       '@typescript-eslint/no-unused-expressions': ['error', {
         allowTernary: true,
@@ -99,7 +100,8 @@ export default defineConfig([
         style: 'kebab-case',
       }],
     },
-  }, {
+  },
+  {
     files: ['**/*.html'],
     extends: compat.extends('plugin:@angular-eslint/template/recommended'),
     rules: {},
