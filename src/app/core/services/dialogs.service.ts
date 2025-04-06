@@ -14,8 +14,8 @@ export class DialogsService {
     // panelClass: 'ta-dialog',
     disableClose: true,
     maxHeight: '90vh',
-    maxWidth: '90vw',
-    minWidth: '500px',
+    maxWidth: '600px',
+    minWidth: '380px',
     width: '90vw',
   };
 

@@ -14,6 +14,17 @@
     mat.get-theme-color($theme, primary, 80)
   );
 
+  @include mat.dialog-overrides((
+    container-color: if($is-dark-theme,
+      mat.get-theme-color($theme, neutral, 50),
+      mat.get-theme-color($theme, neutral, 100)
+    ),
+    supporting-text-color: if($is-dark-theme,
+      mat.get-theme-color($theme, neutral, 100),
+      mat.get-theme-color($theme, neutral, 10)
+    ),
+  ));
+
   @include mat.sidenav-overrides((
     container-background-color: $side-nav-bckgr-color,
   ));
@@ -25,18 +36,4 @@
   @include mat.tree-overrides((
     container-background-color: $side-nav-bckgr-color,
   ));
-
-  .mat-mdc-button-base:not([disabled]):hover, .mat-mdc-menu-item:not([disabled]):hover {
-    background-color: if($is-dark-theme,
-      mat.get-theme-color($theme, primary, 10),
-      mat.get-theme-color($theme, secondary, 90)
-    );
-  }
-
-  .mat-mdc-button-base.selected, .mat-mdc-menu-item.selected {
-    background-color: if($is-dark-theme,
-      mat.get-theme-color($theme, primary, 30),
-      mat.get-theme-color($theme, secondary, 70)
-    );
-  }
 }

@@ -1,13 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 @use "styles/themes/core-theme" as core-theme;
 @use "./styles/gen-classes";
-@use "./styles/gen-mat-classes";
 @use "styles/variables" as vars;
 
 :root {
   @include core-theme.light-theme();
 }
-
 
 html, body {
   margin: 0;

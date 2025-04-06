@@ -64,7 +64,7 @@ export class SidenavTreeComponent {
 
   private showLoginForm(inputData = 'inpuData'): void {
     this.dialogs.login(inputData).subscribe((token: string) => {
-      console.log('dialog closed');
+      console.log('token: ', token);
       this.token = token;
     });
   }
