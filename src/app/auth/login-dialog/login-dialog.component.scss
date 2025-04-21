@@ -5,7 +5,10 @@ $login-header-height: 130px;
 
 :host {
   display: block;
-  // width: 100%;
+
+  .mat-mdc-dialog-content.mdc-dialog__content {
+    padding-top: 0
+  }
 }
 
 .header {
@@ -20,12 +23,8 @@ $login-header-height: 130px;
     max-width: none;
   }
 
-  .title {
-    margin-bottom: 0;
-  }
-
-
   .close-button {
     cursor: pointer;
   }
 }
+

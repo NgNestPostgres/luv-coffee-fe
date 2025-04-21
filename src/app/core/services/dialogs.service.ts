@@ -1,5 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { LoginData } from '@auth/interfaces/auth-state.enum';
 import { LoginDialogComponent } from '@auth/login-dialog/login-dialog.component';
 import { Observable } from 'rxjs';
 
@@ -19,8 +20,8 @@ export class DialogsService {
     width: '90vw',
   };
 
-  login(inputData?: unknown): Observable<string> {
-    return this.dialog.open<LoginDialogComponent, unknown>(LoginDialogComponent, {
+  login(inputData?: LoginData): Observable<string> {
+    return this.dialog.open<LoginDialogComponent, LoginData>(LoginDialogComponent, {
       data: inputData,
       ...this.defaultDialogConfig,
     })

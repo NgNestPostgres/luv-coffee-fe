@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTreeModule } from '@angular/material/tree';
 import { RouterModule } from '@angular/router';
+import { LoginData } from '@auth/interfaces/auth-state.enum';
 import { DialogsService } from '@core/services/dialogs.service';
 import { Theme } from '@core/services/theme-manager.service';
 
@@ -62,7 +63,7 @@ export class SidenavTreeComponent {
     this.menuItemChosen.emit();
   }
 
-  private showLoginForm(inputData = 'inpuData'): void {
+  private showLoginForm(inputData?: LoginData): void {
     this.dialogs.login(inputData).subscribe((token: string) => {
       console.log('token: ', token);
       this.token = token;

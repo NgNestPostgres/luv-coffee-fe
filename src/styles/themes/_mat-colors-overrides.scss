@@ -24,6 +24,18 @@
     )
   ));
 
+  $tab-active: if($is-dark-theme,
+    mat.get-theme-color($theme, primary, 20),
+    mat.get-theme-color($theme, primary, 50)
+  );
+
+  @include mat.tabs-overrides((
+    active-indicator-color: $tab-active,
+    active-focus-indicator-color: $tab-active,
+    active-label-text-color: $tab-active,
+    active-focus-label-text-color: $tab-active,
+  ));
+
   @include mat.toolbar-overrides((
     container-background-color: if($is-dark-theme,
       mat.get-theme-color($theme, primary, 20),

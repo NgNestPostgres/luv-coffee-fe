@@ -21,4 +21,9 @@
       }
     }
   }
+
+  @include mat.tabs-overrides((
+    label-text-size: 18px,
+    label-text-weight: 500,
+  ));
 }
