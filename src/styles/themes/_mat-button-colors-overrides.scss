@@ -1,19 +1,19 @@
 @use '/node_modules/@angular/material' as mat;
 
 @mixin override-colors($theme) {
-  .primary-button {
+  .mat-primary-button {
     @include mat.button-color($theme, $color-variant: primary);
   }
 
-  .secondary-button {
+  .mat-secondary-button {
     @include mat.button-color($theme, $color-variant: secondary);
   }
 
-  .tertiary-button {
+  .mat-tertiary-button {
     @include mat.button-color($theme, $color-variant: tertiary);
   }
 
-  .error-button {
+  .mat-error-button {
     @include mat.button-color($theme, $color-variant: error);
   }
 
