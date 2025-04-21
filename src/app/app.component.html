@@ -1,48 +1,24 @@
 
-<mat-toolbar class="toolbar mat-elevation-z2">
-  <mat-toolbar-row class="main-toolbar-row">
-    <button
-      aria-label="Side navigation menu icon"
-      class="mob-menu-icon"
-      mat-icon-button
-      [class.hide]="!tabQuery.matches"
-      (click)="sidenav.toggle()"
+<div class="app-wrapper">
+  <mat-toolbar class="mat-elevation-z2">
+    <mat-toolbar-row>
+      <anp-main-toolbar (sidenavToggled)="toggleSidnav()"></anp-main-toolbar>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <mat-sidenav-container>
+    <mat-sidenav
+      #sidenav
+      [class.g-hide]="isDesktop()"
+      [mode]="isMobile() ? 'over' : 'side'"
     >
-      <mat-icon>menu</mat-icon>
-    </button>
+      <anp-sidenav-tree
+        (menuItemChosen)="!isDesktop() && sidenav.close()"
+      ></anp-sidenav-tree>
+    </mat-sidenav>
 
-    <a
-      class="logo-link"
-      title="HomePage"
-      [routerLink]="['']"
-    >
-      <img class="logo" src="/assets/images/logo.svg" />
-    </a>
-
-    <anp-top-menu class="top-menu" [class.hide]="tabQuery.matches"></anp-top-menu>
-    <span class="toolbar-spacer"></span>
-    <anp-search-box></anp-search-box>
-    <span class="toolbar-spacer"></span>
-    <anp-theme-manager></anp-theme-manager>
-  </mat-toolbar-row>
-</mat-toolbar>
-
-<mat-sidenav-container
-  class="sidenav-container"
-  [style.marginTop.px]="mobileQuery.matches ? 56 : 64"
->
-  <mat-sidenav
-    #sidenav
-    closed
-    [fixedBottomGap]="0"
-    [fixedInViewport]="true"
-    [fixedTopGap]="mobileQuery.matches ? 56 : 64"
-    [mode]="mobileQuery.matches ? 'over' : 'side'"
-  >
-    <anp-sidenav-tree (menuItemChosen)="mobileQuery.matches && sidenav.close()"></anp-sidenav-tree>
-  </mat-sidenav>
-
-  <mat-sidenav-content>
-    <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

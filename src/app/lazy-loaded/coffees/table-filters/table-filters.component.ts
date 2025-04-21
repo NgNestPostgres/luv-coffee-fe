@@ -3,7 +3,7 @@ import {
   Component, EventEmitter, Input, Output,
 } from '@angular/core';
 
-import {CoffeesFilter} from '../interfaces/coffees-filter';
+import { CoffeesFilter } from '../interfaces/coffees-filter';
 
 @Component({
   selector: 'anp-table-filters',

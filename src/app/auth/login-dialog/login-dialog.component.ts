@@ -1,11 +1,16 @@
-import {
-  ChangeDetectionStrategy, Component, inject, OnInit,
-} from '@angular/core';
-import {MatButtonModule} from '@angular/material/button';
-import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
-import {AuthService} from '@auth/services/auth.service';
-import {UserLogin} from '@ngnestpostgres/fe-shared';
 // import { UserRole } from '@ngnestpostgres/fe-shared';
+import {
+  ChangeDetectionStrategy, Component, inject,
+  OnInit } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import {
+  MAT_DIALOG_DATA, MatDialogModule, MatDialogRef,
+} from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { AuthState } from '@auth/interfaces/auth-state.enum';
+import { AuthService } from '@auth/services/auth.service';
+import { AuthMethod, UserLogin } from '@ngnestpostgres/fe-shared';
 
 @Component({
   selector: 'anp-login-dialog',
@@ -15,6 +20,8 @@ import {UserLogin} from '@ngnestpostgres/fe-shared';
   imports: [
     MatButtonModule,
     MatDialogModule,
+    MatIconModule,
+    MatToolbarModule,
   ],
 })
 export class LoginDialogComponent implements OnInit {
@@ -22,8 +29,25 @@ export class LoginDialogComponent implements OnInit {
   private data: unknown = inject(MAT_DIALOG_DATA);
   private dialogRef = inject(MatDialogRef<LoginDialogComponent>);
 
+  readonly AuthMethod = AuthMethod;
+  readonly AuthState = AuthState;
+
+  authMethod: AuthMethod = this.AuthMethod.NotDefined;
+  authState: AuthState = AuthState.NotStarted;
+  predefinedEmail = '';
+
   ngOnInit(): void {
+    console.log(this.data);
     console.log('UserRole.Admin');
+  }
+
+  public closeForm(): void {
+    this.closeDialog();
+    this.authMethod = AuthMethod.NotDefined;
+    this.authState = AuthState.NotStarted;
+    this.predefinedEmail = '';
+    // this.isRequestSuccessful = false;
+    // this.serverMessage$.next(null);
   }
 
   public login(creds: UserLogin) {

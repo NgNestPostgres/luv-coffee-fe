@@ -1,0 +1,24 @@
+@use '/node_modules/@angular/material' as mat;
+@use '../mat-mixins';
+
+
+@mixin override() {
+  @include mat-mixins.mat-icon-button-size(48, 24);
+
+  // mat-evevation-z classes workaround
+  @for $i from 0 through 24 {
+    .mat-elevation-z#{$i} {
+      @include mat.elevation($i);
+    }
+  }
+
+  .mat-tree {
+    .mat-tree-node {
+      .mat-mdc-menu-item {
+        .mat-mdc-menu-item-text {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

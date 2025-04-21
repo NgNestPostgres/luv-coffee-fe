@@ -1,0 +1,37 @@
+@use "/node_modules/@angular/material" as mat;
+@use "./themes-setup";
+@use "./mat-densities-overrides";
+@use "./mat-colors-overrides";
+@use "./mat-button-colors-overrides";
+@use "./mat-not-colors-overrides";
+
+
+@mixin light-theme() {
+  @include mat.core();
+  @include mat.core-theme(themes-setup.$light-theme);
+  @include mat.typography-hierarchy(themes-setup.$light-theme);
+  @include mat-densities-overrides.mat-densities();
+  @include mat-not-colors-overrides.override();
+
+  /*
+    Do not forget to add "@inctlude" to
+    - dark theme colors: "scr/styles/themes/dark.scss",
+    - theme density: "src/styles/themes/_theme-densities.scss".
+  */
+  @include mat.autocomplete-theme(themes-setup.$light-theme);
+  @include mat.button-theme(themes-setup.$light-theme);
+  @include mat.form-field-theme(themes-setup.$light-theme);
+  @include mat.icon-theme(themes-setup.$light-theme);
+  @include mat.input-theme(themes-setup.$light-theme);
+  @include mat.menu-theme(themes-setup.$light-theme);
+  @include mat.sidenav-theme(themes-setup.$light-theme);
+  @include mat.toolbar-theme(themes-setup.$light-theme);
+  @include mat.tree-theme(themes-setup.$light-theme);
+
+  /*
+    Do not forget to add "@inctlude" to
+    - dark theme colors: "scr/styles/themes/dark.scss",
+  */
+  @include mat-colors-overrides.override-colors(themes-setup.$light-theme);
+  @include mat-button-colors-overrides.override-colors(themes-setup.$light-theme);
+}

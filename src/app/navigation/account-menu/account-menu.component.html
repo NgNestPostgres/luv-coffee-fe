@@ -1,0 +1,54 @@
+<button
+  aria-label="Profile"
+  mat-icon-button
+  [matMenuTriggerFor]="accountMenu"
+>
+  <mat-icon>account_circle</mat-icon>
+</button>
+
+<mat-menu #accountMenu="matMenu">
+  <a
+    mat-menu-item
+    [routerLink]="['../profile']"
+    [routerLinkActive]="'selected'"
+  >
+    <mat-icon>person</mat-icon>
+    <span>Profile</span>
+  </a>
+
+  <button
+    aria-label="Change theme"
+    mat-menu-item
+    [matMenuTriggerFor]="themeMenu"
+  >
+    <mat-icon>{{ isDark() ? "dark_mode" : "light_mode" }}</mat-icon>
+    <span>Theme</span>
+  </button>
+
+  <button mat-menu-item (click)="showLoginForm()">
+    <mat-icon>login</mat-icon>
+    <span>Login</span>
+  </button>
+
+  <button mat-menu-item>
+    <mat-icon>logout</mat-icon>
+    <span>Logout</span>
+  </button>
+</mat-menu>
+
+<mat-menu #themeMenu="matMenu">
+  <button mat-menu-item (click)="changeTheme(Theme.Auto)">
+    <mat-icon>dns</mat-icon>
+    <span>System</span>
+  </button>
+
+  <button mat-menu-item (click)="changeTheme(Theme.Light)">
+    <mat-icon>light_mode</mat-icon>
+    <span>Light</span>
+  </button>
+
+  <button mat-menu-item (click)="changeTheme(Theme.Dark)">
+    <mat-icon>dark_mode</mat-icon>
+    <span>Dark</span>
+  </button>
+</mat-menu>

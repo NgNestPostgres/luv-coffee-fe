@@ -1,0 +1,49 @@
+<mat-tree #tree [dataSource]="dataSource()" [childrenAccessor]="childrenAccessor">
+  <mat-tree-node
+    *matTreeNodeDef="let node"
+    matTreeNodePadding
+    [matTreeNodePaddingIndent]="20"
+    [class.g-hide]="node.isHidden"
+    @expandNode
+  >
+    <a
+      mat-menu-item
+      [routerLinkActive]="'selected'"
+      [routerLink]="node.path"
+      (click)="itemChosen(node)"
+    >
+      <div class="flex-center">
+        <mat-icon>{{node.icon}}</mat-icon>
+        <span>{{node.name}}</span>
+      </div>
+    </a>
+  </mat-tree-node>
+
+  <mat-tree-node
+    *matTreeNodeDef="let node; when: hasChild"
+    matTreeNodeToggle
+    matTreeNodePadding
+    [matTreeNodePaddingIndent]="20"
+    [cdkTreeNodeTypeaheadLabel]="node.name"
+    [class.g-hide]="node.isHidden"
+    @expandNode
+  >
+    <button
+      [attr.aria-label]="'Toggle ' + node.name"
+      class="menu-item expandable"
+      mat-menu-item
+      matTreeNodeToggle
+    >
+      <div class="content-wrapper">
+        <div class="flex-center">
+          <mat-icon>{{node.icon}}</mat-icon>
+          <span>{{node.name}}</span>
+        </div>
+
+        <mat-icon [@expandArrow]="tree.isExpanded(node) ? 'expand' : 'close'">
+          chevron_right
+        </mat-icon>
+      </div>
+    </button>
+  </mat-tree-node>
+</mat-tree>

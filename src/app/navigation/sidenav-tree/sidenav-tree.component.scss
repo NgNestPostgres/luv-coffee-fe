@@ -1,0 +1,30 @@
+:host {
+  display: block;
+  min-width: 200px;
+  padding: 16px 0;
+}
+
+.flex-center {
+  align-items: center;
+  display: flex;
+}
+
+mat-tree-node {
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.menu-item {
+  border-radius: 0;
+  height: inherit;
+  width: 100%;
+
+  &.expandable {
+    .content-wrapper {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
+}

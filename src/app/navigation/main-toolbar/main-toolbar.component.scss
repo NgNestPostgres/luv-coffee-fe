@@ -1,0 +1,28 @@
+@use '../../../styles/variables' as vars;
+
+:host {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+.logo-link {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  margin-right: 16px;
+
+  @media(max-width: vars.$tab-width) {
+    margin-right: 8px;
+  }
+
+  .logo-img {
+    height: 60%;
+    max-width: none;
+  }
+}

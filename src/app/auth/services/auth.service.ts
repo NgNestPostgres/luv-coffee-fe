@@ -1,12 +1,12 @@
-import {HttpClient} from '@angular/common/http';
-import {Injectable} from '@angular/core';
-import {AccessTokenWrapped, UserLogin} from '@ngnestpostgres/fe-shared';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { AccessToken, ApiResp, UserLogin } from '@ngnestpostgres/fe-shared';
 import {
   catchError, map, Observable, tap,
 } from 'rxjs';
-import {environment} from 'src/environments/environment';
+import { environment } from 'src/environments/environment';
 
-import {TokenService} from './token.service';
+import { TokenService } from './token.service';
 
 @Injectable({
   providedIn: 'root',
@@ -18,13 +18,13 @@ export class AuthService {
   ) { }
 
   public login(creds: UserLogin): Observable<string> {
-    return this.http.post<AccessTokenWrapped>(
+    return this.http.post<ApiResp<AccessToken>>(
       `${environment.apiHost}/auth/login`,
-      {...creds},
+      { ...creds },
     )
       .pipe(
-        tap((token: AccessTokenWrapped) => this.tokenService.setAccessToken(token.data.accessToken)),
-        map((token: AccessTokenWrapped) => token.data.accessToken),
+        tap((token: ApiResp<AccessToken>) => this.tokenService.setAccessToken(token.data.accessToken)),
+        map((token: ApiResp<AccessToken>) => token.data.accessToken),
         catchError((err: Error) => JSON.stringify(err)),
       );
   }

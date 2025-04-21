@@ -1,57 +1,22 @@
-@use '../styles/variables' as vars;
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
 
-.toolbar {
-  left: 0;
-  position: fixed;
-  right: 0;
-  top: 0;
-  z-index: 2;
-
-  .toolbar-spacer {
-    flex: 1 1 auto;
-  }
-
-  .main-toolbar-row {
-    .mob-menu-icon {
-      aspect-ratio: 1/1;
-      height: 100%;
-      margin-right: 8px;
-      width: auto;
-    }
-
-    .logo-link {
-      align-items: center;
-      display: flex;
-      height: 100%;
-      margin-right: 16px;
-
-      @media(max-width: vars.$tab-width) {
-        margin-right: 8px;
-      }
-
-      .logo {
-        height: 60%;
-        max-width: none;
-      }
-    }
-
-    @media(max-width: vars.$tab-width) {
-      padding-left: 0;
-    }
+.mat-toolbar {
+  .mat-toolbar-row {
+    align-items: stretch;
+    padding: 0 8px;
   }
 }
 
-.sidenav-container {
-  bottom: 0;
+.mat-sidenav-container {
   display: flex;
   flex-direction: column;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
+  height: 100%;
 
-  mat-sidenav {
-    border-radius: 0;
-    width: auto;
+  .mat-sidenav-content {
+    padding: 20px;
   }
 }

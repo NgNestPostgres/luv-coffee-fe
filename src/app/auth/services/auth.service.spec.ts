@@ -1,9 +1,9 @@
-import {provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
-import {HttpTestingController, provideHttpClientTesting} from '@angular/common/http/testing';
-import {TestBed} from '@angular/core/testing';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
+import { TestBed } from '@angular/core/testing';
 
-import {AuthService} from './auth.service';
-import {TokenService} from './token.service';
+import { AuthService } from './auth.service';
+import { TokenService } from './token.service';
 
 describe('AuthService', () => {
   let service: AuthService;
@@ -17,7 +17,7 @@ describe('AuthService', () => {
     TestBed.configureTestingModule({
       imports: [],
       providers: [
-        {provide: TokenService, useValue: spyTokenService},
+        { provide: TokenService, useValue: spyTokenService },
         provideHttpClient(withInterceptorsFromDi()),
         provideHttpClientTesting(),
       ],

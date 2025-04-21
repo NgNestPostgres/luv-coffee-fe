@@ -1,15 +1,15 @@
-import {Component} from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import { Component } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
   FormBuilder, FormGroup, ReactiveFormsModule, Validators,
 } from '@angular/forms';
-import {MatButtonModule} from '@angular/material/button';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatIconModule} from '@angular/material/icon';
-import {MatInputModule} from '@angular/material/input';
-import {PhoneFormFieldComponent} from '@ngx-shared';
-import {PhoneParts} from 'projects/ngx-shared/src/public-api';
-import {merge} from 'rxjs';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { PhoneFormFieldComponent } from '@ngx-shared';
+import { PhoneParts } from 'projects/ngx-shared/src/public-api';
+import { merge } from 'rxjs';
 
 @Component({
   selector: 'anp-phone-form-field-host',
@@ -29,9 +29,9 @@ export class PhoneFormFieldHostComponent {
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
-      tel: [{value: new PhoneParts('', '', ''), disabled: true}, [Validators.required]],
+      tel: [{ value: new PhoneParts('', '', ''), disabled: true }, [Validators.required]],
       tel1: [new PhoneParts('+38', '', ''), [Validators.required]],
-      simpleInput: [{value: '', disabled: true}, [Validators.required]],
+      simpleInput: [{ value: '', disabled: true }, [Validators.required]],
       simpleInput1: ['', [Validators.required]],
     });
 

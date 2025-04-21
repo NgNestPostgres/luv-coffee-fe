@@ -1,0 +1,28 @@
+<button
+  aria-label="Side navigation menu icon"
+  mat-icon-button
+  [class.g-hide]="isDesktop()"
+  (click)="toggleSidenav()"
+>
+  <mat-icon>menu</mat-icon>
+</button>
+
+<a
+  class="logo-link"
+  title="HomePage"
+  [routerLink]="['']"
+  >
+  <img class="logo-img" src="/assets/images/logo.svg" />
+</a>
+
+<anp-top-menu class="top-menu" [class.g-hide]="!isDesktop()"></anp-top-menu>
+
+<span class="toolbar-spacer"></span>
+
+<anp-search-box></anp-search-box>
+
+<span class="toolbar-spacer"></span>
+
+@if(isDesktop()) {
+  <anp-account-menu></anp-account-menu>
+}
