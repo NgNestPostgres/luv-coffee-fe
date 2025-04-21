@@ -3,7 +3,6 @@ import { NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
 import {
   ChangeDetectionStrategy, Component, inject,
   OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import {
   MAT_DIALOG_DATA, MatDialogModule, MatDialogRef,
@@ -19,10 +18,6 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { PasswordChangeComponent } from './password-change/password-change.component';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
 import { RegistrationFormComponent } from './registration-form/registration-form.component';
-
-interface DateRangeForm {
-  dateRange: FormControl<string>
-}
 
 @Component({
   selector: 'anp-login-dialog',
@@ -47,16 +42,12 @@ export class LoginDialogComponent implements OnInit {
   private authService = inject(AuthService);
   private data: LoginData = inject(MAT_DIALOG_DATA);
   private dialogRef = inject(MatDialogRef<LoginDialogComponent>);
-  private readonly fb = inject(FormBuilder);
 
   readonly AuthMethod = AuthMethod;
   readonly AuthState = AuthState;
 
   authMethod: AuthMethod = this.AuthMethod.NotDefined;
   authState: AuthState = AuthState.NotStarted;
-  form: FormGroup = this.fb.group<DateRangeForm>({
-    dateRange: this.fb.nonNullable.control<string>('', [Validators.required]),
-  });
   predefinedEmail = '';
 
   ngOnInit(): void {
