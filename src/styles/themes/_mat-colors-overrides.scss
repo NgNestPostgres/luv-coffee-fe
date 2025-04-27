@@ -1,41 +1,39 @@
 @use '/node_modules/@angular/material' as mat;
+@use '../variables' as vars;
 
 @mixin override-colors($theme) {
   $type: mat.get-theme-type($theme);
   $is-dark-theme: $type == dark;
 
-  $active-primary-color: if($is-dark-theme,
-    mat.get-theme-color($theme, primary, 30),
-    mat.get-theme-color($theme, primary, 60)
-  );
+  @include mat.button-overrides((
+    filled-container-color: vars.color-primary($theme, $is-dark-theme),
+    filled-label-text-color: vars.text-color($theme, $is-dark-theme),
+  ));
 
   @include mat.dialog-overrides((
-    container-color: if($is-dark-theme,
-      mat.get-theme-color($theme, neutral, 70),
-      mat.get-theme-color($theme, neutral, 100)
-    )
+    container-color: vars.background-color-main($theme, $is-dark-theme),
+    supporting-text-color: vars.text-color($theme, $is-dark-theme),
+  ));
+
+  @include mat.form-field-overrides((
+    filled-input-text-placeholder-color: vars.text-color-inactive($theme, $is-dark-theme),
+    outlined-input-text-placeholder-color: vars.text-color-inactive($theme, $is-dark-theme),
   ));
 
   @include mat.sidenav-overrides((
-    container-background-color: $active-primary-color,
-    content-background-color: if($is-dark-theme,
-      mat.get-theme-color($theme, neutral, 17),
-      mat.get-theme-color($theme, neutral, 92)
-    )
+    container-background-color: vars.color-primary($theme, $is-dark-theme),
+    content-background-color: vars.background-color-main($theme, $is-dark-theme),
   ));
 
   @include mat.tabs-overrides((
-    active-indicator-color: $active-primary-color,
-    active-focus-indicator-color: $active-primary-color,
-    active-label-text-color: $active-primary-color,
-    active-focus-label-text-color: $active-primary-color,
+    inactive-label-text-color: vars.text-color-inactive($theme, $is-dark-theme),
   ));
 
   @include mat.toolbar-overrides((
-    container-background-color: $active-primary-color,
+    container-background-color: vars.color-primary($theme, $is-dark-theme),
   ));
 
   @include mat.tree-overrides((
-    container-background-color: $active-primary-color,
+    container-background-color: vars.color-primary($theme, $is-dark-theme),
   ));
 }

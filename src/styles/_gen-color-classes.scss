@@ -1,0 +1,23 @@
+@use '/node_modules/@angular/material' as mat;
+@use './variables' as vars;
+
+@mixin color-classes($theme) {
+  $type: mat.get-theme-type($theme);
+  $is-dark-theme: $type == dark;
+
+  .color-primary {
+    color: vars.color-primary($theme, $is-dark-theme);
+  }
+
+  .color-secondary {
+    color: vars.color-secondary($theme, $is-dark-theme);
+  }
+
+  .color-tertiary {
+    color: vars.color-tertiary($theme, $is-dark-theme);
+  }
+
+  .color-error {
+    color: vars.color-error($theme, $is-dark-theme);
+  }
+}

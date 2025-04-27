@@ -1,0 +1,25 @@
+@use '/node_modules/@angular/material' as mat;
+@use './variables' as vars;
+
+@mixin mat-color-classes($theme) {
+  $type: mat.get-theme-type($theme);
+  $is-dark-theme: $type == dark;
+
+  .mat-secondary-button {
+    @include mat.button-overrides((
+      filled-container-color: vars.color-secondary($theme, $is-dark-theme),
+    ));
+  }
+
+  .mat-tertiary-button {
+    @include mat.button-overrides((
+      filled-container-color: vars.color-tertiary($theme, $is-dark-theme),
+    ));
+  }
+
+  .mat-error-button {
+    @include mat.button-overrides((
+      filled-container-color: vars.color-error($theme, $is-dark-theme),
+    ));
+  }
+}
