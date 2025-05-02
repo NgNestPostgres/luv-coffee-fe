@@ -40,7 +40,7 @@ export class PhoneParts {
 }
 
 @Component({
-  selector: 'ngx-phone-form-field',
+  selector: 'anp-phone-form-field',
   templateUrl: 'phone-form-field.component.html',
   styleUrls: ['phone-form-field.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -58,7 +58,7 @@ implements ControlValueAccessor, MatFormFieldControl<PhoneParts>, OnInit, DoChec
   // implements MatFormFieldControl
   @HostBinding() id = `custom-phone-input-${PhoneFormFieldComponent.nextId++}`;
   // implements MatFormFieldControl
-  @HostBinding('class.ngx-floating')
+  @HostBinding('class.phone-floating')
   get shouldLabelFloat() {
     return this.focused || !this.empty;
   }
@@ -237,7 +237,7 @@ implements ControlValueAccessor, MatFormFieldControl<PhoneParts>, OnInit, DoChec
   }
 
   public setDescribedByIds(ids: string[]): void {
-    const controlElement = this.elementRef.nativeElement.querySelector('.ngx-phone-input-container')!;
+    const controlElement = this.elementRef.nativeElement.querySelector('.phone-input-container')!;
     controlElement.setAttribute('aria-describedby', ids.join(' '));
   }
 

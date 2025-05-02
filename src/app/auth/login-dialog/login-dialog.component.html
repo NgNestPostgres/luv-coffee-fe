@@ -15,11 +15,12 @@
 <mat-dialog-content [ngSwitch]="authState">
   <ng-container *ngSwitchDefault>
     <mat-tab-group #loginTabs animationDuration="300ms">
-      <mat-tab label="Email Login">
+      <mat-tab label="Login">
         <anp-login-form
           [authState]="authState"
           [userEmail]="predefinedEmail"
           [userPhone]="predefinedPhone"
+          (resetPassword)="switchToPasswordResetForm($event)"
           (submitLogin)="handleSingInForm($event)"
         ></anp-login-form>
       </mat-tab>

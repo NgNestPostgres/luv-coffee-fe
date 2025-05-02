@@ -1,5 +1,5 @@
 <div
-  class="ngx-phone-input-container"
+  class="phone-input-container"
   role="group"
   [formGroup]="parts"
   [attr.aria-labelledby]="parentFormField?.getLabelId()"
@@ -9,7 +9,7 @@
 
   <input #area
     aria-label="Area code"
-    class="ngx-phone-input-element"
+    class="phone-input-element"
     formControlName="area"
     matInput
     maxLength="3"
@@ -17,11 +17,11 @@
     (input)="handleInput(parts.controls['area'], exchange)"
   >
 
-  <span class="ngx-phone-input-spacer">(</span>
+  <span class="phone-input-spacer">(</span>
 
   <input #exchange
     aria-label="Exchange code"
-    class="ngx-phone-input-element"
+    class="phone-input-element"
     formControlName="exchange"
     matInput
     maxLength="3"
@@ -29,11 +29,11 @@
     (input)="handleInput(parts.controls['exchange'], subscriber)"
     (keyup.backspace)="autoFocusPrev(parts.controls['exchange'], area)"
   >
-  <span class="ngx-phone-input-spacer">)</span>
+  <span class="phone-input-spacer">)</span>
 
   <input #subscriber
     aria-label="Subscriber number"
-    class="ngx-phone-input-element subscriber"
+    class="phone-input-element subscriber"
     formControlName="subscriber"
     matInput
     maxLength="7"

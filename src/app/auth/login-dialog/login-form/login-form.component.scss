@@ -5,13 +5,15 @@
 }
 
 .login-form {
+  align-items: center;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
-  align-items: center;
+  padding-top: 16px;
   width: 100%;
 
   .form-field {
+    margin-bottom: 20px;
     min-width: 320px;
 
     mat-form-field {

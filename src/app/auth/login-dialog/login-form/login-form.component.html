@@ -1,5 +1,22 @@
 <form [formGroup]="form" class="login-form">
   <div class="form-field">
+    <div class="form-field">
+      <mat-form-field appearance="outline">
+        <mat-label>Phone number</mat-label>
+        <mat-icon matPrefix>phone</mat-icon>
+
+        <anp-phone-form-field formControlName="phoneParts"></anp-phone-form-field>
+
+        @if (form.controls.phoneParts.invalid) {
+          <mat-error>Example: +38 (099) 9998877</mat-error>
+        }
+
+        @if (form.controls.phoneParts.hasError('required')) {
+          <mat-error>Field is required</mat-error>
+        }
+      </mat-form-field>
+    </div>
+
     <mat-form-field appearance="outline">
       <mat-icon matPrefix>email</mat-icon>
 
@@ -68,12 +85,16 @@
 
 <mat-dialog-actions>
   <div class="actions">
-    <span
-      class="color-primary text"
-      (click)="handleResetPassword()"
-    >
-      Forgot password?
-    </span>
+    @if(form.controls.email.valid) {
+      <span
+        class="color-primary text"
+        (click)="handleResetPassword()"
+      >
+        Forgot password?
+      </span>
+    } @else {
+      <i></i>
+    }
 
     <button
       mat-flat-button

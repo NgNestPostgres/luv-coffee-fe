@@ -7,10 +7,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { PasswordVisibilityDirective } from '@auth/directives/password-visibility.directive';
 import { AuthState } from '@auth/interfaces/auth-state.enum';
+import { PhoneFormFieldComponent, PhoneParts } from '@shared/components/phone-form-field/phone-form-field.component';
 
 interface LoginForm {
   email: FormControl<string | undefined>,
-  phone: FormControl<string | undefined>,
+  phoneParts: FormControl<PhoneParts | undefined>,
   password: FormControl<string | undefined>,
 }
 
@@ -26,6 +27,7 @@ interface LoginForm {
     MatIconModule,
     MatInputModule,
     PasswordVisibilityDirective,
+    PhoneFormFieldComponent,
     ReactiveFormsModule,
   ],
 })
@@ -34,14 +36,17 @@ export class LoginFormComponent implements OnInit {
   userEmail = input<string | undefined>();
   userPhone = input<string | undefined>();
 
-  submitLogin = output<{ email: string, password?: string }>();
-  resetPassword = output<string>();
+  submitLogin = output<{ email?: string, phone?: string, password?: string }>();
+  resetPassword = output<{email?: string, phone?: string}>();
 
   private readonly fb = inject(FormBuilder);
 
   form: FormGroup<LoginForm> = this.fb.group<LoginForm>({
     email: this.fb.nonNullable.control<string| undefined>(this.userEmail(), [Validators.required, Validators.email]),
-    phone: this.fb.nonNullable.control<string| undefined>(this.userPhone(), [Validators.required, Validators.email]),
+    phoneParts: this.fb.nonNullable.control<PhoneParts| undefined>(
+      { value: new PhoneParts('', '', ''), disabled: true },
+      [Validators.required],
+    ),
     password: this.fb.nonNullable.control<string|undefined>(
       { value: '', disabled: true },
       [Validators.required],
@@ -57,6 +62,10 @@ export class LoginFormComponent implements OnInit {
     return this.form.controls.password;
   }
 
+  get phoneParts(): FormControl {
+    return this.form.controls.phoneParts;
+  }
+
   ngOnInit(): void {
     if (this.authState() === AuthState.Login) {
       this.enablePasswordFormControl();
@@ -64,8 +73,9 @@ export class LoginFormComponent implements OnInit {
   }
 
   public handleLogin(): void {
-    const { email, password } = this.form.getRawValue();
-    this.submitLogin.emit({ email, password } as { email: string });
+    const { email, password, phoneParts } = this.form.getRawValue();
+    const phone = this.combinePhone(phoneParts);
+    this.submitLogin.emit({ email, phone, password });
   }
 
   // public handleSocialMediaSignIn(socialMedia: SocialMedia): void {
@@ -73,7 +83,10 @@ export class LoginFormComponent implements OnInit {
   // }
 
   handleResetPassword(): void {
-    this.resetPassword.emit(this.email.value);
+    this.resetPassword.emit({
+      email: this.email.value,
+      phone: this.combinePhone(this.phoneParts.value),
+    });
   }
 
   setPasswordVisibility(isVisible: boolean): void {
@@ -83,5 +96,9 @@ export class LoginFormComponent implements OnInit {
   private enablePasswordFormControl(): void {
     this.password.enable();
     // this.password.markAsTouched();
+  }
+
+  private combinePhone(phoneParts: PhoneParts | undefined): string | undefined {
+    return phoneParts ? phoneParts.area + phoneParts.exchange + phoneParts.subscriber : undefined;
   }
 }

@@ -1,7 +1,7 @@
 // import { UserRole } from '@ngnestpostgres/fe-shared';
 import { NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
 import {
-  ChangeDetectionStrategy, Component, DestroyRef, inject,
+  ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef, inject,
   OnInit,
   ViewChild,
 } from '@angular/core';
@@ -45,6 +45,7 @@ export class LoginDialogComponent implements OnInit {
   @ViewChild('loginTabs') loginTabs!: MatTabGroup;
 
   private readonly authService = inject(AuthService);
+  private readonly cdr = inject(ChangeDetectorRef);
   private readonly destroyRef = inject(DestroyRef);
   private readonly dialogRef = inject(MatDialogRef<LoginDialogComponent>);
   readonly loginData: LoginData | undefined = inject(MAT_DIALOG_DATA);
@@ -86,6 +87,11 @@ export class LoginDialogComponent implements OnInit {
     }
   }
 
+  switchToPasswordResetForm(event: {email?: string, phone?: string}): void {
+    this.authState = AuthState.QueryPasswordReset;
+    this.predefinedEmail = event.email;
+  }
+
   private defineAuthProcess(authStateQuery: AuthStateQuery): void {
     if (authStateQuery.email === '' || authStateQuery.phone === '') {
       return;
@@ -106,15 +112,28 @@ export class LoginDialogComponent implements OnInit {
           this.loginTabs.selectedIndex = 1;
         }
 
-        // if (this.authProcess === AuthState.Login) {
-        //   this.isEmailRegistered = true;
-        //   this.loginTabs.selectedIndex = 0;
-        //   this.predefinedEmail = userEmail;
-        // }
+        if (userRole === UserRole.UserActivatedPhone) {
+          this.authState = AuthState.Login;
+          this.isEmailRegistered = false;
+          this.isPhoneRegistered = true;
+          this.loginTabs.selectedIndex = 0;
+        }
 
-        // if (this.authProcess === AuthState.Redirect) {
-        //   this.loginService.samlSignIn(res.url);
-        // }
+        if (userRole === UserRole.UserActivatedEmail) {
+          this.authState = AuthState.Login;
+          this.isEmailRegistered = true;
+          this.isPhoneRegistered = false;
+          this.loginTabs.selectedIndex = 0;
+        }
+
+        if (userRole === UserRole.UserActivatedEmail) {
+          this.authState = AuthState.Login;
+          this.isEmailRegistered = true;
+          this.isPhoneRegistered = true;
+          this.loginTabs.selectedIndex = 0;
+        }
+
+        this.cdr.detectChanges();
       });
   }
 
