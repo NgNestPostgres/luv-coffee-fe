@@ -1,10 +1,10 @@
 export enum AuthState {
+  NotStarted = 'notStarted',
+  Registration = 'registration',
+  Login = 'login',
   Activate = 'activate',
   AuthError = 'authError',
   QueryPasswordReset = 'queryPasswordReset',
-  Login = 'login',
-  NotStarted = 'notStarted',
-  Registration = 'registration',
   ResetPassword = 'resetPassword',
   ResettingPassword = 'resettingPassword',
 }

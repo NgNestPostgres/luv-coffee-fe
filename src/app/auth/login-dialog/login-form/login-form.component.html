@@ -1,1 +1,86 @@
-<p>login-form works!</p>
+<form [formGroup]="form" class="login-form">
+  <div class="form-field">
+    <mat-form-field appearance="outline">
+      <mat-icon matPrefix>email</mat-icon>
+
+      <input
+        matInput
+        type="email"
+        formControlName="email"
+        placeholder="Email"
+      />
+
+      @if(email.dirty && email.errors) {
+        <mat-error>
+          @if(email.hasError('required')) {
+            <ng-container>
+              Email field is required
+            </ng-container>
+          }
+
+          @if(email.hasError('email')) {
+            <ng-container>
+              Invalid email address
+            </ng-container>
+          }
+        </mat-error>
+     }
+    </mat-form-field>
+  </div>
+
+  <div class="form-field">
+    <mat-form-field appearance="outline">
+      <mat-icon matPrefix>lock</mat-icon>
+
+      <input
+        matInput
+        placeholder="Password"
+        formControlName="password"
+        [attr.type]="isPasswordVisible ? 'text' : 'password'"
+      />
+
+      @if(password.value) {
+        <mat-icon
+          matSuffix
+          anpPasswordVisibility
+          (isPasswordVisible)="setPasswordVisibility($event)"
+        >
+          {{isPasswordVisible ? 'visibility_off' : 'visibility'}}
+        </mat-icon>
+      }
+
+      @if(password.dirty && password.errors) {
+        <mat-error>
+          @if(password.hasError('required')) {
+            <ng-container>
+              Password field is required
+            </ng-container>
+          }
+        </mat-error>
+      }
+    </mat-form-field>
+  </div>
+
+  <!-- <mat-error class="server-error" *ngIf="serverMessage">
+    {{serverMessage}}
+  </mat-error> -->
+</form>
+
+<mat-dialog-actions>
+  <div class="actions">
+    <span
+      class="color-primary text"
+      (click)="handleResetPassword()"
+    >
+      Forgot password?
+    </span>
+
+    <button
+      mat-flat-button
+      cdkFocusInitial
+      [disabled]="form.invalid"
+      (click)="handleLogin()"
+    >Login</button>
+  </div>
+</mat-dialog-actions>
+

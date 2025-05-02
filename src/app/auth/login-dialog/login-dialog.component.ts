@@ -1,18 +1,21 @@
 // import { UserRole } from '@ngnestpostgres/fe-shared';
 import { NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
 import {
-  ChangeDetectionStrategy, Component, inject,
-  OnInit } from '@angular/core';
+  ChangeDetectionStrategy, Component, DestroyRef, inject,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
 import {
-  MAT_DIALOG_DATA, MatDialogModule, MatDialogRef,
+  MAT_DIALOG_DATA, MatDialogContent, MatDialogRef,
 } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
-import { MatTabsModule } from '@angular/material/tabs';
+import { MatTabGroup, MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { AuthState, LoginData } from '@auth/interfaces/auth-state.enum';
 import { AuthService } from '@auth/services/auth.service';
-import { AuthMethod, UserLogin } from '@ngnestpostgres/fe-shared';
+import { AuthStateQuery, UserLogin, UserRole } from '@ngnestpostgres/fe-shared';
 
 import { LoginFormComponent } from './login-form/login-form.component';
 import { PasswordChangeComponent } from './password-change/password-change.component';
@@ -27,7 +30,7 @@ import { RegistrationFormComponent } from './registration-form/registration-form
   imports: [
     LoginFormComponent,
     MatButtonModule,
-    MatDialogModule,
+    MatDialogContent,
     MatIconModule,
     MatTabsModule,
     MatTabsModule,
@@ -39,32 +42,83 @@ import { RegistrationFormComponent } from './registration-form/registration-form
   ],
 })
 export class LoginDialogComponent implements OnInit {
-  private authService = inject(AuthService);
-  private data: LoginData = inject(MAT_DIALOG_DATA);
-  private dialogRef = inject(MatDialogRef<LoginDialogComponent>);
+  @ViewChild('loginTabs') loginTabs!: MatTabGroup;
 
-  readonly AuthMethod = AuthMethod;
+  private readonly authService = inject(AuthService);
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly dialogRef = inject(MatDialogRef<LoginDialogComponent>);
+  readonly loginData: LoginData | undefined = inject(MAT_DIALOG_DATA);
+
   readonly AuthState = AuthState;
 
-  authMethod: AuthMethod = this.AuthMethod.NotDefined;
   authState: AuthState = AuthState.NotStarted;
-  predefinedEmail = '';
+  isEmailRegistered = false;
+  isPhoneRegistered = false;
+  predefinedEmail: string | undefined;
+  predefinedPhone: string | undefined;
 
   ngOnInit(): void {
-    console.log(this.data);
-    console.log('UserRole.Admin');
+    if (this.loginData) {
+      const { email, authState } = this.loginData;
+      this.predefinedEmail = email;
+
+      if (authState) {
+        this.authState = authState;
+      }
+    }
   }
 
-  public closeForm(): void {
+  closeForm(): void {
     this.closeDialog();
-    this.authMethod = AuthMethod.NotDefined;
     this.authState = AuthState.NotStarted;
-    this.predefinedEmail = '';
     // this.isRequestSuccessful = false;
     // this.serverMessage$.next(null);
   }
 
-  public login(creds: UserLogin) {
+  handleSingInForm(authStateQuery: AuthStateQuery): void {
+    if (!authStateQuery.password) {
+      this.defineAuthProcess(authStateQuery);
+    } else if (authStateQuery.password && authStateQuery.phone ) {
+      // this.handleUserLogin({ email, password });
+      console.log('phone login', authStateQuery);
+    } else {
+      console.log('email login', authStateQuery);
+    }
+  }
+
+  private defineAuthProcess(authStateQuery: AuthStateQuery): void {
+    if (authStateQuery.email === '' || authStateQuery.phone === '') {
+      return;
+    }
+
+    this.authService.getAuthState(authStateQuery)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((userRole: UserRole | null) => {
+        console.log(userRole);
+        // this.authProcess = res.method;
+        this.predefinedEmail = authStateQuery.email;
+        this.predefinedPhone = authStateQuery.phone;
+
+        if (userRole === null) {
+          this.authState = AuthState.Registration;
+          this.isEmailRegistered = false;
+          this.isPhoneRegistered = false;
+          this.loginTabs.selectedIndex = 1;
+        }
+
+        // if (this.authProcess === AuthState.Login) {
+        //   this.isEmailRegistered = true;
+        //   this.loginTabs.selectedIndex = 0;
+        //   this.predefinedEmail = userEmail;
+        // }
+
+        // if (this.authProcess === AuthState.Redirect) {
+        //   this.loginService.samlSignIn(res.url);
+        // }
+      });
+  }
+
+  login(creds: UserLogin) {
     this.authService.login(creds).subscribe((token: string) => {
       this.closeDialog(token);
     });

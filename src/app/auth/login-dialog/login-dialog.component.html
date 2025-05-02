@@ -14,9 +14,14 @@
 
 <mat-dialog-content [ngSwitch]="authState">
   <ng-container *ngSwitchDefault>
-    <mat-tab-group animationDuration="300ms">
-      <mat-tab label="Login">
-        <anp-login-form></anp-login-form>
+    <mat-tab-group #loginTabs animationDuration="300ms">
+      <mat-tab label="Email Login">
+        <anp-login-form
+          [authState]="authState"
+          [userEmail]="predefinedEmail"
+          [userPhone]="predefinedPhone"
+          (submitLogin)="handleSingInForm($event)"
+        ></anp-login-form>
       </mat-tab>
 
       <mat-tab label="Register">
@@ -26,12 +31,10 @@
 
   </ng-container>
 
-  <anp-password-reset
-    *ngSwitchCase="AuthState.QueryPasswordReset"
+  <anp-password-reset *ngSwitchCase="AuthState.QueryPasswordReset"
   ></anp-password-reset>
 
-  <anp-password-change
-    *ngSwitchCase="AuthState.ResettingPassword"
+  <anp-password-change *ngSwitchCase="AuthState.ResettingPassword"
   ></anp-password-change>
 
   <ng-container *ngSwitchCase="AuthState.Activate">
@@ -41,14 +44,4 @@
   </ng-container>
 </mat-dialog-content>
 
-<mat-dialog-actions>
-  <button class="mat-secondary-button" mat-flat-button mat-dialog-close>Cancel</button>
-
-  <button
-    class="mat-primary-button"
-    mat-flat-button
-    cdkFocusInitial
-    (click)="login({ email: 'angularnestpostgre@gmail.com', password: 'Angularnestpostgre1' })"
-  >Login</button>
-</mat-dialog-actions>
 
