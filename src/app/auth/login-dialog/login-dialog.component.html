@@ -12,12 +12,12 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
-<mat-dialog-content [ngSwitch]="authState">
+<mat-dialog-content [ngSwitch]="authState()">
   <ng-container *ngSwitchDefault>
     <mat-tab-group #loginTabs animationDuration="300ms">
       <mat-tab label="Login">
         <anp-login-form
-          [authState]="authState"
+          [authState]="authState()"
           [userEmail]="predefinedEmail"
           [userPhone]="predefinedPhone"
           (resetPassword)="switchToPasswordResetForm($event)"

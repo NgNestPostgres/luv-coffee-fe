@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component, inject, input, OnInit, output } from '@angular/core';
+import {
+  ChangeDetectionStrategy, Component, inject, Input, input, OnChanges, output,
+} from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogActions } from '@angular/material/dialog';
@@ -31,8 +33,8 @@ interface LoginForm {
     ReactiveFormsModule,
   ],
 })
-export class LoginFormComponent implements OnInit {
-  authState = input.required<AuthState>();
+export class LoginFormComponent implements OnChanges {
+  @Input({ required: true }) authState!: AuthState;
   userEmail = input<string | undefined>();
   userPhone = input<string | undefined>();
 
@@ -66,8 +68,8 @@ export class LoginFormComponent implements OnInit {
     return this.form.controls.phoneParts;
   }
 
-  ngOnInit(): void {
-    if (this.authState() === AuthState.Login) {
+  ngOnChanges(): void {
+    if (this.authState === AuthState.Login) {
       this.enablePasswordFormControl();
     }
   }

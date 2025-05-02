@@ -3,7 +3,9 @@ import { NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
 import {
   ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef, inject,
   OnInit,
+  signal,
   ViewChild,
+  WritableSignal,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
@@ -52,7 +54,7 @@ export class LoginDialogComponent implements OnInit {
 
   readonly AuthState = AuthState;
 
-  authState: AuthState = AuthState.NotStarted;
+  authState: WritableSignal<AuthState> = signal(AuthState.NotStarted);
   isEmailRegistered = false;
   isPhoneRegistered = false;
   predefinedEmail: string | undefined;
@@ -64,14 +66,14 @@ export class LoginDialogComponent implements OnInit {
       this.predefinedEmail = email;
 
       if (authState) {
-        this.authState = authState;
+        this.authState.set(authState);
       }
     }
   }
 
   closeForm(): void {
     this.closeDialog();
-    this.authState = AuthState.NotStarted;
+    this.authState.set(AuthState.NotStarted);
     // this.isRequestSuccessful = false;
     // this.serverMessage$.next(null);
   }
@@ -88,7 +90,7 @@ export class LoginDialogComponent implements OnInit {
   }
 
   switchToPasswordResetForm(event: {email?: string, phone?: string}): void {
-    this.authState = AuthState.QueryPasswordReset;
+    this.authState.set(AuthState.QueryPasswordReset);
     this.predefinedEmail = event.email;
   }
 
@@ -100,34 +102,32 @@ export class LoginDialogComponent implements OnInit {
     this.authService.getAuthState(authStateQuery)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((userRole: UserRole | null) => {
-        console.log(userRole);
-        // this.authProcess = res.method;
         this.predefinedEmail = authStateQuery.email;
         this.predefinedPhone = authStateQuery.phone;
 
         if (userRole === null) {
-          this.authState = AuthState.Registration;
+          this.authState.set(AuthState.Registration);
           this.isEmailRegistered = false;
           this.isPhoneRegistered = false;
           this.loginTabs.selectedIndex = 1;
         }
 
         if (userRole === UserRole.UserActivatedPhone) {
-          this.authState = AuthState.Login;
+          this.authState.set(AuthState.Login);
           this.isEmailRegistered = false;
           this.isPhoneRegistered = true;
           this.loginTabs.selectedIndex = 0;
         }
 
         if (userRole === UserRole.UserActivatedEmail) {
-          this.authState = AuthState.Login;
+          this.authState.set(AuthState.Login);
           this.isEmailRegistered = true;
           this.isPhoneRegistered = false;
           this.loginTabs.selectedIndex = 0;
         }
 
-        if (userRole === UserRole.UserActivatedEmail) {
-          this.authState = AuthState.Login;
+        if (userRole === UserRole.User) {
+          this.authState.set(AuthState.Login);
           this.isEmailRegistered = true;
           this.isPhoneRegistered = true;
           this.loginTabs.selectedIndex = 0;
