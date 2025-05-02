@@ -28,7 +28,7 @@ describe('PhoneFormFieldComponent', () => {
   });
 
   it('should count Form Group elements', () => {
-    const formElement = fixture.debugElement.nativeElement.querySelector('.ngx-phone-input-container');
+    const formElement = fixture.debugElement.nativeElement.querySelector('.phone-input-container');
     const inputElements = formElement.querySelectorAll('input');
     expect(inputElements.length).toBe(3);
   });
@@ -42,7 +42,7 @@ describe('PhoneFormFieldComponent', () => {
   describe('area form field', () => {
     it('should check before entering value and validation', () => {
       const formElement = fixture.debugElement.nativeElement
-        .querySelector('.ngx-phone-input-container')
+        .querySelector('.phone-input-container')
         .querySelectorAll('input')[0];
       const formGroupValue = component.parts.get('area');
 
@@ -53,7 +53,7 @@ describe('PhoneFormFieldComponent', () => {
 
     it('should check after entering value and validation', async () => {
       const formElement: HTMLInputElement = fixture.debugElement.nativeElement
-        .querySelector('.ngx-phone-input-container')
+        .querySelector('.phone-input-container')
         .querySelectorAll('input')[0];
 
       formElement.value = '+38';
@@ -70,7 +70,7 @@ describe('PhoneFormFieldComponent', () => {
   describe('exchange form field', () => {
     it('should check before entering value and validation', () => {
       const formElement = fixture.debugElement.nativeElement
-        .querySelector('.ngx-phone-input-container')
+        .querySelector('.phone-input-container')
         .querySelectorAll('input')[1];
       const formGroupValue = component.parts.get('exchange');
 
@@ -81,7 +81,7 @@ describe('PhoneFormFieldComponent', () => {
 
     it('should check after entering value and validation', async () => {
       const formElement: HTMLInputElement = fixture.debugElement.nativeElement
-        .querySelector('.ngx-phone-input-container')
+        .querySelector('.phone-input-container')
         .querySelectorAll('input')[1];
 
       formElement.value = '096';
@@ -98,7 +98,7 @@ describe('PhoneFormFieldComponent', () => {
   describe('subscriber form field', () => {
     it('should check before entering value and validation', () => {
       const formElement = fixture.debugElement.nativeElement
-        .querySelector('.ngx-phone-input-container')
+        .querySelector('.phone-input-container')
         .querySelectorAll('input')[2];
       const formGroupValue = component.parts.get('subscriber');
 
@@ -109,7 +109,7 @@ describe('PhoneFormFieldComponent', () => {
 
     it('should check after entering value and validation', async () => {
       const formElement: HTMLInputElement = fixture.debugElement.nativeElement
-        .querySelector('.ngx-phone-input-container')
+        .querySelector('.phone-input-container')
         .querySelectorAll('input')[2];
 
       formElement.value = '4064713';
@@ -125,13 +125,13 @@ describe('PhoneFormFieldComponent', () => {
 
   it('should check the form is valid when validations are fulfilled', async () => {
     const areaFormElement: HTMLInputElement = fixture.debugElement.nativeElement
-      .querySelector('.ngx-phone-input-container')
+      .querySelector('.phone-input-container')
       .querySelectorAll('input')[0];
     const exchangeFormElement: HTMLInputElement = fixture.debugElement.nativeElement
-      .querySelector('.ngx-phone-input-container')
+      .querySelector('.phone-input-container')
       .querySelectorAll('input')[1];
     const subscriberFormElement: HTMLInputElement = fixture.debugElement.nativeElement
-      .querySelector('.ngx-phone-input-container')
+      .querySelector('.phone-input-container')
       .querySelectorAll('input')[2];
 
     areaFormElement.value = '+38';

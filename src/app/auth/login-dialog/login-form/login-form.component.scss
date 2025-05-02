@@ -1,0 +1,35 @@
+:host {
+  display: block;
+  padding: 20px 0 20px 0;
+  width: 100%;
+}
+
+.login-form {
+  align-items: center;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  padding-top: 16px;
+  width: 100%;
+
+  .form-field {
+    margin-bottom: 20px;
+    min-width: 320px;
+
+    mat-form-field {
+      width: 100%;
+    }
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  .text {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

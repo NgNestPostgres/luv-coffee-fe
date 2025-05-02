@@ -1,10 +1,11 @@
-.ngx-phone-input-container {
+.phone-input-container {
   display: flex;
+  width: fit-content;
 }
 
-.ngx-phone-input-element {
-  border: none;
+.phone-input-element {
   background: none;
+  border: none;
   padding: 0;
   outline: none;
   font: inherit;
@@ -18,11 +19,11 @@
 
 
 
-.ngx-phone-input-spacer {
+.phone-input-spacer {
   opacity: 0;
   transition: opacity 200ms;
 }
 
-:host.ngx-floating .ngx-phone-input-spacer {
+:host.phone-floating .phone-input-spacer {
   opacity: 1;
 }

@@ -1,7 +1,7 @@
 <form [formGroup]="form" (ngSubmit)="log()">
   <mat-form-field appearance="fill">
     <mat-label>Phone number</mat-label>
-    <ngx-phone-form-field formControlName="tel" required></ngx-phone-form-field>
+    <anp-phone-form-field formControlName="tel" required></anp-phone-form-field>
     <mat-icon matSuffix>phone</mat-icon>
     @if (form.controls['tel'].invalid) {
       <mat-error>Example: +38 (096) 4064713</mat-error>
@@ -28,9 +28,9 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Phone number 2</mat-label>
-    <ngx-phone-form-field formControlName="tel1"></ngx-phone-form-field>
+    <anp-phone-form-field formControlName="tel1"></anp-phone-form-field>
     @if (form.controls['tel1'].invalid) {
-      <mat-error>Example: +38 (096) 4064713</mat-error>
+      <mat-error>Example: +38 (099) 9998877</mat-error>
     }
     @if (form.controls['tel1'].hasError('required')) {
       <mat-error>Field is required</mat-error>

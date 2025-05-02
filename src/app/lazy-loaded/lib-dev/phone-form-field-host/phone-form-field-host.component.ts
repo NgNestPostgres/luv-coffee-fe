@@ -7,8 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { PhoneFormFieldComponent } from '@ngx-shared';
-import { PhoneParts } from 'projects/ngx-shared/src/public-api';
+import { PhoneFormFieldComponent, PhoneParts } from '@shared/components/phone-form-field/phone-form-field.component';
 import { merge } from 'rxjs';
 
 @Component({

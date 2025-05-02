@@ -4,8 +4,6 @@
     <div class="header">
       <img class="logo-img" src="/assets/images/logo.svg" alt="Logo">
 
-      <h4 class="title">Login</h4>
-
       <div class="close-button"
         (click)="closeForm()">
         <mat-icon>close</mat-icon>
@@ -14,17 +12,37 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
-<mat-dialog-content>
-  <div>Content</div>
+<mat-dialog-content [ngSwitch]="authState()">
+  <ng-container *ngSwitchDefault>
+    <mat-tab-group #loginTabs animationDuration="300ms">
+      <mat-tab label="Login">
+        <anp-login-form
+          [authState]="authState()"
+          [userEmail]="predefinedEmail"
+          [userPhone]="predefinedPhone"
+          (resetPassword)="switchToPasswordResetForm($event)"
+          (submitLogin)="handleSingInForm($event)"
+        ></anp-login-form>
+      </mat-tab>
+
+      <mat-tab label="Register">
+        <anp-registration-form></anp-registration-form>
+      </mat-tab>
+    </mat-tab-group>
+
+  </ng-container>
+
+  <anp-password-reset *ngSwitchCase="AuthState.QueryPasswordReset"
+  ></anp-password-reset>
+
+  <anp-password-change *ngSwitchCase="AuthState.ResettingPassword"
+  ></anp-password-change>
+
+  <ng-container *ngSwitchCase="AuthState.Activate">
+    <span class="activation-text">
+      Please activate your account before proceed
+    </span>
+  </ng-container>
 </mat-dialog-content>
 
-<mat-dialog-actions>
-  <button class="secondary-button" mat-flat-button mat-dialog-close>Cancel</button>
-
-  <button
-    mat-flat-button
-    cdkFocusInitial
-    (click)="login({ email: 'angularnestpostgre@gmail.com', password: 'Angularnestpostgre1' })"
-  >Login</button>
-</mat-dialog-actions>
 

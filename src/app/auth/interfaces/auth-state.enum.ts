@@ -1,7 +1,20 @@
 export enum AuthState {
+  NotStarted = 'notStarted',
+  Registration = 'registration',
+  Login = 'login',
+  Activate = 'activate',
   AuthError = 'authError',
-  NotStarted = 'not_started',
-  QueryPasswordReset = 'query_password_reset',
+  QueryPasswordReset = 'queryPasswordReset',
   ResetPassword = 'resetPassword',
-  ResettingPassword = 'resetting_password',
+  ResettingPassword = 'resettingPassword',
+}
+
+export interface LoginData {
+  authState?: AuthState;
+  createdDate?: Date;
+  email: string;
+  fistname?: string;
+  lastname?: string;
+  refreshToken?: string;
+  userId?: string;
 }
