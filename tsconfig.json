@@ -36,10 +36,6 @@
       "@shared/*": [
         "src/app/shared/*"
       ],
-      "@ngx-shared": [
-        "dist/ngx-shared/ngx-shared",
-        "dist/ngx-shared"
-      ]
     },
     "useDefineForClassFields": false
   },

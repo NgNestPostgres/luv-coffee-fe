@@ -26,10 +26,7 @@
             Password: access_token_classic
     2. `npm i @ngnestpostgres/fe-shared@latest` (or version you need).
 2. Run local server.
-3. Build ngx-shared lib:
-  - run `npm run build:lib:ngx-shared` to build a lib,
-  - or run `npm run build:lib:ngx-shared:watch` for ngx-shared library development.
-4. Run `npm run serve:local` to start FE develoment.
+3. Run `npm run serve:local` to start FE develoment.
 
 <!-- TODO: check
 ## Run build locally
@@ -70,48 +67,6 @@ https://dev.to/digitaldino/set-up-eslint-with-angular-and-the-airbnb-style-guide
     2. Generate `access_token_classic` for `client` repo with `read` permissions.
     3. * In `client` repo add token as a `Actions` secret with the name `XXX_TOKEN` with value `access_token_classic`. (https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions)
 
-## Library development
-1. Run `npm run build:lib:ngx-shared:watch` in the first terminal.
-2. Run `npm run serve:local` im the second terminal.
-
-## Publish libraries/packages
-1. Update versions in (versions are the same!!!):
-    - package.json (version x.y.z)
-    - packages/package.json (version x.y.z)
-2. Publish from local machine:
-    1. Authenticate to GitHub Registry (see [GitHub Registry Auth](#gitHub-registry-auth))
-    2. Run `npm run publish:ngx-shared`.
-3. Publish with GitHub Actions
-(https://docs.github.com/en/packages/managing-github-packages-using-github-actions-workflows/publishing-and-installing-a-package-with-github-actions#upgrading-a-workflow-that-accesses-a-registry-using-a-personal-access-token):
-    - On `dev` branch create release (set as pre-release).
-4. Packages can be found here: https://github.com/orgs/NgNestPostgres/packages.
-
-## Library npm packages update
-1. Manually update packages (dependencies, peerDependencies) verions according to repository (main) `package.json`.
-
-## Library Development Convention
-````
-Angular library rules (https://angular.dev/tools/libraries/creating-libraries):
-- Declarations such as components and pipes should be designed as stateless.
-- Any observables that the components subscribe to internally should be cleaned up and disposed of during the lifecycle of those  components.
-- Components should expose their interactions through inputs for providing context, and outputs for communicating events to other components.
-- ...
-````
-
-## Library Assets
-````
-1. Add '_mixins.scss' file to 'projects/ngx-shared/styles' folder.
-2. Add to 'ng-package.json':
-
-  ng-package.json:
-  -------------------------------------------------------------------------------------
-  {
-    ...
-    "assets": ["./styles/**/*.scss"],
-    ...
-  }
-  -------------------------------------------------------------------------------------
-````
 
 # CI
 1. Get GitHub personal access token classic with `read` permissions.
@@ -121,7 +76,6 @@ Angular library rules (https://angular.dev/tools/libraries/creating-libraries):
 1. Create release branch `release_x.y.z`.
 2. Update versions in:
     - package.json (version x.y.z as release branch)
-    - projects/ngx-shared/package.json (version x.y.z as release branch)
 3. Update package-lock.json: `npm update`.
 4. Make PR and merge `release_x.y.z` to `main`.
 5. Make PR and merge `main` to `dev`.
@@ -180,7 +134,6 @@ Run `yarn build:analyze`.
 # Angular Update
 1. Update lint manually:
   npm i eslint@latest eslint-config-google@latest eslint-plugin-unused-imports@latest eslint-plugin-simple-import-sort@latest @angular-eslint/builder@latest @angular-eslint/eslint-plugin@latest @angular-eslint/eslint-plugin-template@latest @angular-eslint/schematics@latest @angular-eslint/template-parser@latest @typescript-eslint/eslint-plugin@latest @typescript-eslint/parser@latest @stylistic/eslint-plugin-js@latest --save-dev
-2. In `projects/ngx-shared/package.json` update `peerDependencies` and `dependencies`.
 
 
 # REFACTOR TO NEW STARTUP

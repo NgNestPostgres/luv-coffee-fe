@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AccessToken, ApiResp, UserLogin } from '@ngnestpostgres/fe-shared';
+import { AccessToken, ApiResp, AuthStateQuery, UserLogin, UserRole } from '@ngnestpostgres/fe-shared';
 import {
   catchError, map, Observable, tap,
 } from 'rxjs';
@@ -17,14 +17,34 @@ export class AuthService {
     private http: HttpClient,
   ) { }
 
-  public login(creds: UserLogin): Observable<string> {
+  getAuthState(query: AuthStateQuery): Observable<UserRole | null> {
+    let params = new HttpParams();
+
+    if (query.phone) {
+      params = params.append('phone', query.phone);
+    }
+
+    if (query.email) {
+      params = params.append('email', query.email);
+    }
+
+    return this.http.get<ApiResp<UserRole | null>>(
+      `${environment.apiHost}/auth/auth-state`,
+      { params },
+    )
+      .pipe(
+        map((resp: ApiResp<UserRole | null>) => resp.data),
+      );
+  }
+
+  login(creds: UserLogin): Observable<string> {
     return this.http.post<ApiResp<AccessToken>>(
       `${environment.apiHost}/auth/login`,
       { ...creds },
     )
       .pipe(
-        tap((token: ApiResp<AccessToken>) => this.tokenService.setAccessToken(token.data.accessToken)),
-        map((token: ApiResp<AccessToken>) => token.data.accessToken),
+        tap((resp: ApiResp<AccessToken>) => this.tokenService.setAccessToken(resp.data.accessToken)),
+        map((resp: ApiResp<AccessToken>) => resp.data.accessToken),
         catchError((err: Error) => JSON.stringify(err)),
       );
   }

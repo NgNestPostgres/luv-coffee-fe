@@ -179,48 +179,6 @@
           }
         }
       }
-    },
-    "ngx-shared": {
-      "projectType": "library",
-      "root": "projects/ngx-shared",
-      "sourceRoot": "projects/ngx-shared/src",
-      "prefix": "ngx",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
-          "options": {
-            "project": "projects/ngx-shared/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/ngx-shared/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "projects/ngx-shared/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
-            "tsConfig": "projects/ngx-shared/tsconfig.spec.json"
-          }
-        },
-        "lint": {
-          "builder": "@angular-eslint/builder:lint",
-          "options": {
-            "lintFilePatterns": [
-              "projects/ngx-shared/**/*.ts",
-              "projects/ngx-shared/**/*.html"
-            ]
-          }
-        }
-      }
     }
   },
   "cli": {
